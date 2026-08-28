@@ -53,7 +53,7 @@ export const primaryNav: NavGroup[] = [
           {
             label: 'Architekten und Planer',
             to: '/leistungen#planer',
-            hint: 'Technikplanung als organischer Bestandteil des Gebäudes',
+            hint: 'Technikplanung, bevor die Wände stehen',
           },
         ],
       },

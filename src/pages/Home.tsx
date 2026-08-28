@@ -37,18 +37,14 @@ export function Home() {
         <div className="home-gewerke__intro container-wide">
           <SectionHeader
             eyebrow="Leistungsbereiche"
-            title="Ein Gebäude hat Schichten. Wir bauen alle fünf."
-            lead="Energie auf dem Dach, Wärme und Luft im Technikraum, Wasser im Schacht, Strom und Information überall dazwischen."
+            title="Energie, Heizung, Klima, Sanitär, Elektro"
+            lead="Dach, Technikraum, Schacht, Verteilung — die Gewerke sitzen an verschiedenen Stellen im Gebäude. Wir stimmen sie an einer Stelle ab."
           />
           <Reveal className="home-gewerke__note" delay={80}>
             <p>
-              Der Vorteil liegt nicht darin, dass wir fünf Dinge können, sondern
-              darin, dass eine Stelle sie aufeinander abstimmt: Die Wärmepumpe weiß
-              vom Speicher, der Speicher vom Dach, die Lüftung von der Kühlung.
-            </p>
-            <p>
-              Wählen Sie eine Schicht — Sie sehen, was auf dieser Ebene zu tun ist
-              und welche anderen Gewerke dazugehören.
+              Die Wärmepumpe braucht den Speicher, der Speicher den Strom vom Dach,
+              die Kühlung die Regelung. Wählen Sie ein Gewerk — Sie sehen, was
+              dazugehört.
             </p>
           </Reveal>
         </div>
@@ -65,8 +61,8 @@ export function Home() {
         <div className="home-news__head container-wide">
           <SectionHeader
             eyebrow="Aktuelles"
-            title="Was gerade ansteht"
-            lead="Vorträge im Kompetenzzentrum, Neues aus dem Betrieb und Themen, die unsere Kunden gerade beschäftigen."
+            title="Vorträge und Betrieb"
+            lead="Informationsabende in Bühl, Hinweise aus dem Betrieb, Presse aus der Praxis."
           />
           <Link className="home-news__all" to="/aktuelles">
             Alle Meldungen

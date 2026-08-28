@@ -40,7 +40,7 @@ export default function Kontakt() {
       <PageHero
         eyebrow="Kontakt"
         title="Anrufen oder schreiben"
-        lead="Frage, Termin oder Vorhaben: rufen Sie an — oder schreiben Sie uns, wenn Ihnen das lieber ist."
+        lead="Termin, Störung oder Vorhaben: Zentrale in Bühl unter 07223 80 100 10 — oder das Formular."
         image={{
           src: 'beratung-showroom',
           alt: 'Beratung im Showroom: Vorführung der Gebäudesteuerung am Smartphone',

@@ -25,7 +25,7 @@ const cases = [
   {
     id: 'einbau',
     title: 'Beim Einbau eines neuen Gerätes',
-    body: '… muss alles passen. Weil nichts ärgerlicher ist als Überraschungen nach dem Messen, kommen wir vorbei und nehmen Maß. Dabei schonen wir Ihr Budget ebenso wie Ihre Nerven.',
+    body: 'Es muss passen. Wir kommen vorbei und nehmen Maß, bevor bestellt wird.',
   },
   {
     id: 'gewerbe',

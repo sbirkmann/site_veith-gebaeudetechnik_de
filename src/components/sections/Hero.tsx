@@ -15,7 +15,7 @@ export function Hero() {
           priority
           fill
           sizes="100vw"
-          position="72% 38%"
+          position="78% 32%"
         />
         <div className="hero__scrim" aria-hidden="true" />
       </div>
@@ -27,22 +27,25 @@ export function Hero() {
         </p>
 
         <h1 className="hero__title">
-          Fünf Gewerke, ein Gebäude,
-          <br />
-          <span className="hero__title-accent">ein Plan.</span>
+          Gebäudetechnik in Bühl
         </h1>
 
         <p className="hero__lead">
-          Energie, Heizung, Klima, Sanitär und Elektro aus einem Haus — geplant
-          und installiert von Leuten, die wissen, wie die Gewerke ineinandergreifen.
-          Seit {company.founded} in Bühl.
+          Photovoltaik, Wärmepumpe, Klima, Sanitär und Elektro — geplant und
+          eingebaut von einem Fachbetrieb in Bühl/Baden. Ein Haus, fünf Gewerke,
+          eine Abstimmung.
         </p>
 
         <div className="hero__actions">
           <Button to="/leistungen" size="lg" arrow>
-            Was wir bauen
+            Leistungen
           </Button>
-          <Button href={`tel:${company.phone.href}`} variant="secondary" size="lg">
+          <Button
+            href={`tel:${company.phone.href}`}
+            variant="secondary"
+            size="lg"
+            className="hero__call"
+          >
             {company.phone.display}
           </Button>
         </div>

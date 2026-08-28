@@ -76,7 +76,7 @@ export default function Service() {
       <PageHero
         eyebrow="Service"
         title="Kundendienst, Seminare, Förderungen"
-        lead="Kundendienst, Seminare, Förderungen, Showroom und Marken — wählen Sie Ihr Thema."
+        lead="Störung, Förderantrag, Vortrag oder Showroom — wählen Sie das Thema."
         image={{
           src: 'beratung-showroom',
           alt: 'Beratung im VEITH Kompetenzzentrum',

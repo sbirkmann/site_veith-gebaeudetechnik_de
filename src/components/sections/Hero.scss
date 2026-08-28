@@ -66,7 +66,7 @@
 }
 
 .hero__title {
-  max-width: 12ch;
+  max-width: 14ch;
   font-size: var(--t-4xl);
   font-weight: 700;
   line-height: 0.94;
@@ -107,6 +107,10 @@
 .hero__trades {
   position: relative;
   border-top: var(--hair) solid rgb(255 255 255 / 0.16);
+
+  .container-wide {
+    padding-inline-end: calc(var(--gutter) + 3.75rem);
+  }
 
   ul {
     display: grid;
@@ -160,5 +164,24 @@
     padding-inline-start: 0;
     border: 0;
     width: 100%;
+  }
+
+  .hero__media img {
+    object-position: 68% 18% !important;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+}
+
+@media (min-width: 48rem) {
+  .hero__call {
+    display: none;
   }
 }

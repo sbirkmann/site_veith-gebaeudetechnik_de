@@ -1,8 +1,6 @@
 import { Reveal } from '../ui/Reveal'
 import { Button } from '../ui/Button'
 import { BuildingSchnitt } from './BuildingSchnitt'
-import { FactIcon } from './FactIcons'
-import { kompetenzzentrum } from '../../data/company'
 import './Positionierung.scss'
 
 export function Positionierung() {
@@ -11,26 +9,25 @@ export function Positionierung() {
       <div className="pos__band container-wide">
         <div className="pos__copy">
           <Reveal>
-            <p className="pos__eyebrow">Die Haltung</p>
+            <p className="pos__eyebrow">Seit 1989 in Bühl</p>
             <h2 className="pos__title">
-              Ein Gebäude funktioniert nur, wenn die Gewerke zusammenpassen.
+              Die Gewerke müssen zusammenpassen — sonst tut es das Gebäude nicht.
             </h2>
             <div className="pos__text">
               <p>
-                Als VEITH 1989 anfing, ging es um Elektrik und Elektronik. Seither hat
-                sich der Markt verändert wie kaum ein zweiter: Produkte für Industrie
-                und Privat sind schneller, sicherer und vernetzt.
+                VEITH hat 1989 mit Elektrik und Elektronik angefangen. Heute
+                planen und installieren wir Gebäudetechnik: Photovoltaik und
+                Speicher, Wärmepumpe, Klima, Sanitär und Elektro — abgestimmt
+                auf dasselbe Objekt.
               </p>
               <p>
-                Heute sprechen wir von Gebäudetechnik. Jemand muss Management,
-                Steuerung und Funktion zusammenhalten, damit ein Gebäude wirklich
-                funktioniert. Das Kompetenzzentrum im Gewerbegebiet Bußmatten ist
-                dafür gebaut — als Arbeitsort und als Nachweis, dass die Technik
-                hält, was wir versprechen.
+                Das Kompetenzzentrum im Gewerbegebiet Bußmatten ist Arbeitsort
+                und Nachweis. Wärmepumpe, Solarstrom, Fassade: die Zahlen stehen
+                auf der Unternehmensseite, nicht noch einmal hier.
               </p>
             </div>
             <Button to="/unternehmen" variant="ghost" arrow>
-              Mehr über VEITH
+              Kompetenzzentrum in Bußmatten
             </Button>
           </Reveal>
         </div>
@@ -39,27 +36,6 @@ export function Positionierung() {
           <BuildingSchnitt />
         </Reveal>
       </div>
-
-      <ol className="pos__features container-wide">
-        {kompetenzzentrum.features.map((feature, i) => (
-          <Reveal as="li" key={feature} delay={i * 70}>
-            <span className="pos__n" aria-hidden="true">
-              {String(i + 1).padStart(2, '0')}
-            </span>
-            <p>{feature}</p>
-          </Reveal>
-        ))}
-      </ol>
-
-      <dl className="pos__facts">
-        {kompetenzzentrum.facts.map((f, i) => (
-          <div className="pos__fact" key={f.value}>
-            <FactIcon index={i} />
-            <dt>{f.value}</dt>
-            <dd>{f.label}</dd>
-          </div>
-        ))}
-      </dl>
     </section>
   )
 }

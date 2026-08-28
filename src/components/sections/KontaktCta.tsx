@@ -1,7 +1,7 @@
 import { Reveal } from '../ui/Reveal'
 import { Image } from '../ui/Image'
 import { Button } from '../ui/Button'
-import { IconPhone, IconPin } from '../ui/lineIcons'
+import { IconPin } from '../ui/lineIcons'
 import { company } from '../../data/company'
 import './KontaktCta.scss'
 
@@ -11,13 +11,12 @@ interface KontaktCtaProps {
 }
 
 /**
- * Closing contact band. Mist only as a thin frame so the split sits
- * against the navy footer without merging. Orange stays on the panel.
- * Opening hours live on /kontakt and Kundendienst — not here.
+ * Closing contact band. Navy for the contact panel; orange only on the
+ * number. Opening hours live on /kontakt and Kundendienst — not here.
  */
 export function KontaktCta({
-  title = 'Reden wir über Ihr Gebäude.',
-  lead = 'Ein Anruf genügt, um herauszufinden, ob und wie sich Ihr Vorhaben rechnet. Wir nehmen uns die Zeit.',
+  title = 'Termin oder Vorhaben?',
+  lead = 'Rufen Sie an oder schreiben Sie uns. Bußmatten 15 in Bühl — wir sagen Ihnen, was zum Gebäude passt.',
 }: KontaktCtaProps) {
   return (
     <section className="kcta">
@@ -29,7 +28,7 @@ export function KontaktCta({
               alt=""
               fill
               sizes="(min-width: 56rem) 40vw, 100vw"
-              position="10% 100%"
+              position="18% 88%"
             />
           </div>
 
@@ -49,7 +48,6 @@ export function KontaktCta({
           </div>
 
           <div className="kcta__panel">
-            <IconPhone className="kcta__icon" />
             <a className="kcta__phone" href={`tel:${company.phone.href}`}>
               {company.phone.display}
             </a>
@@ -58,7 +56,7 @@ export function KontaktCta({
             </a>
             <div className="kcta__actions">
               <Button to="/kontakt" variant="secondary" arrow>
-                Ansprechpartner finden
+                Ansprechpartner
               </Button>
             </div>
           </div>

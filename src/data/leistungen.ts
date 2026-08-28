@@ -49,11 +49,11 @@ export const trades: Trade[] = [
     slug: 'energie',
     name: 'Energie',
     eyebrow: 'Erzeugen, speichern, selbst verbrauchen',
-    headline: 'Strom vom Dach, genutzt im Haus',
+    headline: 'Photovoltaik, Speicher, Eigenverbrauch',
     summary:
-      'Photovoltaik, Speicher, Ladeinfrastruktur und Energiemanagement als ein zusammenhängendes System.',
+      'Photovoltaik, Speicher, Ladeinfrastruktur und Energiemanagement als ein System.',
     intro:
-      'Photovoltaik, Speicher, Wärmepumpe und Ladepunkt gehören zusammen. Wir planen den Weg des Stroms durch Ihr Gebäude.',
+      'Photovoltaik, Speicher, Wärmepumpe und Ladepunkt gehören zusammen. Wir planen den Weg des Stroms durch das Gebäude — in Bühl und der Region.',
     scope: [
       'Photovoltaik',
       'Brennstoffzelle / Blockheizkraftwerk (erzeugen auch Wärme)',
@@ -70,7 +70,7 @@ export const trades: Trade[] = [
       {
         id: 'photovoltaik',
         title: 'Photovoltaik',
-        lead: 'Sonnenenergie verbraucht nichts — sie schöpft aus einem Potential, das emissionsfrei zur Verfügung steht.',
+        lead: 'Die Fläche muss stimmen, der Ertrag auch — und der Strom soll im Haus bleiben.',
         body: [
           'Die Voraussetzung ist eine nutzbare Fläche. Nach Ihrem Energiebedarf dimensionieren wir die Anlage; je weniger Verschattung durch Gebäudeteile, Topografie und Nachbarbebauung entsteht, desto besser fällt der Ertrag aus. Auch die zu erwartenden Sonnenstunden fließen in die Rechnung ein — die Rheinebene ist dafür ein sehr guter Standort.',
           'Im Vordergrund steht heute, den Strom vom eigenen Dach selbst zu nutzen. Der Verkauf ist in den Hintergrund gerückt; der größte Nutzen entsteht, wenn der Strombezug deutlich sinkt. Mit einer abgestimmten Erzeugungsanlage in Verbindung mit einem Batteriespeicher lässt sich die Stromrechnung um bis zu 80 % reduzieren.',
@@ -143,12 +143,12 @@ export const trades: Trade[] = [
     id: 'heizung',
     slug: 'heizung',
     name: 'Heizung',
-    eyebrow: 'Wärme aus der Quelle Ihrer Wahl',
-    headline: 'Heizung auslegen und einbauen',
+    eyebrow: 'Wärmepumpe, Solarthermie, Biomasse',
+    headline: 'Wärmepumpe und Heizungsbau in Bühl',
     summary:
-      'Wärmepumpe, Solarthermie, Pellets und Kraft-Wärme-Kopplung — ausgelegt auf Ihr Gebäude, nicht auf den Katalog.',
+      'Wärmepumpe, Solarthermie, Pellets und Kraft-Wärme-Kopplung — ausgelegt auf das Gebäude.',
     intro:
-      'Zuerst das Gebäude — Dämmung, Flächen, Bestand —, dann das Gerät. Auslegung, Zuschüsse und Inbetriebnahme bleiben in einer Hand.',
+      'Zuerst das Gebäude — Dämmung, Flächen, Bestand —, dann das Gerät. Auslegung, BAFA-Antrag und Inbetriebnahme in einer Hand.',
     scope: [
       'Wärmepumpe',
       'Solarthermie',
@@ -167,7 +167,7 @@ export const trades: Trade[] = [
       {
         id: 'waermepumpe',
         title: 'Wärmepumpe',
-        lead: 'Die Umweltwärme ist bereits da und kostet nichts. Es geht darum, sie effizient zu heben.',
+        lead: 'Umweltwärme ist da. Die Auslegung entscheidet, ob die Pumpe leise und sparsam läuft.',
         body: [
           'Eine gut ausgelegte Wärmepumpe zeichnet sich durch hohe Energiekosteneinsparung, leisen Betrieb und hohen Komfort aus. Unsere aktuellen Geräte erreichen die Effizienzklasse A+++ und arbeiten flüsterleise — und sie heizen und kühlen mit einem einzigen Gerät.',
           'Der Einbau wird staatlich gefördert. Von der Planung über die Beantragung der BAFA-Zuschüsse bis zur Inbetriebnahme sind wir Ihr Ansprechpartner.',
@@ -229,11 +229,11 @@ export const trades: Trade[] = [
     slug: 'klima',
     name: 'Klima',
     eyebrow: 'Temperatur, Luft, Feuchte',
-    headline: 'Klima für Wohnen, Büro und Betrieb',
+    headline: 'Klimaanlage und Raumklima',
     summary:
       'Klimaanlagen, Kaltwassersysteme, Entfeuchtung und Wärmerückgewinnung für Wohnen, Büro, Werkstatt und Industrie.',
     intro:
-      'Einzelne Räume oder das ganze Gebäude: Temperatur, Luft und Feuchte, eingebunden ins Hausenergiesystem.',
+      'Einzelne Räume oder das ganze Gebäude: Temperatur, Luft und Feuchte — Wohnen, Büro, Serverraum, Produktion.',
     scope: [
       'Klimaanlagen',
       'Kaltwassersysteme',
@@ -266,7 +266,7 @@ export const trades: Trade[] = [
         lead: 'Server und Produktionsanlagen verzeihen kein Klima, das aus dem Rahmen läuft.',
         body: [
           'Ob EDV-Arbeitsplätze, Serverräume oder empfindliche industrielle Produktionsanlagen — mit moderner Klimatechnik lassen sich die Anforderungen an einen zuverlässigen, reibungslosen Betrieb dauerhaft einhalten.',
-          'Vermiedene Ausfälle und Fehlqualitäten sparen dauerhaft Geld — und schonen nicht zuletzt Ihre Nerven.',
+          'Ausfälle und Ausschuss kosten Geld. Die Klimatechnik hält Temperatur und Feuchte im Soll.',
         ],
         image: {
           src: 'klima-aussenanlage',
@@ -309,12 +309,12 @@ export const trades: Trade[] = [
     id: 'sanitaer',
     slug: 'sanitaer',
     name: 'Sanitär',
-    eyebrow: 'Wasser, Wärme, Werterhalt',
-    headline: 'Sanitär, Bad und Nassbereich',
+    eyebrow: 'Installation, Bad, Nassbereich',
+    headline: 'Sanitär und Bad in Bühl',
     summary:
-      'Sanitärinstallation, Badausstattung und barrierefreie Nassbereiche — eingebunden in Energie- und Gebäudekonzept.',
+      'Sanitärinstallation, Badausstattung und barrierefreie Nassbereiche — an Wärme und Gebäudesteuerung angebunden.',
     intro:
-      'Ver- und Entsorgung, Bad und Nassbereich — eingebunden in Energiekonzept und Gebäudemanagement.',
+      'Ver- und Entsorgung, Bad und Nassbereich. Warmwasser hängt an der Heizung, Steuerung oft am Elektrogewerk.',
     scope: [
       'Sanitärinstallation',
       'Badausstattung',
@@ -332,7 +332,7 @@ export const trades: Trade[] = [
       {
         id: 'bad',
         title: 'Badausstattung',
-        lead: 'Ein gut ausgestattetes Bad ändert, wie ein Tag anfängt und wie er aufhört.',
+        lead: 'Armaturen, Becken, Wannen, Brauch- und Abwasser — und die Planung, die das zusammenhält.',
         body: [
           'VEITH liefert alles, was Sie an Infrastruktur für Ihre sanitären Räume brauchen: Armaturen, Becken und Wannen, die Installation von Brauch-, Warm- und Abwasser — und die professionelle Planung, die das alles zusammenhält.',
         ],
@@ -344,10 +344,10 @@ export const trades: Trade[] = [
       {
         id: 'installation',
         title: 'Sanitärinstallation',
-        lead: 'Die sanitäre Einrichtung ist Teil der Gebäudetechnik, nicht ihr Anhängsel.',
+        lead: 'Leitungen und Steuerung sollen unsichtbar bleiben. Die Anlage muss halten.',
         body: [
-          'Für uns geht es um die ganzheitliche Erfassung des Gebäudes und seiner technischen Struktur. Die Einbindung der sanitären Anlagen ist die logische Folge dieser Denkweise.',
-          'Von Leitungen, Ventilen, Steuerung und Technik sollen Sie nichts bemerken, wenn Sie Ihr Bad genießen. Das Wissen um die Zuverlässigkeit und Dauerhaftigkeit Ihrer Investition darf den Genuss aber gern steigern.',
+          'Sanitär ist Teil der Gebäudetechnik, nicht ihr Anhängsel. Leitungen, Ventile und Steuerung binden wir an Wärme und Elektro an, wenn das Objekt das verlangt.',
+          'Von Leitungen und Technik sollen Sie nichts merken, wenn Sie das Bad nutzen. Die Ausführung entscheidet, wie lange die Anlage hält.',
         ],
         image: {
           src: 'bad-detail',
@@ -377,12 +377,12 @@ export const trades: Trade[] = [
     id: 'elektro',
     slug: 'elektro',
     name: 'Elektro',
-    eyebrow: 'Strom und Information',
-    headline: 'Strom, Licht und Gebäudemanagement',
+    eyebrow: 'Installation, KNX, Licht',
+    headline: 'Elektroinstallation und Gebäudemanagement',
     summary:
       'Elektroinstallation, Netzwerke, Sicherheitstechnik, Gebäudemanagement, Beleuchtung und Industrie-Elektronik.',
     intro:
-      'Elektro-, Steuer- und Regeltechnik vom Einfamilienhaus bis zum Gewerbebetrieb — ausgelegt auf Ihren Bedarf.',
+      'Elektro-, Steuer- und Regeltechnik vom Einfamilienhaus bis zum Gewerbebetrieb — in Bühl und der Region.',
     scope: [
       'Elektroinstallation',
       'Netzwerke',
@@ -401,7 +401,7 @@ export const trades: Trade[] = [
       {
         id: 'installation',
         title: 'Elektroinstallation',
-        lead: 'Alles, was Strom, Licht und Information im Haus verteilt — eine unserer Kernkompetenzen.',
+        lead: 'Verteilung, Licht und Information — eine der Kernarbeiten im Haus.',
         body: [
           'Gerade hier zahlt sich qualifizierte Planung nachhaltig aus. Wir verfügen nicht nur über langjährige Erfahrung, sondern sind auch mit den Techniken vertraut, die den Markt gerade verändern.',
           'Bei der Haustechnik ist immer Energie im Spiel, die zuverlässig und effizient eingesetzt werden will: von den geringen Mengen, die Information über Funktechnik tragen, bis zu Leitungen mit großem Querschnitt, die Produktionsanlagen gleichmäßig versorgen.',
@@ -414,7 +414,7 @@ export const trades: Trade[] = [
       {
         id: 'komfort',
         title: 'Komfort und Lebensqualität',
-        lead: 'Ihre Wohnung sollte Sie entlasten, ohne dass Sie auf etwas verzichten müssen.',
+        lead: 'Licht, Rollläden, Klima und Alarmanlage lassen sich gemeinsam bedienen — wenn die Installation das hergibt.',
         body: [
           'Temperatur, Klima, Luftfeuchtigkeit und Licht lassen sich heute von jedem Raum aus regeln — ebenso Musik und Klang. Programme steuern die Rollläden, der Morgen beginnt mit Musik.',
           'Die Idee ist ein Lebensumfeld, das sich den Wünschen seiner Bewohner anpasst. Wohl fühlen wir uns allerdings nur in einer Umgebung, die wir leicht steuern können und die in ihrer Funktion transparent bleibt. Genau darauf legen wir die Anlage aus.',
@@ -428,11 +428,11 @@ export const trades: Trade[] = [
       {
         id: 'gebaeudemanagement',
         title: 'Gebäudemanagement',
-        lead: 'Aus vernetzten Einzelteilen wird ein Gebäude, das seinen Betrieb selbst optimiert.',
+        lead: 'Einzelne Anlagen werden zur Gebäudeautomation, wenn Verteilung und Sensorik zusammengehören.',
         body: [
-          'Die Installation von Informations- und Energietechnik verbindet die Gewerke im Gebäude. Von hier aus entsteht die Struktur vernetzter Elemente, die für Kommunikation, gutes Klima und Sicherheit sorgt.',
-          'Ein intelligentes Gebäudemanagement integriert alle lebenswichtigen Funktionen des baulichen Körpers und sorgt neben der Werterhaltung für einen kosten-, energie- und sicherheitsoptimierten Betrieb. Einbruch-, Brand-, Informations- und Reaktionstechnik lassen sich ebenso einsetzen wie umgebungsorientierte Lichtsteuerung, Zutrittskontrolle oder Energiemanagement.',
-          'Gerade bei gewerblichen und öffentlichen Projekten sind technische Ausgestaltung und Zukunftsfähigkeit bedeutende Faktoren. Wir sind gern Ansprechpartner für Sie, Ihre Architekten und Planer.',
+          'Informations- und Energietechnik verbindet die Gewerke. Darüber laufen Klima, Sicherheit und Bedienung.',
+          'Gebäudemanagement fasst die Funktionen zusammen, die den Betrieb steuern: Einbruch, Brand, Licht, Zutritt, Energiemanagement. Bei Gewerbe und öffentlichen Bauten zählt, was später nachgerüstet werden muss.',
+          'Wir sind Ansprechpartner für Bauherren, Architekten und Planer.',
         ],
         image: {
           src: 'netzwerktechnik-gewerbe',
@@ -442,7 +442,7 @@ export const trades: Trade[] = [
       {
         id: 'beleuchtung',
         title: 'Beleuchtung',
-        lead: 'Licht ist sehr viel mehr als das Gegenteil von Dunkelheit.',
+        lead: 'Helligkeit und Lichtfarbe hängen von der Tätigkeit ab — im Wohnraum anders als am Arbeitsplatz.',
         body: [
           'Am deutlichsten spüren wir das, wenn bei einer liebgewonnenen Beschäftigung die Augen schmerzen. Je nach Tätigkeit brauchen wir andere Helligkeit und andere Lichtfarbe — und Licht trägt Stimmungen: Es sorgt dafür, dass wir uns zu Hause auch daheim fühlen.',
           'Am Arbeitsplatz bringt Licht mehr als Helligkeit. Eine Raumbeleuchtung funktioniert hinsichtlich Streuung, Lichtstärke und Gleichmaß anders als eine Punktlichtquelle für präzises Arbeiten. Für Ihr Unternehmen zählen Sicherheit, Energieeffizienz und Produktivität — wir sorgen dafür, dass alles zur Geltung kommt.',

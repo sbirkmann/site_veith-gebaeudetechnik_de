@@ -1,11 +1,16 @@
 .kar {
   background-color: var(--c-white);
   color: var(--c-ink);
-  padding-block: calc(var(--section-y) + var(--s-6)) var(--section-y);
+  padding-block: calc(var(--section-y) + var(--s-4)) var(--section-y);
+  border-top: var(--hair) solid var(--c-blue-line);
 }
 
 .kar__inner {
-  max-width: 40rem;
+  max-width: var(--container-wide);
+}
+
+.kar__body {
+  max-width: 36rem;
 }
 
 .kar__eyebrow {
@@ -26,9 +31,45 @@
 }
 
 .kar__lead {
-  max-width: 42ch;
+  max-width: 46ch;
   margin-top: var(--s-5);
   color: var(--c-ink-2);
+}
+
+.kar__spec {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 8.5rem));
+  gap: 0;
+  margin-top: var(--s-6);
+  border-top: var(--hair) solid var(--c-blue-line);
+
+  div {
+    padding: var(--s-4) var(--s-5) var(--s-4) 0;
+  }
+
+  div + div {
+    padding-inline-start: var(--s-5);
+    border-inline-start: var(--hair) solid var(--c-blue-line);
+  }
+
+  dt {
+    font-family: var(--font-mono);
+    font-size: var(--t-3xs);
+    font-weight: 600;
+    letter-spacing: var(--tr-caps);
+    text-transform: uppercase;
+    color: var(--c-ink-3);
+  }
+
+  dd {
+    margin: var(--s-2) 0 0;
+    font-family: var(--font-mono);
+    font-size: var(--t-xl);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+    color: var(--c-navy);
+  }
 }
 
 .kar__actions {

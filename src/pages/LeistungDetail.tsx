@@ -181,7 +181,7 @@ export default function LeistungDetail() {
 
       <KontaktCta
         title={`${trade.name} für Ihr Gebäude?`}
-        lead="Sagen Sie uns, was Sie vorhaben. Wir schauen uns die Voraussetzungen an und sagen Ihnen, was sinnvoll ist — und was nicht."
+        lead="Sagen Sie uns, was ansteht. Wir schauen uns die Voraussetzungen an und sagen, was sinnvoll ist — und was nicht."
       />
     </article>
   )

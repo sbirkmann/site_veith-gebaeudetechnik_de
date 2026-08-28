@@ -42,7 +42,7 @@ export default function Unternehmen() {
       <PageHero
         eyebrow="Ihr VEITH"
         title={`Seit ${company.founded} Gebäudetechnik aus Bühl`}
-        lead="Angefangen hat VEITH bei Elektronik und Elektrik. Heute planen wir das Gebäude als zusammenhängendes System."
+        lead="Angefangen hat VEITH bei Elektrik. Heute sitzen Heizung, Photovoltaik, Klima, Sanitär und Elektro in einem Betrieb."
         image={{
           src: 'kompetenzzentrum-aussen',
           alt: 'Das VEITH Kompetenzzentrum im Gewerbegebiet Bußmatten in Bühl',
@@ -56,9 +56,8 @@ export default function Unternehmen() {
           <Reveal className="unt__credo-inner">
             <p className="unt__credo-mark">Haltung</p>
             <p className="unt__credo-text">
-              Wir stehen für ein Konzept, das alle notwendigen und wünschenswerten
-              Aspekte berücksichtigt und realisiert, damit Sie sich wohl und
-              sicher fühlen.
+              Seit {company.founded} Gebäudetechnik aus Bühl: beraten, liefern,
+              installieren — und im Kundendienst wiederkommen.
             </p>
           </Reveal>
         </div>
@@ -70,8 +69,8 @@ export default function Unternehmen() {
           <div className="unt__kz-split">
             <Reveal className="unt__kz-media">
               <Image
-                src="kompetenzzentrum-aussen"
-                alt="Das VEITH Kompetenzzentrum im Gewerbegebiet Bußmatten in Bühl"
+                src="kompetenzzentrum-marke"
+                alt="Schriftzug VEITH am Kompetenzzentrum in Bühl"
                 ratio="4 / 3"
                 sizes="(min-width: 62rem) 42rem, 100vw"
               />
@@ -150,8 +149,8 @@ export default function Unternehmen() {
       </section>
 
       <KontaktCta
-        title="Lernen Sie uns kennen."
-        lead="Kommen Sie vorbei und sehen Sie sich an, was in unserem eigenen Gebäude verbaut ist. Termine nach Vereinbarung."
+        title="Termin im Kompetenzzentrum"
+        lead="Bußmatten 15 in Bühl. Schauen Sie sich an, was im eigenen Gebäude verbaut ist — Termine nach Vereinbarung."
       />
     </>
   )

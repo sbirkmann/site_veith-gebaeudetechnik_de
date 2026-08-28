@@ -8,10 +8,10 @@ const groups = [
   {
     id: 'privat',
     label: 'Privatkunden',
-    question: 'Was kostet mich das, und was habe ich davon?',
-    body: 'Sie wollen Komfort, Zuverlässigkeit und Zukunftssicherheit. Wir rechnen Ihnen vor, was eine Anlage einspart, welche Förderung greift und in welcher Reihenfolge die Schritte sinnvoll sind — für den Neubau ebenso wie für die Verbesserung an einem Haus, das steht.',
-    to: '/leistungen/energie',
-    linkLabel: 'Energie und Wärme fürs Eigenheim',
+    question: 'Was kostet die Anlage, und was spare ich?',
+    body: 'Wärmepumpe, Photovoltaik, Bad oder Elektro: Wir rechnen vor, welche Förderung greift und in welcher Reihenfolge die Schritte sinnvoll sind — Neubau ebenso wie Bestand in Bühl und der Umgebung.',
+    to: '/leistungen/heizung',
+    linkLabel: 'Wärmepumpe und Heizung',
     image: {
       src: 'klima-wohnbereich',
       alt: 'Klimatisierung im Wohnbereich',
@@ -20,8 +20,8 @@ const groups = [
   {
     id: 'gewerbe',
     label: 'Gewerbe',
-    question: 'Läuft der Betrieb, und was kostet er im Jahr?',
-    body: 'Höchste Funktionalität zeichnet ein gutes Gebäude aus. Wir planen die Technik, die den effizienten Betrieb Ihrer Gebäude und Einrichtungen sichert — von der Industrie-Elektrik über Klimatechnik für Produktion und Serverraum bis zum Energiemanagement.',
+    question: 'Läuft der Betrieb — und was kostet er im Jahr?',
+    body: 'Industrie-Elektrik, Klimatechnik für Produktion und Serverraum, Energiemanagement: die Technik, die den Betrieb hält, nicht die Broschüre.',
     to: '/leistungen/elektro',
     linkLabel: 'Elektro und Gebäudemanagement',
     image: {
@@ -32,10 +32,10 @@ const groups = [
   {
     id: 'planer',
     label: 'Architekten und Planer',
-    question: 'Denkt da jemand mit, bevor die Wände stehen?',
-    body: 'Gebäudetechnik ist für uns ein organischer Bestandteil des Gebäudes. Wir haben langjährige Erfahrung in der Technikplanung für Objekte unterschiedlichster Formate und Funktionen und sind gern früh im Projekt Ansprechpartner.',
+    question: 'Ist die Technik drin, bevor die Wände stehen?',
+    body: 'Gebäudetechnik gehört ins Konzept, nicht als Nachtrag. Wir planen mit — für Wohnen und Gewerbe, früh im Projekt.',
     to: '/kontakt',
-    linkLabel: 'Ansprechpartner finden',
+    linkLabel: 'Ansprechpartner',
     image: {
       src: 'beratung-showroom',
       alt: 'Beratung zu Gebäudetechnik im Showroom',
@@ -49,25 +49,26 @@ export function Zielgruppen() {
       <div className="zg__intro container-wide">
         <SectionHeader
           eyebrow="Für wen wir planen"
-          title="Drei Auftraggeber, drei verschiedene Fragen"
-          lead="Ein Bauherr, ein Betriebsleiter und ein Architekt wollen dasselbe Gebäude — aber sie fragen nach völlig unterschiedlichen Dingen."
+          title="Privat, Gewerbe, Planer"
+          lead="Dieselbe Werkstatt, drei verschiedene Fragen — Kosten, Betrieb, Einbauzeitpunkt."
         />
       </div>
 
       <ul className="zg__list">
         {groups.map((g, i) => (
-          <Reveal as="li" className="zg__item" key={g.id} delay={i * 70}>
+          <Reveal as="li" className={`zg__item zg__item--${g.id}`} key={g.id} delay={i * 70}>
             <article id={g.id}>
               <div className="zg__media">
                 <Image
                   src={g.image.src}
                   alt={g.image.alt}
                   fill
-                  sizes="(min-width: 62rem) 34vw, 100vw"
+                  sizes={
+                    g.id === 'privat'
+                      ? '(min-width: 62rem) 48vw, 100vw'
+                      : '(min-width: 62rem) 26vw, 100vw'
+                  }
                 />
-                <p className="zg__index" aria-hidden="true">
-                  {String(i + 1).padStart(2, '0')}
-                </p>
               </div>
               <p className="zg__label">{g.label}</p>
               <h3 className="zg__question">{g.question}</h3>

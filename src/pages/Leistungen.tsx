@@ -22,17 +22,17 @@ const audiences = [
   {
     id: 'privat',
     label: 'Für private Kunden',
-    body: 'Sie wünschen Komfort, Zuverlässigkeit und Zukunftssicherheit? Bei VEITH finden Sie die Lösungen für Ihren Wohntraum ebenso wie findige Details für Probleme und Verbesserungen an Ihrem Haus.',
+    body: 'Wärmepumpe, Photovoltaik, Bad oder Elektro im Haus: wir sagen Ihnen, was zum Bestand passt und welche Förderung greift.',
   },
   {
     id: 'gewerbe',
     label: 'Für gewerbliche Kunden',
-    body: 'Höchste Funktionalität zeichnet ein gutes Gebäude aus. Wir bieten die innovativen, klugen Lösungen, die den effizienten Betrieb Ihrer Gebäude und Einrichtungen garantieren.',
+    body: 'Technik, die den Betrieb hält — von der Industrie-Elektrik über Klimatechnik bis zum Energiemanagement.',
   },
   {
     id: 'planer',
     label: 'Für Architekten und Planer',
-    body: 'Gebäudetechnik gehört von Anfang an ins Gebäudekonzept. Wir haben langjährige Erfahrung in der Technikplanung für Gebäude unterschiedlicher Größe und Nutzung.',
+    body: 'Gebäudetechnik gehört von Anfang an ins Konzept. Wir planen mit, für Wohnen und Gewerbe.',
   },
 ]
 
@@ -114,7 +114,7 @@ export default function Leistungen() {
         <div className="container-wide">
           <SectionHeader
             eyebrow="Wen wir beliefern"
-            title="Dasselbe Können, drei verschiedene Aufgaben"
+            title="Privat, Gewerbe, Planer"
           />
           <div className="lst__aud-grid">
             {audiences.map((a, i) => (

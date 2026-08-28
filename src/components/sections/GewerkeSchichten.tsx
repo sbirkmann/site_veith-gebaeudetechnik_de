@@ -80,11 +80,11 @@ export function GewerkeSchichten() {
         style={{ '--layer-accent': trade.accent } as React.CSSProperties}
       >
         <div className="schichten__media">
-          {/* Keyed so React swaps the element and the fade restarts. */}
+          {/* Prefer a topic photo so the home hero is not repeated here. */}
           <Image
-            key={trade.hero.src}
-            src={trade.hero.src}
-            alt={trade.hero.alt}
+            key={(trade.topics[0]?.image ?? trade.hero).src}
+            src={(trade.topics[0]?.image ?? trade.hero).src}
+            alt={(trade.topics[0]?.image ?? trade.hero).alt}
             ratio="4 / 3"
             sizes="(min-width: 62rem) 42rem, 100vw"
           />
@@ -92,7 +92,7 @@ export function GewerkeSchichten() {
 
         <div className="schichten__body">
           <p className="schichten__meta">
-            <span>Schicht {String(active + 1).padStart(2, '0')}</span>
+            <span>{String(active + 1).padStart(2, '0')}</span>
             {trade.eyebrow}
           </p>
           <h3 className="schichten__title">{trade.headline}</h3>

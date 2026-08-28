@@ -36,20 +36,6 @@
   }
 }
 
-.zg__index {
-  position: absolute;
-  top: var(--s-4);
-  left: var(--gutter);
-  z-index: 1;
-  margin: 0;
-  color: #fff;
-  font-family: var(--font-mono);
-  font-size: var(--t-sm);
-  font-weight: 600;
-  letter-spacing: var(--tr-caps);
-  text-shadow: 0 1px 8px rgb(14 35 64 / 0.55);
-}
-
 .zg__label,
 .zg__question,
 .zg__body,
@@ -99,7 +85,8 @@
 
 @media (min-width: 62rem) {
   .zg__list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.78fr) minmax(0, 0.78fr);
+    align-items: stretch;
   }
 
   .zg__item {
@@ -125,12 +112,13 @@
     padding-bottom: var(--s-9);
   }
 
-  .zg__media {
-    aspect-ratio: 4 / 5;
+  .zg__item--privat .zg__media {
+    aspect-ratio: 5 / 4;
   }
 
-  .zg__index {
-    left: var(--s-5);
+  .zg__item--gewerbe .zg__media,
+  .zg__item--planer .zg__media {
+    aspect-ratio: 16 / 11;
   }
 
   .zg__link {

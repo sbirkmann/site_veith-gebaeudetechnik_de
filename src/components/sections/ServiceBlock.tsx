@@ -12,40 +12,46 @@ import './ServiceBlock.scss'
 
 const cases = [
   {
-    title: 'Bei Störung und Fehlfunktion',
-    body: 'Wir sind schnell vor Ort oder helfen am Telefon weiter. Manches ist rasch erledigt, wenn man weiß, was zu tun ist.',
+    title: 'Störung',
+    body: 'Wir kommen vor Ort oder sagen am Telefon, was als Nächstes zu tun ist.',
   },
   {
-    title: 'Beim Einbau eines neuen Geräts',
-    body: 'Wir kommen vorbei und nehmen Maß, bevor bestellt wird. Das schont Ihr Budget ebenso wie Ihre Nerven.',
+    title: 'Gerätetausch',
+    body: 'Maß nehmen, bevor bestellt wird — sonst passt das Gerät nicht in die Nische.',
   },
   {
-    title: 'Für Handwerk und Industrie',
-    body: 'Sehr schnelle Notfallreaktion — auch ohne Wartungsvertrag.',
+    title: 'Handwerk und Industrie',
+    body: 'Schnelle Reaktion, auch ohne Wartungsvertrag.',
   },
 ]
 
 export function ServiceBlock() {
   return (
     <section className="svc">
-      <div className="svc__media" aria-hidden="true">
-        <Image src="kundendienst" alt="" fill sizes="40vw" />
-      </div>
-
       <div className="svc__body container-wide">
         <Reveal className="svc__intro">
           <p className="svc__eyebrow">Kundendienst</p>
-          <h2 className="svc__title">Wenn die Anlage steht, fängt unsere Arbeit erst an.</h2>
+          <h2 className="svc__title">Wenn die Anlage steht, rufen Sie an.</h2>
           <p className="svc__lead">
-            Service und Kundendienst sind die Basis für eine gute Partnerschaft. Wir
-            halten Ihre Gebäudetechnik am Laufen — zuverlässig und schnell.
+            Störungen, Einbau, Notfall im Betrieb: unter dieser Nummer erreichen
+            Sie uns während der Geschäftszeiten.
           </p>
+        </Reveal>
+
+        <Reveal className="svc__media">
+          <Image
+            src="kundendienst"
+            alt="Servicemonteur von VEITH mit Werkzeugkoffer im Einsatz beim Kunden"
+            fill
+            sizes="(min-width: 62rem) 36vw, 100vw"
+            position="42% 40%"
+          />
         </Reveal>
 
         <Reveal className="svc__dispatch" delay={60}>
           <a className="svc__call" href={`tel:${company.phone.href}`}>
             <span className="svc__call-text">
-              <span className="svc__call-label">Während unserer Geschäftszeiten erreichbar</span>
+              <span className="svc__call-label">Während der Geschäftszeiten</span>
               <span className="svc__call-num">{company.phone.display}</span>
             </span>
             <IconPhone className="svc__call-icon" />
