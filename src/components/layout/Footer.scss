@@ -1,7 +1,5 @@
 .ftr {
-  padding-block: var(--s-10) var(--s-6);
-  /* The ring in the mark is the only colour down here. */
-  border-top: 3px solid var(--c-orange);
+  padding-block: var(--s-8) var(--s-6);
 }
 
 .ftr__top {
@@ -23,7 +21,7 @@
 .ftr__legal-name {
   display: block;
   color: var(--fg);
-  font-weight: 560;
+  font-weight: 500;
 }
 
 .ftr__contact {
@@ -51,7 +49,7 @@
   a {
     display: inline-flex;
     align-items: center;
-    min-height: 2.5rem;
+    min-height: 2.75rem;
   }
 
   a:hover {
@@ -114,7 +112,7 @@
      primary navigation on a phone. */
   display: flex;
   align-items: center;
-  min-height: 2.5rem;
+  min-height: 2.75rem;
   color: var(--fg-muted);
   font-size: var(--t-sm);
 
@@ -148,7 +146,7 @@
   a {
     display: inline-flex;
     align-items: center;
-    min-height: 2.5rem;
+    min-height: 2.75rem;
   }
 
   a:hover {

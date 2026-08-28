@@ -1,16 +1,13 @@
 .kon__rule {
-  display: block;
-  width: 3.5rem;
-  height: 3px;
-  margin-bottom: var(--s-5);
-  background-color: var(--c-orange);
+  display: none;
 }
 
 .kon__eyebrow {
   margin-bottom: var(--s-3);
-  color: var(--c-ink-3);
+  color: var(--c-eyebrow);
   font-family: var(--font-mono);
-  font-size: var(--t-3xs);
+  font-size: var(--t-2xs);
+  font-weight: 600;
   letter-spacing: var(--tr-caps);
   text-transform: uppercase;
 }
@@ -36,15 +33,30 @@
   font-size: var(--t-md);
 }
 
+.kon__phone-strip {
+  padding-block: var(--s-5);
+  background-color: var(--c-navy);
+  color: #fff;
+}
+
+.kon__phone-label {
+  margin-bottom: var(--s-2);
+  color: rgb(255 255 255 / 0.72);
+  font-family: var(--font-mono);
+  font-size: var(--t-2xs);
+  font-weight: 600;
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
 .kon__call {
   display: inline-block;
-  margin-top: var(--s-6);
   font-family: var(--font-mono);
   font-size: clamp(1.75rem, 1.1rem + 2.4vw, 2.5rem);
   font-weight: 500;
   letter-spacing: -0.02em;
-  color: var(--c-ink);
-  white-space: nowrap;
+  color: #fff;
+  overflow-wrap: anywhere;
   border-bottom: 3px solid var(--c-orange);
   padding-bottom: 2px;
 
@@ -53,34 +65,59 @@
   }
 }
 
-/* ------------------------------------------------------------- fact panel */
+.kon__facts-band {
+  background-color: var(--c-white);
+}
+
 .kon__facts {
   display: grid;
-  gap: var(--s-6);
-  padding: var(--s-6);
-  background-color: var(--c-mist);
-  border-radius: var(--r-lg);
-  align-content: start;
+  gap: 0;
+  padding-block: var(--s-4);
+}
+
+.kon__fact {
+  min-width: 0;
+  padding-block: var(--s-4);
+  border-bottom: var(--hair) solid var(--c-blue-line);
+}
+
+.kon__fact:first-child {
+  padding-top: 0;
+}
+
+.kon__fact:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.kon__fact-head {
+  display: grid;
+  gap: var(--s-3);
+  margin-bottom: var(--s-4);
+}
+
+.kon__fact-icon {
+  display: block;
+  width: var(--icon-fact);
+  height: var(--icon-fact);
+  color: var(--c-navy);
+  overflow: visible;
 }
 
 .kon__fact h2 {
-  margin-bottom: var(--s-3);
-  color: var(--c-ink-3);
+  margin: 0;
+  color: var(--c-ink);
   font-family: var(--font-mono);
-  font-size: var(--t-3xs);
-  font-weight: 500;
+  font-size: var(--t-2xs);
+  font-weight: 600;
   letter-spacing: var(--tr-caps);
   text-transform: uppercase;
-}
-
-.kon__fact + .kon__fact {
-  padding-top: var(--s-6);
-  border-top: var(--hair) solid var(--c-blue-line);
 }
 
 .kon__fact address {
   font-style: normal;
   color: var(--c-ink);
+  font-size: var(--t-sm);
   line-height: var(--lh-normal);
 }
 
@@ -100,19 +137,24 @@
 
 .kon__fact dl {
   display: grid;
-  gap: var(--s-2);
+  gap: var(--s-3);
 }
 
 .kon__fact dl div {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
   gap: var(--s-2) var(--s-4);
+  align-items: center;
+  min-height: 2.5rem;
 }
 
 .kon__fact dt {
-  min-width: 4.5rem;
-  color: var(--c-ink-3);
-  font-size: var(--t-xs);
+  color: var(--c-ink);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  font-weight: 600;
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
 }
 
 .kon__fact dd {
@@ -122,11 +164,8 @@
   color: var(--c-ink);
   overflow-wrap: anywhere;
 
-  /* These are the values a visitor taps, so they get a real hit area. */
   a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 2.5rem;
+    border-bottom: 2px solid var(--c-orange);
   }
 
   a:hover {
@@ -136,33 +175,33 @@
 
 .kon__hours {
   display: grid;
-  gap: var(--s-2);
+  gap: var(--s-3);
 
   li {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: var(--s-3);
+    align-items: baseline;
     font-size: var(--t-sm);
-    color: var(--c-ink-2);
+    color: var(--c-ink);
   }
 
   li span:last-child {
     font-family: var(--font-mono);
-    color: var(--c-ink);
     white-space: nowrap;
+    text-align: end;
   }
 }
 
 .kon__note {
-  margin-top: var(--s-3);
-  color: var(--c-ink-3);
+  margin-top: var(--s-4);
+  color: var(--c-ink-2);
   font-size: var(--t-xs);
 }
 
 /* ------------------------------------------------------------------- form */
 .kon__form-section {
-  padding-block: var(--section-y-tight);
+  border-top: var(--hair) solid var(--c-blue-line);
   background-color: var(--c-mist);
 }
 
@@ -222,7 +261,7 @@
   border-radius: var(--r-md);
   color: var(--fg-muted);
   font-size: var(--t-sm);
-  font-weight: 520;
+  font-weight: 500;
   transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
 
   &:hover {
@@ -275,7 +314,7 @@
 .kon__person-name {
   font-family: var(--font-display);
   font-size: var(--t-base);
-  font-weight: 620;
+  font-weight: 600;
   color: var(--fg);
 }
 
@@ -315,9 +354,30 @@
 }
 
 @media (min-width: 62rem) {
-  .kon__hero-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
-    gap: var(--s-9);
+  .pghero--photo:has(+ .kon__facts-band) {
+    min-height: 24rem;
+    padding-block: var(--s-10) var(--s-8);
+  }
+
+  .kon__phone-strip {
+    padding-block: var(--s-6);
+  }
+
+  .kon__facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding-block: var(--s-5);
+  }
+
+  .kon__fact,
+  .kon__fact:first-child,
+  .kon__fact:last-child {
+    padding: 0 var(--s-6) 0 0;
+    border-bottom: 0;
+  }
+
+  .kon__fact + .kon__fact {
+    padding-inline-start: var(--s-6);
+    border-inline-start: var(--hair) solid var(--c-blue-line);
   }
 
   .kon__form-grid {

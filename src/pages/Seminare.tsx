@@ -5,6 +5,8 @@ import { company } from '../data/company'
 import { Image } from '../components/ui/Image'
 import { Reveal } from '../components/ui/Reveal'
 import { Button } from '../components/ui/Button'
+import { PageHero } from '../components/ui/PageHero'
+import { webPageJsonLd, newsEventJsonLd } from '../seo/schema'
 import './Seminare.scss'
 
 /**
@@ -18,6 +20,7 @@ import './Seminare.scss'
 export default function Seminare() {
   // The newest seminar entry is the current talk; news is ordered newest first.
   const upcoming = news.find((n) => n.kind === 'seminar')
+  const eventLd = upcoming ? newsEventJsonLd(upcoming) : undefined
 
   useSeo({
     title: 'Unsere Seminare — kostenlose Informationsabende',
@@ -25,29 +28,32 @@ export default function Seminare() {
       'VEITH lädt zu kostenlosen Informationsabenden ins Kompetenzzentrum in Bühl ein: Wärmepumpe, Photovoltaik, Speicher, Förderung. Aktuelle Vorträge und Themen der vergangenen Abende.',
     path: '/service/seminare',
     image: 'seminar-vortrag',
+    jsonLd: webPageJsonLd({
+      path: '/service/seminare',
+      name: 'Unsere Seminare — kostenlose Informationsabende',
+      description:
+        'VEITH lädt zu kostenlosen Informationsabenden ins Kompetenzzentrum in Bühl ein: Wärmepumpe, Photovoltaik, Speicher, Förderung. Aktuelle Vorträge und Themen der vergangenen Abende.',
+      image: 'seminar-vortrag',
+      crumbs: [
+        { name: 'Startseite', path: '/' },
+        { name: 'Service', path: '/service' },
+        { name: 'Seminare', path: '/service/seminare' },
+      ],
+      extra: eventLd ? [eventLd] : [],
+    }),
   })
 
   return (
     <>
-      <header className="sem__hero">
-        <div className="container-wide">
-          <span className="sem__rule" aria-hidden="true" />
-          <p className="sem__eyebrow">Unsere Seminare</p>
-          <h1 className="sem__title">Bleiben Sie auf dem Laufenden mit VEITH</h1>
-          <div className="sem__intro">
-            <p>
-              Bei der wachsenden Fülle moderner Technologien sollte man gut
-              informiert sein, um für sich die richtige Entscheidung zu treffen.
-            </p>
-            <p>
-              Wir möchten, dass unsere Kunden umfassend und aktuell informiert
-              sind. Darum laden wir Sie herzlich zu unseren kostenlosen
-              Informationsabenden ins VEITH Kompetenzzentrum ein —{' '}
-              {company.address.street}, {company.address.postalCode} Bühl.
-            </p>
-          </div>
-        </div>
-      </header>
+      <PageHero
+        eyebrow="Unsere Seminare"
+        title="Kostenlose Abende im Kompetenzzentrum"
+        lead={`Informationsabende zu Technik, die gerade eine Entscheidung verlangt — ${company.address.street}, ${company.address.postalCode} Bühl.`}
+        image={{
+          src: 'seminar-vortrag',
+          alt: 'Fachvortrag vor Gästen im VEITH Kompetenzzentrum in Bühl',
+        }}
+      />
 
       {/* ------------------------------------------------------ next talk */}
       <section className="sem__next on-night" aria-labelledby="sem-aktuell">
@@ -157,17 +163,9 @@ export default function Seminare() {
                 Bisherige Vorträge
               </h2>
               <p className="sem__past-lead">
-                Woran unsere Gäste bisher Interesse hatten. Einzelne Themen
-                wiederholen wir, wenn die Nachfrage groß genug ist.
+                Themen der letzten Abende. Einzelne wiederholen wir, wenn die
+                Nachfrage groß genug ist.
               </p>
-              <figure className="sem__past-media">
-                <Image
-                  src="seminar-vortrag"
-                  alt="Fachvortrag vor Gästen im VEITH Kompetenzzentrum in Bühl"
-                  ratio="4 / 3"
-                  sizes="(min-width: 62rem) 26rem, 100vw"
-                />
-              </figure>
             </div>
 
             <ol className="sem__past-list">

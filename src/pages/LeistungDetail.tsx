@@ -6,6 +6,8 @@ import { Reveal } from '../components/ui/Reveal'
 import { Button } from '../components/ui/Button'
 import { KontaktCta } from '../components/sections/KontaktCta'
 import { company } from '../data/company'
+import { PageHero } from '../components/ui/PageHero'
+import { leistungJsonLd } from '../seo/schema'
 import './LeistungDetail.scss'
 
 /**
@@ -28,40 +30,23 @@ export default function LeistungDetail() {
     <article className="ld" style={{ '--accent': trade.accent } as React.CSSProperties}>
       <Seo trade={trade} />
 
-      {/* ------------------------------------------------------------ hero */}
-      <header className="ld__hero">
-        <div className="container-wide">
-          <nav className="ld__crumbs" aria-label="Brotkrumen">
+      <PageHero
+        eyebrow={trade.eyebrow}
+        title={trade.headline}
+        lead={trade.intro}
+        image={{ src: trade.hero.src, alt: trade.hero.alt }}
+        crumbs={
+          <nav aria-label="Brotkrumen">
             <Link to="/leistungen">Leistungen</Link>
             <span aria-hidden="true">/</span>
             <span aria-current="page">{trade.name}</span>
           </nav>
-
-          <div className="ld__hero-grid">
-            <div className="ld__hero-text">
-              <span className="ld__rule" aria-hidden="true" />
-              <p className="ld__eyebrow">{trade.eyebrow}</p>
-              <h1 className="ld__title">{trade.headline}</h1>
-              <p className="ld__intro">{trade.intro}</p>
-              <div className="ld__hero-actions">
-                <Button href={`tel:${company.phone.href}`} arrow>
-                  Beratung: {company.phone.display}
-                </Button>
-              </div>
-            </div>
-
-            <figure className="ld__hero-media">
-              <Image
-                src={trade.hero.src}
-                alt={trade.hero.alt}
-                priority
-                ratio="4 / 3"
-                sizes="(min-width: 62rem) 42vw, 100vw"
-              />
-            </figure>
-          </div>
-        </div>
-      </header>
+        }
+      >
+        <Button href={`tel:${company.phone.href}`} arrow>
+          Beratung: {company.phone.display}
+        </Button>
+      </PageHero>
 
       {/* --------------------------------------------------- scope + index */}
       <section className="ld__scope section--tight">
@@ -139,13 +124,12 @@ export default function LeistungDetail() {
       </div>
 
       {/* --------------------------------------------------------- related */}
-      <section className="ld__related section">
+      <section className="ld__related section--tight">
         <div className="container-wide">
           <span className="ld__rule" aria-hidden="true" />
-          <h2 className="ld__related-title">Woran dieser Bereich hängt</h2>
+          <h2 className="ld__related-title">Dazu gehören auch</h2>
           <p className="ld__related-lead">
-            Kein Gewerk steht für sich. Diese Bereiche greifen unmittelbar in
-            {' '}{trade.name} ein.
+            Zu {trade.name} gehören in der Praxis auch diese Leistungen.
           </p>
 
           <ul className="ld__related-list">
@@ -164,7 +148,8 @@ export default function LeistungDetail() {
                         d="M0 6h17.5M12.5 1l5 5-5 5"
                         fill="none"
                         stroke="currentColor"
-                        strokeWidth="1.6"
+                        strokeWidth="1.15"
+                        vectorEffect="nonScalingStroke"
                       />
                     </svg>
                   </Link>
@@ -197,7 +182,6 @@ export default function LeistungDetail() {
       <KontaktCta
         title={`${trade.name} für Ihr Gebäude?`}
         lead="Sagen Sie uns, was Sie vorhaben. Wir schauen uns die Voraussetzungen an und sagen Ihnen, was sinnvoll ist — und was nicht."
-        accent={trade.accent}
       />
     </article>
   )
@@ -210,6 +194,7 @@ function Seo({ trade }: { trade: (typeof trades)[number] }) {
     description: trade.meta.description,
     path: `/leistungen/${trade.slug}`,
     image: trade.hero.src,
+    jsonLd: leistungJsonLd(trade),
   })
   return null
 }

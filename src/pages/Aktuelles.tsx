@@ -4,6 +4,8 @@ import { news, newsKindLabel, type NewsKind } from '../data/news'
 import { NewsCard } from '../components/ui/NewsCard'
 import { Reveal } from '../components/ui/Reveal'
 import { KontaktCta } from '../components/sections/KontaktCta'
+import { PageHero } from '../components/ui/PageHero'
+import { aktuellesJsonLd } from '../seo/schema'
 import './Aktuelles.scss'
 
 const filters: { id: NewsKind | 'alle'; label: string }[] = [
@@ -20,6 +22,8 @@ export default function Aktuelles() {
     description:
       'Informationsabende im VEITH Kompetenzzentrum, Presseberichte und Meldungen aus dem Betrieb. VEITH Gebäudetechnik, Bühl/Baden.',
     path: '/aktuelles',
+    image: 'seminar-vortrag',
+    jsonLd: aktuellesJsonLd(),
   })
 
   const [filter, setFilter] = useState<NewsKind | 'alle'>('alle')
@@ -27,31 +31,29 @@ export default function Aktuelles() {
 
   return (
     <>
-      <header className="akt__hero">
-        <div className="container-wide">
-          <span className="akt__rule" aria-hidden="true" />
-          <p className="akt__eyebrow">Aktuelles</p>
-          <h1 className="akt__title">Was bei uns passiert</h1>
-          <p className="akt__intro">
-            Vorträge im Kompetenzzentrum, Berichte aus der Presse und Meldungen
-            aus dem Betrieb.
-          </p>
-
-          <div className="akt__filters" role="group" aria-label="Nach Art filtern">
-            {filters.map((f) => (
-              <button
-                key={f.id}
-                type="button"
-                className={`akt__filter${filter === f.id ? ' is-active' : ''}`}
-                aria-pressed={filter === f.id}
-                onClick={() => setFilter(f.id)}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
+      <PageHero
+        eyebrow="Aktuelles"
+        title="Vorträge, Presse, Betrieb"
+        lead="Informationsabende im Kompetenzzentrum, Presseberichte und Meldungen aus dem Betrieb."
+        image={{
+          src: 'seminar-vortrag',
+          alt: 'Vortrag im VEITH Kompetenzzentrum',
+        }}
+      >
+        <div className="akt__filters" role="group" aria-label="Nach Art filtern">
+          {filters.map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              className={`akt__filter${filter === f.id ? ' is-active' : ''}`}
+              aria-pressed={filter === f.id}
+              onClick={() => setFilter(f.id)}
+            >
+              {f.label}
+            </button>
+          ))}
         </div>
-      </header>
+      </PageHero>
 
       <section className="akt__list-section">
         <div className="container-wide">
@@ -63,7 +65,7 @@ export default function Aktuelles() {
           <ul className="akt__list">
             {shown.map((item, i) => (
               <Reveal as="li" key={item.slug} delay={Math.min(i, 4) * 60}>
-                <NewsCard item={item} headingLevel={2} />
+                <NewsCard item={item} variant="compact" headingLevel={2} />
               </Reveal>
             ))}
           </ul>

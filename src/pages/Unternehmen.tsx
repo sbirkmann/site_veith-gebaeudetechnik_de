@@ -3,7 +3,10 @@ import { company, kompetenzzentrum } from '../data/company'
 import { Image } from '../components/ui/Image'
 import { Reveal } from '../components/ui/Reveal'
 import { Button } from '../components/ui/Button'
+import { FactIcon } from '../components/sections/FactIcons'
 import { KontaktCta } from '../components/sections/KontaktCta'
+import { PageHero } from '../components/ui/PageHero'
+import { webPageJsonLd } from '../seo/schema'
 import './Unternehmen.scss'
 
 /**
@@ -19,43 +22,39 @@ export default function Unternehmen() {
     description:
       'Seit 1989 steht VEITH für Gebäudetechnik in Bühl/Baden. Das eigene Kompetenzzentrum zeigt, was bei Energieeinsparung heute möglich ist — mit Wärmepumpe, über 120 kWp Solarstrom und Solarmodulen in der Fassade.',
     path: '/unternehmen',
-    image: 'kompetenzzentrum-aussen',
+    image: 'kompetenzzentrum-marke',
+    jsonLd: webPageJsonLd({
+      path: '/unternehmen',
+      name: 'Ihr VEITH — Gebäudetechnik aus Bühl seit 1989',
+      description:
+        'Seit 1989 steht VEITH für Gebäudetechnik in Bühl/Baden. Das eigene Kompetenzzentrum zeigt, was bei Energieeinsparung heute möglich ist — mit Wärmepumpe, über 120 kWp Solarstrom und Solarmodulen in der Fassade.',
+      image: 'kompetenzzentrum-marke',
+      type: 'AboutPage',
+      crumbs: [
+        { name: 'Startseite', path: '/' },
+        { name: 'Unternehmen', path: '/unternehmen' },
+      ],
+    }),
   })
 
   return (
     <>
-      {/* ------------------------------------------------------------ intro */}
-      <header className="unt__hero">
-        <div className="container-wide">
-          <span className="unt__rule" aria-hidden="true" />
-          <p className="unt__eyebrow">Ihr VEITH</p>
-          <h1 className="unt__title">
-            Seit {company.founded} in Bühl — und seither hat sich fast alles
-            verändert
-          </h1>
-          <div className="unt__intro">
-            <p>
-              Als der Name VEITH anfing, stand er für professionelle Elektronik
-              und Elektrik. Seither hat sich bei uns so viel verändert wie auf
-              kaum einem anderen Markt: Die Produkte für Industrie und Privat
-              haben sich weiterentwickelt, sind heute schneller, sicherer und
-              vernetzt. Sensoren nehmen Veränderungen wahr, moderne Prozessoren
-              berechnen die adäquate Reaktion auf Basis vorgewählter Programme.
-            </p>
-            <p>
-              Heute sprechen wir von Gebäudetechnik. Das heißt nicht, dass wir
-              Ihnen keinen Lichtschalter anbieten. Es heißt, dass wir ein Gebäude
-              als Organismus auffassen — ideal ist es, wenn Management, Steuerung
-              und Funktion sich perfekt ergänzen.
-            </p>
-          </div>
-        </div>
-      </header>
+      <PageHero
+        eyebrow="Ihr VEITH"
+        title={`Seit ${company.founded} Gebäudetechnik aus Bühl`}
+        lead="Angefangen hat VEITH bei Elektronik und Elektrik. Heute planen wir das Gebäude als zusammenhängendes System."
+        image={{
+          src: 'kompetenzzentrum-aussen',
+          alt: 'Das VEITH Kompetenzzentrum im Gewerbegebiet Bußmatten in Bühl',
+          position: '50% 62%',
+        }}
+      />
 
       {/* ----------------------------------------------------------- credo */}
       <section className="unt__credo">
         <div className="container-wide">
           <Reveal className="unt__credo-inner">
+            <p className="unt__credo-mark">Haltung</p>
             <p className="unt__credo-text">
               Wir stehen für ein Konzept, das alle notwendigen und wünschenswerten
               Aspekte berücksichtigt und realisiert, damit Sie sich wohl und
@@ -68,23 +67,19 @@ export default function Unternehmen() {
       {/* -------------------------------------------- the building as proof */}
       <section className="unt__kz section">
         <div className="container-wide">
-          <Reveal className="unt__kz-figure">
-            <Image
-              src="kompetenzzentrum-aussen"
-              alt="Das VEITH Kompetenzzentrum im Gewerbegebiet Bußmatten in Bühl bei Sonnenaufgang"
-              ratio="21 / 9"
-              sizes="100vw"
-              priority
-            />
-          </Reveal>
+          <div className="unt__kz-split">
+            <Reveal className="unt__kz-media">
+              <Image
+                src="kompetenzzentrum-aussen"
+                alt="Das VEITH Kompetenzzentrum im Gewerbegebiet Bußmatten in Bühl"
+                ratio="4 / 3"
+                sizes="(min-width: 62rem) 42rem, 100vw"
+              />
+            </Reveal>
 
-          <div className="unt__kz-grid">
             <Reveal className="unt__kz-text">
-              <span className="unt__rule" aria-hidden="true" />
-              <h2 className="unt__h2">
-                Unser Kompetenzzentrum für Solartechnik, regenerative Energien,
-                Elektrotechnik und Energieeinsparung
-              </h2>
+              <p className="unt__eyebrow">Kompetenzzentrum</p>
+              <h2 className="unt__h2">Das Kompetenzzentrum in Bußmatten</h2>
               <p>
                 Sie finden uns im {kompetenzzentrum.location}. Auf über 1.000 m²
                 Büro-, Ausstellungs- und Lagerfläche zeigt VEITH, was an
@@ -102,19 +97,20 @@ export default function Unternehmen() {
                 </Button>
               </div>
             </Reveal>
-
-            <Reveal className="unt__kz-facts" delay={80}>
-              <p className="unt__facts-title">Kennzahlen des Gebäudes</p>
-              <dl>
-                {kompetenzzentrum.facts.map((f) => (
-                  <div key={f.value}>
-                    <dt>{f.value}</dt>
-                    <dd>{f.label}</dd>
-                  </div>
-                ))}
-              </dl>
-            </Reveal>
           </div>
+
+          <Reveal className="unt__kz-facts" delay={80}>
+            <p className="unt__facts-title">Kennzahlen des Gebäudes</p>
+            <dl>
+              {kompetenzzentrum.facts.map((f, i) => (
+                <div className="unt__kz-fact" key={f.value}>
+                  <FactIcon index={i} />
+                  <dt>{f.value}</dt>
+                  <dd>{f.label}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
         </div>
       </section>
 
@@ -131,7 +127,6 @@ export default function Unternehmen() {
               />
             </Reveal>
             <Reveal className="unt__team-text" delay={70}>
-              <span className="unt__rule" aria-hidden="true" />
               <h2 className="unt__h2">Die Leute, die das bauen</h2>
               <p>
                 Gebäudetechnik ist Handwerk und Ingenieursarbeit zugleich. Bei uns

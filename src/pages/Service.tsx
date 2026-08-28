@@ -4,6 +4,8 @@ import { company } from '../data/company'
 import { Reveal } from '../components/ui/Reveal'
 import { Image } from '../components/ui/Image'
 import { KontaktCta } from '../components/sections/KontaktCta'
+import { PageHero } from '../components/ui/PageHero'
+import { webPageJsonLd } from '../seo/schema'
 import './Service.scss'
 
 /**
@@ -55,24 +57,31 @@ export default function Service() {
     description:
       'Service bei VEITH Gebäudetechnik in Bühl: Kundendienst unter 07223 80 100 10, kostenlose Informationsabende, Förderprogramme, der Showroom Lebensräume und unsere Marken.',
     path: '/service',
-    image: 'kundendienst',
+    image: 'beratung-showroom',
+    jsonLd: webPageJsonLd({
+      path: '/service',
+      name: 'Service — Kundendienst, Seminare und Förderungen',
+      description:
+        'Service bei VEITH Gebäudetechnik in Bühl: Kundendienst unter 07223 80 100 10, kostenlose Informationsabende, Förderprogramme, der Showroom Lebensräume und unsere Marken.',
+      image: 'beratung-showroom',
+      crumbs: [
+        { name: 'Startseite', path: '/' },
+        { name: 'Service', path: '/service' },
+      ],
+    }),
   })
 
   return (
     <>
-      <header className="svc__hero">
-        <div className="container-wide">
-          <span className="svc__rule" aria-hidden="true" />
-          <p className="svc__eyebrow">Service</p>
-          <h1 className="svc__title">
-            Service und Kundendienst sind die Basis für eine gute Partnerschaft
-          </h1>
-          <p className="svc__lead">
-            Wir halten Ihre Gebäudetechnik am Laufen, zuverlässig und schnell.
-            Wählen Sie Ihr Thema.
-          </p>
-        </div>
-      </header>
+      <PageHero
+        eyebrow="Service"
+        title="Kundendienst, Seminare, Förderungen"
+        lead="Kundendienst, Seminare, Förderungen, Showroom und Marken — wählen Sie Ihr Thema."
+        image={{
+          src: 'beratung-showroom',
+          alt: 'Beratung im VEITH Kompetenzzentrum',
+        }}
+      />
 
       {/* ------------------------------------------- 01: the urgent entry */}
       <section className="svc__urgent on-night" aria-labelledby="svc-kd">
@@ -133,7 +142,8 @@ export default function Service() {
                       d="M0 6h17.5M12.5 1l5 5-5 5"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth="1.6"
+                      strokeWidth="1.15"
+                      vectorEffect="nonScalingStroke"
                     />
                   </svg>
                 </Link>

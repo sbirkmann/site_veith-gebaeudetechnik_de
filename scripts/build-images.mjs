@@ -8,16 +8,24 @@
  * every <img> can carry width/height and reserve its space — no layout shift.
  *
  * Run:  node scripts/build-images.mjs
+ * One slug: node scripts/build-images.mjs gebaeude-schnitt
+ *
+ * Generated illustrations live in assets/generated/ (slug = filename stem).
  */
 import sharp from 'sharp'
-import { readdirSync, mkdirSync, writeFileSync, existsSync } from 'node:fs'
+import { readdirSync, mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs'
 import { resolve, dirname, extname, basename } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const SRC = resolve(ROOT, '_scrape/img2')
 const EXTRA = resolve(ROOT, '_scrape/img')
+const GENERATED = resolve(ROOT, 'assets/generated')
 const OUT = resolve(ROOT, 'public/img')
+const MANIFEST_APP = resolve(ROOT, 'src/data/image-manifest.json')
+const MANIFEST_PUB = resolve(OUT, 'manifest.json')
+/** Optional: `node scripts/build-images.mjs gebaeude-schnitt` rebuilds one slug. */
+const ONLY = process.argv[2]
 
 const WIDTHS = [480, 800, 1280, 1920]
 // effort 4 is within ~2% of effort 6 on these photographs and encodes
@@ -53,17 +61,30 @@ const RENAME = {
   veith_licht_arbeitsplatz01: 'licht-arbeitsplatz',
   veith_vortrag01: 'seminar-vortrag',
   veith_gruppenbild_01: 'team-gruppenbild',
+  veith_photovoltaik_01_01: 'photovoltaik-module',
   veith_photovoltaik_01_02: 'photovoltaik-flaeche',
   veith_photovoltaik_01_04: 'photovoltaik-montage',
   drei_jungs_hgsonne_800px: 'team-montage',
+  '190920_beleuchtung_04_foto_arge_medien_im_zveh': 'beleuchtung-wohnraum',
+  '190920_sicherheit_09_foto_arge_medien_im_zveh': 'sicherheitstechnik',
+  klima_technischeanlagen_aussen: 'klima-aussenanlage',
+  klima_buero_laden_laden: 'klima-laden',
+  lebensraeume_themenbild_komfort: 'lebensraeume-komfort',
+  lebensraeume_themenbild_sicherheit: 'lebensraeume-sicherheit',
+  veith_badausstattung_03: 'bad-detail',
+  veith_pellets_01: 'pellets-lager',
+  veith_beratung_01_smartphone: 'beratung-showroom',
+  veith_ecke_haus_sonne_01: 'kompetenzzentrum-marke',
+  'veith_foerderungen01_800px-e1608291930912': 'foerderung-uebersicht',
+  'dsc9364cbongartz-scaled-e1728624398315': 'photovoltaik-dach-team',
+  'gebaeude-schnitt': 'gebaeude-schnitt',
 }
 
 async function run() {
   mkdirSync(OUT, { recursive: true })
-  const manifest = {}
 
   const sources = []
-  for (const dir of [SRC, EXTRA]) {
+  for (const dir of [SRC, EXTRA, GENERATED]) {
     if (!existsSync(dir)) continue
     for (const f of readdirSync(dir)) {
       if (!/\.(jpe?g|png)$/i.test(f)) continue
@@ -75,7 +96,17 @@ async function run() {
     }
   }
 
-  for (const { file, slug } of sources) {
+  const selected = ONLY ? sources.filter((s) => s.slug === ONLY) : sources
+  if (ONLY && selected.length === 0) {
+    console.error(`No source for slug "${ONLY}"`)
+    process.exit(1)
+  }
+
+  const manifest = ONLY && existsSync(MANIFEST_APP)
+    ? JSON.parse(readFileSync(MANIFEST_APP, 'utf8'))
+    : {}
+
+  for (const { file, slug } of selected) {
     // Some originals are 8000px wide. Resize once to the largest width we
     // actually emit, then derive every variant from that buffer.
     const source = sharp(file, { failOn: 'none' })
@@ -117,7 +148,8 @@ async function run() {
     console.log(`${slug.padEnd(28)} ${w}x${h}  ${widths.join(',')}`)
   }
 
-  writeFileSync(resolve(OUT, 'manifest.json'), JSON.stringify(manifest, null, 0))
+  writeFileSync(MANIFEST_PUB, JSON.stringify(manifest, null, 0))
+  writeFileSync(MANIFEST_APP, JSON.stringify(manifest, null, 0))
   console.log(`\n${Object.keys(manifest).length} images -> public/img/`)
 }
 

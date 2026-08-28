@@ -42,6 +42,9 @@
   --c-orange: #ef7c00;
   --c-orange-deep: #cf6a00;
   --c-orange-wash: #fdf1e3;
+  /* Tiny uppercase labels on white: deep orange (~3.8:1) rather than brand
+     #ef7c00 (~3:1). CTAs stay on --c-orange. Night sections remap this. */
+  --c-eyebrow: var(--c-orange-deep);
 
   /* --- trade accents ------------------------------------------------------
      Five hues that sit inside the blue family's temperature so no section
@@ -65,12 +68,12 @@
   --focus: #1b6fd4;
 
   /* --- type ---------------------------------------------------------------
-     Archivo for display: squarer and more engineered than a humanist sans.
-     Inter for running text. JetBrains Mono for anything that is a value,
-     a label or a reference — it marks data as data. */
-  --font-display: 'Archivo Variable', 'Archivo', 'Helvetica Neue', Arial, sans-serif;
-  --font-body: 'Inter Variable', 'Inter', 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+     IBM Plex Sans for display and body: one engineered grotesque, slightly
+     different weights. IBM Plex Mono for values, labels, references —
+     plan-drawing, German industrial. */
+  --font-display: 'IBM Plex Sans Variable', 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'IBM Plex Sans Variable', 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   --t-3xs: 0.6875rem;
   --t-2xs: 0.75rem;
@@ -81,8 +84,8 @@
   --t-lg: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
   --t-xl: clamp(1.5rem, 1.3rem + 0.9vw, 2.125rem);
   --t-2xl: clamp(1.875rem, 1.5rem + 1.6vw, 3rem);
-  --t-3xl: clamp(2.25rem, 1.6rem + 2.9vw, 4.25rem);
-  --t-4xl: clamp(2.625rem, 1.6rem + 4.4vw, 5.75rem);
+  --t-3xl: clamp(2.4rem, 1.45rem + 3.4vw, 4.75rem);
+  --t-4xl: clamp(2.85rem, 1.35rem + 5.2vw, 6.5rem);
 
   --lh-tight: 1.04;
   --lh-snug: 1.16;
@@ -109,10 +112,10 @@
   --s-11: 6rem;
   --s-12: 8rem;
 
-  /* Generous vertical rhythm: the layout is calm and image-led, so sections
-     need room to breathe rather than to be packed. */
-  --section-y: clamp(4.5rem, 2.5rem + 7vw, 10rem);
-  --section-y-tight: clamp(3.25rem, 2rem + 4.6vw, 6rem);
+  /* Vertical rhythm between bands. Enough to separate image-led blocks,
+     not so much that sibling sections stack into empty fields. */
+  --section-y: clamp(3.75rem, 2.2rem + 5.2vw, 7.5rem);
+  --section-y-tight: clamp(2.5rem, 1.7rem + 3vw, 4.75rem);
 
   /* --- layout ------------------------------------------------------------ */
   --container: 78rem;
@@ -122,23 +125,30 @@
 
   /* --- lines, radii, shadow ----------------------------------------------
      Small radii only. Plant technology is built square. */
-  --r-sm: 2px;
-  --r-md: 4px;
-  --r-lg: 8px;
+  --r-sm: 0;
+  --r-md: 0;
+  --r-lg: 0;
   --hair: 1px;
 
-  --shadow-sm: 0 1px 2px rgb(14 35 64 / 0.06), 0 2px 8px rgb(14 35 64 / 0.05);
-  --shadow-md: 0 2px 4px rgb(14 35 64 / 0.06), 0 8px 24px rgb(14 35 64 / 0.09);
-  --shadow-lg: 0 4px 10px rgb(14 35 64 / 0.07), 0 24px 56px rgb(14 35 64 / 0.14);
+  --shadow-sm: none;
+  --shadow-md: 0 18px 50px rgb(14 35 64 / 0.1);
+  --shadow-lg: 0 28px 70px rgb(14 35 64 / 0.16);
 
   /* --- motion ------------------------------------------------------------ */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-fast: 140ms;
-  --dur: 260ms;
-  --dur-slow: 520ms;
+  --dur-fast: 160ms;
+  --dur: 240ms;
+  --dur-slow: 360ms;
 
-  --header-h: 5rem;
+  /* Decorative line icons vs nearby type: facts ~2× dt cap-height;
+     UI glyphs sit inside 3rem controls. Stroke stays hairline via
+     vector-effect on the drawings themselves. */
+  --icon-ui: 1.25rem;
+  --icon-fact: 2.75rem;
+
+  --header-h: 5.5rem;
+  --z-float: 40;
   --z-header: 100;
   --z-nav: 200;
   --z-overlay: 300;
@@ -164,6 +174,7 @@
   --rule: var(--c-navy-3);
   --link: #7db4f0;
   --focus: #8cc2ff;
+  --c-eyebrow: var(--c-orange);
 
   background-color: var(--bg);
   color: var(--fg);

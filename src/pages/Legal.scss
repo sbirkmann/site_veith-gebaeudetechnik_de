@@ -12,18 +12,15 @@
 }
 
 .legal__rule {
-  display: block;
-  width: 3.5rem;
-  height: 3px;
-  margin-bottom: var(--s-5);
-  background-color: var(--c-orange);
+  display: none;
 }
 
 .legal__eyebrow {
-  margin-bottom: var(--s-3);
-  color: var(--c-ink-3);
+  margin-bottom: var(--s-4);
+  color: var(--c-eyebrow);
   font-family: var(--font-mono);
-  font-size: var(--t-3xs);
+  font-size: var(--t-2xs);
+  font-weight: 600;
   letter-spacing: var(--tr-caps);
   text-transform: uppercase;
 }
@@ -130,30 +127,43 @@
   margin-top: var(--s-4);
 }
 
-/* base.scss strips list markers site-wide; running legal prose needs them back. */
+/* base.scss strips list markers; legal lists become spec rows. */
 .legal__body ul,
 .legal__body ol {
   margin-top: var(--s-4);
-  padding-inline-start: var(--s-5);
+  padding-inline-start: 0;
   color: var(--c-ink-2);
+  border-top: var(--hair) solid var(--c-blue-line);
+  list-style: none;
 }
 
 .legal__body ul {
-  list-style: disc;
+  list-style: none;
 }
 
 .legal__body ol {
-  list-style: decimal;
+  list-style: none;
+  counter-reset: legal;
 }
 
 .legal__body li {
-  list-style: inherit;
-  margin-top: var(--s-2);
-  padding-inline-start: var(--s-1);
+  list-style: none;
+  margin-top: 0;
+  padding-block: var(--s-3);
+  padding-inline-start: 0;
+  border-bottom: var(--hair) solid var(--c-blue-line);
+}
 
-  &::marker {
-    color: var(--c-ink-3);
-  }
+.legal__body ol > li {
+  counter-increment: legal;
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  column-gap: var(--s-3);
+  align-items: start;
+}
+
+.legal__body ol > li::before {
+  content: counter(legal, decimal-leading-zero);
 }
 
 .legal__body a {

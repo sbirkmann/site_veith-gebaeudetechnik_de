@@ -1,4 +1,5 @@
 import { useSeo } from '../hooks/useSeo'
+import { webPageJsonLd } from '../seo/schema'
 import './Legal.scss'
 
 /** Top-level sections, in document order. Drives both the TOC and the anchors. */
@@ -16,6 +17,16 @@ export default function Datenschutz() {
     description:
       'Datenschutzerklärung der Veith Gebäudetechnik GmbH: welche personenbezogenen Daten beim Besuch dieser Website erhoben werden, wofür sie genutzt werden und welche Rechte Sie haben.',
     path: '/datenschutz',
+    jsonLd: webPageJsonLd({
+      path: '/datenschutz',
+      name: 'Datenschutzerklärung',
+      description:
+        'Datenschutzerklärung der Veith Gebäudetechnik GmbH: welche personenbezogenen Daten beim Besuch dieser Website erhoben werden, wofür sie genutzt werden und welche Rechte Sie haben.',
+      crumbs: [
+        { name: 'Startseite', path: '/' },
+        { name: 'Datenschutz', path: '/datenschutz' },
+      ],
+    }),
   })
 
   return (

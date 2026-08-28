@@ -1,0 +1,65 @@
+/* Numbered markers as a 2rem plate. Square like the rest of the plant:
+   hairline, no fill, mono figure. Orange only on the service cases. */
+
+%index-n {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  align-self: start;
+  margin: 0;
+  padding: 0;
+  border: var(--hair) solid var(--c-blue-line);
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--c-ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.pos__n,
+.zg__index,
+.schnitt__n,
+.schichten__index,
+.schichten__scope-i,
+.svc__case-n,
+.svc__no,
+.home-news__list li::before,
+.lst__num,
+.ld__index-num,
+.ld__scope-list li::before,
+.ld__topic-num,
+.fdr__topic-no,
+.lbr__area-no,
+.sem__past-no,
+.hero__trade-i,
+.unt__features li::before,
+.kd__case-n,
+.legal__body ol > li::before,
+.krr__panel-grid li::before {
+  @extend %index-n;
+}
+
+.on-night .schichten__index,
+.on-night .schichten__scope-i,
+.on-night .lbr__area-no,
+.svc__case-n,
+.svc__no,
+.hero__trade-i {
+  background-color: transparent;
+  color: #a8bcd4;
+  border-color: rgb(255 255 255 / 0.22);
+}
+
+.schichten__layer.is-active .schichten__index {
+  color: var(--layer-accent);
+}
+
+.svc__case-n {
+  color: var(--c-orange);
+}

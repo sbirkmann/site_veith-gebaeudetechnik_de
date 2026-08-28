@@ -1,16 +1,13 @@
 .mrk__rule {
-  display: block;
-  width: 3.5rem;
-  height: 3px;
-  margin-bottom: var(--s-5);
-  background-color: var(--c-orange);
+  display: none;
 }
 
 .mrk__eyebrow {
   margin-bottom: var(--s-3);
-  color: var(--fg-subtle);
+  color: var(--c-eyebrow);
   font-family: var(--font-mono);
-  font-size: var(--t-3xs);
+  font-size: var(--t-2xs);
+  font-weight: 600;
   letter-spacing: var(--tr-caps);
   text-transform: uppercase;
 }
@@ -114,7 +111,7 @@
 .mrk__name {
   font-family: var(--font-display);
   font-size: var(--t-md);
-  font-weight: 620;
+  font-weight: 600;
   letter-spacing: var(--tr-snug);
   overflow-wrap: break-word;
   transition: color var(--dur) var(--ease);
@@ -134,7 +131,7 @@
 }
 
 .mrk__icon {
-  width: 0.875rem;
+  width: var(--icon-ui);
   color: var(--c-ink-3);
   justify-self: start;
   transition: transform var(--dur) var(--ease);
@@ -155,7 +152,7 @@
 @media (min-width: 48rem) {
   .mrk__head {
     display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) minmax(0, 1fr) 1.25rem;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) minmax(0, 1fr) var(--icon-ui);
     gap: var(--s-5);
     padding-bottom: var(--s-3);
     border-bottom: var(--hair) solid var(--c-blue-line);
@@ -178,7 +175,7 @@
   }
 
   .mrk__link {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) minmax(0, 1fr) 1.25rem;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) minmax(0, 1fr) var(--icon-ui);
     gap: var(--s-5);
     align-items: baseline;
   }

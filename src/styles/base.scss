@@ -43,7 +43,7 @@ h5,
 h6 {
   margin: 0;
   font-family: var(--font-display);
-  font-weight: 620;
+  font-weight: 600;
   line-height: var(--lh-snug);
   letter-spacing: var(--tr-snug);
   text-wrap: balance;
@@ -69,6 +69,39 @@ h4 {
 p {
   margin: 0;
   text-wrap: pretty;
+}
+
+/* Orange caps labels: grayscale antialiasing on white reads as tan. */
+.kar__eyebrow,
+.pos__eyebrow,
+.sechead__eyebrow,
+.svc__eyebrow,
+.kcta__eyebrow,
+.zg__label,
+.krr__eyebrow,
+.legal__eyebrow,
+.pghero__eyebrow,
+.ncard__kind,
+.nd__kind,
+.hero__since,
+.lbr__eyebrow,
+.kon__eyebrow,
+.ld__eyebrow,
+.akt__eyebrow,
+.kd__eyebrow,
+.mrk__eyebrow,
+.fdr__eyebrow,
+.sem__eyebrow,
+.ref__eyebrow,
+.unt__eyebrow,
+.unt__facts-title {
+  -webkit-font-smoothing: auto;
+}
+
+@media (max-width: 39.99rem) {
+  body:has(.flt:not(.is-parked)) main {
+    padding-bottom: 4.75rem;
+  }
 }
 
 ul,
@@ -199,6 +232,7 @@ hr {
 
 .section {
   padding-block: var(--section-y);
+  scroll-margin-top: var(--header-h);
 }
 
 .section--tight {
@@ -257,6 +291,7 @@ time {
   .hdr,
   .mnav,
   .skip-link,
+  .flt,
   .kcta,
   .hero__trades {
     display: none !important;

@@ -1,6 +1,5 @@
 .sechead {
-  --rule-w: 3.5rem;
-  max-width: 46rem;
+  max-width: 42rem;
 }
 
 .sechead--center {
@@ -8,37 +7,31 @@
   text-align: center;
 }
 
-/* A short bar in the section's accent. It is the quietest possible way to give
-   each Leistungsbereich its own identity without recolouring the page. */
 .sechead__rule {
-  display: block;
-  width: var(--rule-w);
-  height: 3px;
-  margin-bottom: var(--s-5);
-  background-color: var(--accent);
-}
-
-.sechead--center .sechead__rule {
-  margin-inline: auto;
+  display: none;
 }
 
 .sechead__eyebrow {
-  margin-bottom: var(--s-3);
-  color: var(--fg-subtle);
+  margin-bottom: var(--s-4);
+  color: var(--c-eyebrow);
   font-family: var(--font-mono);
-  font-size: var(--t-3xs);
-  font-weight: 500;
+  font-size: var(--t-2xs);
+  font-weight: 600;
   letter-spacing: var(--tr-caps);
   text-transform: uppercase;
 }
 
 .sechead__title {
+  max-width: 22ch;
   color: var(--fg);
+  font-size: var(--t-2xl);
+  font-weight: 600;
+  letter-spacing: -0.032em;
 }
 
 .sechead__lead {
   margin-top: var(--s-5);
-  max-width: 40rem;
+  max-width: 38rem;
   color: var(--fg-muted);
   font-size: var(--t-md);
   line-height: var(--lh-relaxed);

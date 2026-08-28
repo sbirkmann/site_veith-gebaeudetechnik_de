@@ -6,10 +6,12 @@ import { Image } from '../components/ui/Image'
 import { Reveal } from '../components/ui/Reveal'
 import { formatDate } from '../components/ui/NewsCard'
 import { KontaktCta } from '../components/sections/KontaktCta'
+import { PageHero } from '../components/ui/PageHero'
+import { webPageJsonLd } from '../seo/schema'
 import './Referenzen.scss'
 
 /**
- * "Echo von der Baustelle".
+ * Referenzen: Presseberichte aus der Praxis.
  *
  * The existing site has this page as a placeholder — it carries a heading and
  * the note that articles will follow, but no project write-ups. We therefore
@@ -19,10 +21,22 @@ import './Referenzen.scss'
  */
 export default function Referenzen() {
   useSeo({
-    title: 'Referenzen — Echo von der Baustelle',
+    title: 'Referenzen — Presseberichte aus der Praxis',
     description:
       'Berichte aus der Praxis von VEITH Gebäudetechnik: Presseberichte zu Wärmepumpen im Altbau, Fachvorträge und Einblicke in laufende Projekte.',
     path: '/referenzen',
+    image: 'photovoltaik-dach-team',
+    jsonLd: webPageJsonLd({
+      path: '/referenzen',
+      name: 'Referenzen — Presseberichte aus der Praxis',
+      description:
+        'Berichte aus der Praxis von VEITH Gebäudetechnik: Presseberichte zu Wärmepumpen im Altbau, Fachvorträge und Einblicke in laufende Projekte.',
+      image: 'photovoltaik-dach-team',
+      crumbs: [
+        { name: 'Startseite', path: '/' },
+        { name: 'Referenzen', path: '/referenzen' },
+      ],
+    }),
   })
 
   // Only the entries that actually describe work in the field.
@@ -30,19 +44,15 @@ export default function Referenzen() {
 
   return (
     <>
-      <header className="ref__hero">
-        <div className="container-wide">
-          <span className="ref__rule" aria-hidden="true" />
-          <p className="ref__eyebrow">Referenzen</p>
-          <h1 className="ref__title">Echo von der Baustelle</h1>
-          <p className="ref__intro">
-            Was wir bauen, steht meist in Kellern, Technikräumen und auf Dächern —
-            also dort, wo niemand hinschaut. Hier sammeln wir, was trotzdem
-            sichtbar geworden ist: Berichte aus der Presse, in denen unsere Leute
-            und unsere Anlagen vorkommen.
-          </p>
-        </div>
-      </header>
+      <PageHero
+        eyebrow="Referenzen"
+        title="Presseberichte aus der Praxis"
+        lead="Presseberichte, in denen unsere Leute und Anlagen vorkommen — sichtbar, obwohl die Technik oft unsichtbar bleibt."
+        image={{
+          src: 'photovoltaik-dach-team',
+          alt: 'VEITH-Monteure bei der Photovoltaikmontage auf einem Wohnhausdach',
+        }}
+      />
 
       <section className="ref__reports">
         <div className="container-wide">
@@ -107,7 +117,8 @@ export default function Referenzen() {
                         d="M0 6h17.5M12.5 1l5 5-5 5"
                         fill="none"
                         stroke="currentColor"
-                        strokeWidth="1.6"
+                        strokeWidth="1.15"
+                        vectorEffect="nonScalingStroke"
                       />
                     </svg>
                   </Link>

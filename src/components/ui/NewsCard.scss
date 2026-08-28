@@ -2,10 +2,34 @@
   position: relative;
   display: grid;
   gap: var(--s-4);
+  border-radius: 0;
 }
 
 .ncard__media .img {
-  border-radius: var(--r-md);
+  border-radius: 0;
+}
+
+.ncard__ph {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  background-color: var(--c-navy);
+  color: #fff;
+}
+
+.ncard--feature .ncard__ph {
+  aspect-ratio: 16 / 10;
+}
+
+.ncard__ph-label {
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-wide);
+  text-transform: uppercase;
+}
+
+.ncard--feature .ncard__media {
+  margin-bottom: var(--s-2);
 }
 
 .ncard__meta {
@@ -14,7 +38,7 @@
   align-items: center;
   gap: var(--s-3);
   font-family: var(--font-mono);
-  font-size: var(--t-3xs);
+  font-size: var(--t-2xs);
   letter-spacing: var(--tr-wide);
   text-transform: uppercase;
   color: var(--fg-subtle);
@@ -24,13 +48,14 @@
   padding: 2px var(--s-2);
   border: var(--hair) solid var(--rule);
   border-radius: var(--r-sm);
-  color: var(--fg-muted);
+  color: var(--c-eyebrow);
+  font-weight: 600;
 }
 
 .ncard__title {
   margin-top: var(--s-3);
   font-size: var(--t-lg);
-  font-weight: 620;
+  font-weight: 600;
   color: var(--fg);
   text-wrap: pretty;
 
@@ -69,7 +94,49 @@
   color: var(--fg);
 }
 
-/* Compact rows sit in a divided list, so they carry no box of their own. */
+.ncard--compact {
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0 var(--s-4);
+  align-items: stretch;
+}
+
+.ncard--compact .ncard__media {
+  position: relative;
+  min-height: 5.5rem;
+  overflow: hidden;
+
+  .img,
+  .ncard__ph {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+  }
+}
+
+.ncard--compact .ncard__body {
+  display: grid;
+  align-content: start;
+  gap: var(--s-2);
+}
+
+.ncard--compact .ncard__title,
+.ncard--compact .ncard__excerpt,
+.ncard--compact .ncard__event {
+  margin-top: 0;
+}
+
 .ncard--compact .ncard__title {
   font-size: var(--t-base);
+}
+
+.ncard--compact .ncard__excerpt {
+  display: none;
+}
+
+@media (min-width: 40rem) {
+  .ncard--compact .ncard__excerpt {
+    display: block;
+  }
 }

@@ -1,16 +1,13 @@
 .kd__rule {
-  display: block;
-  width: 3.5rem;
-  height: 3px;
-  margin-bottom: var(--s-5);
-  background-color: var(--c-orange);
+  display: none;
 }
 
 .kd__eyebrow {
   margin-bottom: var(--s-3);
-  color: var(--fg-subtle);
+  color: var(--c-eyebrow);
   font-family: var(--font-mono);
-  font-size: var(--t-3xs);
+  font-size: var(--t-2xs);
+  font-weight: 600;
   letter-spacing: var(--tr-caps);
   text-transform: uppercase;
 }
@@ -31,7 +28,7 @@
   max-width: 20ch;
   font-size: var(--t-xl);
   color: var(--c-ink-2);
-  font-weight: 560;
+  font-weight: 500;
 }
 
 .kd__phone {
@@ -134,21 +131,19 @@
 }
 
 .kd__case {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  column-gap: var(--s-4);
   padding-block: var(--s-6);
   border-bottom: var(--hair) solid var(--c-blue-line);
 }
 
-.kd__case-label {
-  color: var(--c-orange);
-  font-family: var(--font-mono);
-  font-size: var(--t-3xs);
-  letter-spacing: var(--tr-caps);
-  text-transform: uppercase;
+.kd__case-n {
+  grid-row: 1 / span 2;
 }
 
 .kd__case-title {
   max-width: 28ch;
-  margin-top: var(--s-3);
   font-size: var(--t-lg);
   color: var(--c-ink);
   overflow-wrap: break-word;
@@ -219,7 +214,7 @@
   color: var(--fg);
   font-family: var(--font-display);
   font-size: var(--t-lg);
-  font-weight: 660;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   border-bottom: 3px solid var(--c-orange);
   overflow-wrap: anywhere;
@@ -247,22 +242,13 @@
 /* -------------------------------------------------------------- breakpoints */
 @media (min-width: 48rem) {
   .kd__case {
-    display: grid;
-    grid-template-columns: 6rem minmax(0, 1fr);
+    grid-template-columns: 2rem minmax(0, 1fr);
     gap: var(--s-5);
-  }
-
-  .kd__case-label {
-    padding-top: 0.35em;
   }
 
   .kd__case-title,
   .kd__case-body {
     grid-column: 2;
-  }
-
-  .kd__case-title {
-    margin-top: 0;
   }
 }
 

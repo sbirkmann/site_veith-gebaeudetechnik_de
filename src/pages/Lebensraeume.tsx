@@ -3,6 +3,8 @@ import { company } from '../data/company'
 import { Image } from '../components/ui/Image'
 import { Reveal } from '../components/ui/Reveal'
 import { Button } from '../components/ui/Button'
+import { PageHero } from '../components/ui/PageHero'
+import { webPageJsonLd } from '../seo/schema'
 import './Lebensraeume.scss'
 
 /**
@@ -49,37 +51,32 @@ export default function Lebensraeume() {
       'Der Showroom „Lebensräume“ im VEITH Kompetenzzentrum in Bühl ist als Wohnung aufgebaut und zeigt Gebäudetechnik, Beleuchtung, Vernetzung, Klimatechnik und altersgerechtes Wohnen zum Anfassen.',
     path: '/service/lebensraeume',
     image: 'lebensraeume-showroom',
+    jsonLd: webPageJsonLd({
+      path: '/service/lebensraeume',
+      name: 'Lebensräume — der Showroom im Kompetenzzentrum',
+      description:
+        'Der Showroom „Lebensräume“ im VEITH Kompetenzzentrum in Bühl ist als Wohnung aufgebaut und zeigt Gebäudetechnik, Beleuchtung, Vernetzung, Klimatechnik und altersgerechtes Wohnen zum Anfassen.',
+      image: 'lebensraeume-showroom',
+      crumbs: [
+        { name: 'Startseite', path: '/' },
+        { name: 'Service', path: '/service' },
+        { name: 'Lebensräume', path: '/service/lebensraeume' },
+      ],
+    }),
   })
 
   return (
     <>
-      {/* --------------------------------------------------- opening shot */}
-      <header className="lbr__hero">
-        <div className="lbr__hero-media">
-          <Image
-            src="lebensraeume-showroom"
-            alt="Der als Wohnung aufgebaute Showroom Lebensräume im VEITH Kompetenzzentrum mit Wohnbereich und indirekter Beleuchtung"
-            ratio="16 / 9"
-            sizes="100vw"
-            priority
-          />
-        </div>
-
-        <div className="container-wide">
-          <div className="lbr__hero-text">
-            <span className="lbr__rule" aria-hidden="true" />
-            <p className="lbr__eyebrow">Lebensräume</p>
-            <h1 className="lbr__title">
-              Ihr intelligentes Haus — ausgestattet mit smarter Gebäudetechnik
-            </h1>
-            <p className="lbr__lead">
-              Unser Showroom „Lebensräume“ im VEITH Kompetenzzentrum zeigt, wie
-              Technologie Ihr Wohnen auf eine neue Stufe heben kann. Erleben Sie
-              Komfort, Effizienz und Sicherheit in ihrer elegantesten Form.
-            </p>
-          </div>
-        </div>
-      </header>
+      <PageHero
+        eyebrow="Lebensräume"
+        title="Der Showroom im Kompetenzzentrum"
+        lead="Als Wohnung aufgebaut: Gebäudetechnik, Licht, Vernetzung, Klima und altersgerechtes Wohnen zum Anfassen."
+        image={{
+          src: 'lebensraeume-showroom',
+          alt: 'Der als Wohnung aufgebaute Showroom Lebensräume im VEITH Kompetenzzentrum mit Wohnbereich und indirekter Beleuchtung',
+          position: '68% 42%',
+        }}
+      />
 
       {/* ---------------------------------------- what the flat contains */}
       <section className="lbr__areas section on-night" aria-labelledby="lbr-bereiche">
@@ -121,6 +118,36 @@ export default function Lebensraeume() {
             </ol>
           </div>
         </div>
+      </section>
+
+      <section className="lbr__gallery" aria-label="Einblicke in den Showroom">
+        <ul className="lbr__gallery-list">
+          <Reveal as="li" className="lbr__gallery-item lbr__gallery-item--lead">
+            <Image
+              src="lebensraeume-komfort"
+              alt="Wohnbereich im Showroom Lebensräume mit smarter Gebäudetechnik"
+              fill
+              sizes="(min-width: 62rem) 58vw, 100vw"
+              position="30% 50%"
+            />
+          </Reveal>
+          <Reveal as="li" className="lbr__gallery-item" delay={70}>
+            <Image
+              src="lebensraeume-sicherheit"
+              alt="Sicherheitstechnik im Showroom Lebensräume"
+              fill
+              sizes="(min-width: 62rem) 42vw, 50vw"
+            />
+          </Reveal>
+          <Reveal as="li" className="lbr__gallery-item" delay={140}>
+            <Image
+              src="beleuchtung-wohnraum"
+              alt="Wohnraumbeleuchtung mit abgestimmten Lichtstimmungen"
+              fill
+              sizes="(min-width: 62rem) 42vw, 50vw"
+            />
+          </Reveal>
+        </ul>
       </section>
 
       {/* --------------------------------------------------- how to visit */}

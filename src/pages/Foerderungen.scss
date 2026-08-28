@@ -1,16 +1,13 @@
 .fdr__rule {
-  display: block;
-  width: 3.5rem;
-  height: 3px;
-  margin-bottom: var(--s-5);
-  background-color: var(--c-orange);
+  display: none;
 }
 
 .fdr__eyebrow {
   margin-bottom: var(--s-3);
-  color: var(--fg-subtle);
+  color: var(--c-eyebrow);
   font-family: var(--font-mono);
-  font-size: var(--t-3xs);
+  font-size: var(--t-2xs);
+  font-weight: 600;
   letter-spacing: var(--tr-caps);
   text-transform: uppercase;
 }
@@ -76,13 +73,6 @@
   border-bottom: var(--hair) solid var(--c-blue-line);
 }
 
-.fdr__topic-no {
-  color: var(--c-orange);
-  font-family: var(--font-mono);
-  font-size: var(--t-sm);
-  font-variant-numeric: tabular-nums;
-}
-
 .fdr__topic-body {
   min-width: 0;
 }
@@ -105,7 +95,7 @@
   color: var(--c-ink);
   font-family: var(--font-display);
   font-size: var(--t-md);
-  font-weight: 620;
+  font-weight: 600;
   line-height: var(--lh-snug);
 }
 
@@ -117,7 +107,7 @@
 
 /* ----------------------------------------------------------- institutions */
 .fdr__inst {
-  padding-block: var(--section-y);
+  padding-block: var(--section-y-tight);
 }
 
 .fdr__inst-lead {
@@ -157,7 +147,7 @@
 .fdr__inst-abbr {
   font-family: var(--font-display);
   font-size: var(--t-xl);
-  font-weight: 660;
+  font-weight: 600;
   letter-spacing: var(--tr-snug);
   transition: color var(--dur) var(--ease);
 }
@@ -169,7 +159,7 @@
 }
 
 .fdr__inst-icon {
-  width: 0.875rem;
+  width: var(--icon-ui);
   flex: none;
   color: var(--fg-subtle);
   transition: transform var(--dur) var(--ease);
@@ -202,12 +192,8 @@
 /* ------------------------------------------------------------ breakpoints */
 @media (min-width: 48rem) {
   .fdr__topic {
-    grid-template-columns: 4rem minmax(0, 1fr);
+    grid-template-columns: 2.5rem minmax(0, 1fr);
     gap: var(--s-6);
-  }
-
-  .fdr__topic-no {
-    padding-top: 0.35em;
   }
 }
 
@@ -218,6 +204,6 @@
   }
 
   .fdr__topic {
-    grid-template-columns: 4rem minmax(0, 1fr);
+    grid-template-columns: 2.5rem minmax(0, 1fr);
   }
 }

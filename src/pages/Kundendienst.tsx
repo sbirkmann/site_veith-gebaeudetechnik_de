@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useSeo } from '../hooks/useSeo'
 import { company } from '../data/company'
-import { Image } from '../components/ui/Image'
 import { Reveal } from '../components/ui/Reveal'
+import { PageHero } from '../components/ui/PageHero'
+import { webPageJsonLd } from '../seo/schema'
 import './Kundendienst.scss'
 
 /**
@@ -18,19 +19,16 @@ import './Kundendienst.scss'
 const cases = [
   {
     id: 'stoerung',
-    label: 'Fall 1',
     title: 'Bei technischen Problemen und Fehlfunktionen',
     body: 'Wir sind da, wenn Sie uns brauchen: Wir sind schnell vor Ort oder stehen Ihnen mit fachlichen Tipps zur Seite. Schließlich ist manches schnell erledigt, wenn man weiß, was zu tun ist.',
   },
   {
     id: 'einbau',
-    label: 'Fall 2',
     title: 'Beim Einbau eines neuen Gerätes',
     body: '… muss alles passen. Weil nichts ärgerlicher ist als Überraschungen nach dem Messen, kommen wir vorbei und nehmen Maß. Dabei schonen wir Ihr Budget ebenso wie Ihre Nerven.',
   },
   {
     id: 'gewerbe',
-    label: 'Fall 3',
     title: 'Für Kunden aus Handwerk und Industrie',
     body: 'Für Betriebe bieten wir sehr schnelle Notfallreaktion — auch ohne Wartungsvertrag.',
   },
@@ -43,27 +41,39 @@ export default function Kundendienst() {
       'Der Kundendienst von VEITH Gebäudetechnik: Unter 07223 80 100 10 sind wir stets während unserer Geschäftszeiten erreichbar — bei Störungen, beim Gerätetausch und mit schneller Notfallreaktion für Handwerk und Industrie.',
     path: '/service/kundendienst',
     image: 'kundendienst',
+    jsonLd: webPageJsonLd({
+      path: '/service/kundendienst',
+      name: 'Kundendienst — 07223 80 100 10',
+      description:
+        'Der Kundendienst von VEITH Gebäudetechnik: Unter 07223 80 100 10 sind wir stets während unserer Geschäftszeiten erreichbar — bei Störungen, beim Gerätetausch und mit schneller Notfallreaktion für Handwerk und Industrie.',
+      image: 'kundendienst',
+      crumbs: [
+        { name: 'Startseite', path: '/' },
+        { name: 'Service', path: '/service' },
+        { name: 'Kundendienst', path: '/service/kundendienst' },
+      ],
+    }),
   })
 
   return (
     <>
-      {/* --------------------------------------------------- the number */}
-      <header className="kd__hero">
+      <PageHero
+        eyebrow="Kundendienst"
+        title="Kundendienst in Bühl"
+        lead="Unter dieser Nummer erreichen Sie uns während unserer Geschäftszeiten."
+        image={{
+          src: 'kundendienst',
+          alt: 'Servicemonteur von VEITH mit Werkzeugkoffer im Einsatz beim Kunden',
+        }}
+      >
+        <a className="kd__phone" href={`tel:${company.phone.href}`}>
+          <span className="kd__phone-label">Anrufen</span>
+          <span className="kd__phone-number">{company.phone.display}</span>
+        </a>
+      </PageHero>
+
+      <section className="kd__reach section--tight">
         <div className="container-wide">
-          <span className="kd__rule" aria-hidden="true" />
-          <p className="kd__eyebrow">Kundendienst</p>
-          <h1 className="kd__h1">Der Kundendienst bei VEITH</h1>
-
-          <a className="kd__phone" href={`tel:${company.phone.href}`}>
-            <span className="kd__phone-label">Anrufen</span>
-            <span className="kd__phone-number">{company.phone.display}</span>
-          </a>
-
-          <p className="kd__hours-line">
-            Unter dieser Nummer sind wir stets während unserer Geschäftszeiten
-            erreichbar.
-          </p>
-
           <dl className="kd__hours">
             {company.openingHours.map((h) => (
               <div key={`${h.days}-${h.time}`}>
@@ -78,7 +88,7 @@ export default function Kundendienst() {
             <a href={`mailto:${company.email}`}>{company.email}</a>.
           </p>
         </div>
-      </header>
+      </section>
 
       {/* ---------------------------------------------------- the three cases */}
       <section className="kd__cases section" aria-labelledby="kd-faelle">
@@ -90,21 +100,14 @@ export default function Kundendienst() {
           <ol className="kd__case-list">
             {cases.map((c, i) => (
               <Reveal as="li" key={c.id} className="kd__case" delay={i * 60}>
-                <p className="kd__case-label">{c.label}</p>
+                <span className="kd__case-n" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
                 <h3 className="kd__case-title">{c.title}</h3>
                 <p className="kd__case-body">{c.body}</p>
               </Reveal>
             ))}
           </ol>
-
-          <Reveal className="kd__cases-media">
-            <Image
-              src="kundendienst"
-              alt="Servicemonteur von VEITH prüft eine Anlage beim Kunden vor Ort"
-              ratio="21 / 9"
-              sizes="100vw"
-            />
-          </Reveal>
         </div>
       </section>
 

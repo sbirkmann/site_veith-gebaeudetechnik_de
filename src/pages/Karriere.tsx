@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { useSeo } from '../hooks/useSeo'
 import { vacancies, applicationEmail, proIntro, azubiIntro } from '../data/karriere'
 import { tradeById } from '../data/leistungen'
-import { company } from '../data/company'
-import { Image } from '../components/ui/Image'
 import { Reveal } from '../components/ui/Reveal'
+import { PageHero } from '../components/ui/PageHero'
+import { karriereJsonLd } from '../seo/schema'
 import './Karriere.scss'
 
 /**
@@ -22,6 +22,7 @@ export default function Karriere() {
       'Offene Stellen und Ausbildungsplätze bei VEITH Gebäudetechnik in Bühl: Elektro, Heizung, Sanitär, Klima und Photovoltaik. Bewerbungen an job@veith-gt.de.',
     path: '/karriere',
     image: 'team-montage',
+    jsonLd: karriereJsonLd(),
   })
 
   const stellen = vacancies.filter((v) => v.kind === 'stelle')
@@ -29,37 +30,21 @@ export default function Karriere() {
 
   return (
     <>
-      <header className="krr__hero">
-        <div className="container-wide">
-          <div className="krr__hero-grid">
-            <div>
-              <span className="krr__rule" aria-hidden="true" />
-              <p className="krr__eyebrow">Karriere</p>
-              <h1 className="krr__title">Komm zu VEITH</h1>
-              <p className="krr__intro">
-                Wir sind seit {company.founded} in Bühl tätig und durch stetiges,
-                gesundes Wachstum zu unserer heutigen Größe und der Bandbreite
-                unseres Angebots gekommen. Die Gebäudetechnik entwickelt sich in
-                allen Bereichen weiter — wir halten Schritt und suchen dafür
-                Verstärkung.
-              </p>
-              <p className="krr__apply-hint">
-                Bewerbungen gehen an{' '}
-                <a href={`mailto:${applicationEmail}`}>{applicationEmail}</a>
-              </p>
-            </div>
-            <figure className="krr__hero-media">
-              <Image
-                src="team-montage"
-                alt="Drei Monteure von VEITH vor dem Kompetenzzentrum"
-                ratio="4 / 3"
-                sizes="(min-width: 62rem) 32rem, 100vw"
-                priority
-              />
-            </figure>
-          </div>
-        </div>
-      </header>
+      <PageHero
+        eyebrow="Karriere"
+        title="Stellen und Ausbildung in Bühl"
+        lead={
+          <>
+            Bewerbungen an{' '}
+            <a href={`mailto:${applicationEmail}`}>{applicationEmail}</a>
+            {' — '}wir suchen Verstärkung in den Gewerken.
+          </>
+        }
+        image={{
+          src: 'team-montage',
+          alt: 'Drei Monteure von VEITH vor dem Kompetenzzentrum',
+        }}
+      />
 
       <VacancySection
         id="stellen"
@@ -117,7 +102,6 @@ function VacancySection({ id, eyebrow, title, lead, items, dark }: SectionProps)
   return (
     <section className={`krr__sec section${dark ? ' on-night' : ''}`} id={id}>
       <div className="container-wide">
-        <span className="krr__rule" aria-hidden="true" />
         <p className="krr__eyebrow">{eyebrow}</p>
         <h2 className="krr__h2">{title}</h2>
         <p className="krr__lead">{lead}</p>
@@ -200,7 +184,8 @@ function VacancySection({ id, eyebrow, title, lead, items, dark }: SectionProps)
                         d="M0 6h17.5M12.5 1l5 5-5 5"
                         fill="none"
                         stroke="currentColor"
-                        strokeWidth="1.6"
+                        strokeWidth="1.15"
+                        vectorEffect="nonScalingStroke"
                       />
                     </svg>
                   </a>

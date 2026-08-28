@@ -1,16 +1,19 @@
 import { Link } from 'react-router-dom'
 import { Reveal } from '../ui/Reveal'
 import { Image } from '../ui/Image'
+import { IconPhone } from '../ui/lineIcons'
 import { company } from '../../data/company'
 import './ServiceBlock.scss'
+
+interface ServiceBlockProps {
+  showHours?: boolean
+}
 
 /**
  * The Kundendienst as its own conversion moment.
  *
- * Someone whose heating has failed is not browsing — they need the number and
- * the opening hours, immediately. So the phone number is the largest element
- * here and everything else is secondary. The three cases below it are the ones
- * the existing /service/kundendienst/ page names.
+ * Someone whose heating has failed is not browsing — they need the number
+ * and the opening hours immediately.
  */
 
 const cases = [
@@ -28,72 +31,72 @@ const cases = [
   },
 ]
 
-export function ServiceBlock() {
+export function ServiceBlock({ showHours = false }: ServiceBlockProps) {
   return (
-    <section className="svc section">
-      <div className="container-wide">
-        <div className="svc__panel">
-          <div className="svc__media" aria-hidden="true">
-            <Image
-              src="kundendienst"
-              alt=""
-              ratio="3 / 4"
-              sizes="(min-width: 62rem) 24rem, 100vw"
+    <section className="svc">
+      <div className="svc__media" aria-hidden="true">
+        <Image src="kundendienst" alt="" fill sizes="40vw" />
+      </div>
+
+      <div className="svc__body container-wide">
+        <Reveal className="svc__intro">
+          <p className="svc__eyebrow">Kundendienst</p>
+          <h2 className="svc__title">Wenn die Anlage steht, fängt unsere Arbeit erst an.</h2>
+          <p className="svc__lead">
+            Service und Kundendienst sind die Basis für eine gute Partnerschaft. Wir
+            halten Ihre Gebäudetechnik am Laufen — zuverlässig und schnell.
+          </p>
+        </Reveal>
+
+        <Reveal className="svc__dispatch" delay={60}>
+          <a className="svc__call" href={`tel:${company.phone.href}`}>
+            <span className="svc__call-text">
+              <span className="svc__call-label">Während unserer Geschäftszeiten erreichbar</span>
+              <span className="svc__call-num">{company.phone.display}</span>
+            </span>
+            <IconPhone className="svc__call-icon" />
+          </a>
+          {showHours && (
+            <ul className="svc__hours">
+              {company.openingHours.map((h) => (
+                <li key={h.days}>
+                  <span>{h.days}</span>
+                  <span>{h.time}</span>
+                </li>
+              ))}
+              <li>
+                <span>Außerhalb</span>
+                <span>{company.appointmentNote}</span>
+              </li>
+            </ul>
+          )}
+        </Reveal>
+
+        <Reveal className="svc__cases" delay={90}>
+          <ul>
+            {cases.map((c, i) => (
+              <li key={c.title}>
+                <span className="svc__case-n">{String(i + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3>{c.title}</h3>
+                  <p>{c.body}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+        <Link className="svc__more" to="/service/kundendienst">
+          Zum Kundendienst
+          <svg viewBox="0 0 20 12" aria-hidden="true" focusable="false">
+            <path
+              d="M0 6h17.5M12.5 1l5 5-5 5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.15"
+              vectorEffect="nonScalingStroke"
             />
-          </div>
-
-          <div className="svc__body">
-            <Reveal>
-              <p className="svc__eyebrow">Kundendienst</p>
-              <h2 className="svc__title">
-                Wenn die Anlage steht, fängt unsere Arbeit erst an.
-              </h2>
-              <p className="svc__lead">
-                Service und Kundendienst sind die Basis für eine gute Partnerschaft.
-                Wir halten Ihre Gebäudetechnik am Laufen — zuverlässig und schnell.
-              </p>
-
-              {/* The number is the point of this section. */}
-              <a className="svc__call" href={`tel:${company.phone.href}`}>
-                <span className="svc__call-label">
-                  Während unserer Geschäftszeiten erreichbar
-                </span>
-                <span className="svc__call-num">{company.phone.display}</span>
-              </a>
-
-              <ul className="svc__hours">
-                {company.openingHours.map((h) => (
-                  <li key={h.days}>
-                    <span>{h.days}</span>
-                    <span>{h.time}</span>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-
-            <Reveal className="svc__cases" delay={90}>
-              <ul>
-                {cases.map((c) => (
-                  <li key={c.title}>
-                    <h3>{c.title}</h3>
-                    <p>{c.body}</p>
-                  </li>
-                ))}
-              </ul>
-              <Link className="svc__more" to="/service/kundendienst">
-                Zum Kundendienst
-                <svg viewBox="0 0 20 12" aria-hidden="true" focusable="false">
-                  <path
-                    d="M0 6h17.5M12.5 1l5 5-5 5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                  />
-                </svg>
-              </Link>
-            </Reveal>
-          </div>
-        </div>
+          </svg>
+        </Link>
       </div>
     </section>
   )

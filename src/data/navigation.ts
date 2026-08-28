@@ -103,7 +103,7 @@ export const primaryNav: NavGroup[] = [
     to: '/unternehmen',
     links: [
       { label: 'Ihr VEITH', to: '/unternehmen', hint: 'Haltung, Geschichte, Kompetenzzentrum' },
-      { label: 'Referenzen', to: '/referenzen', hint: 'Echo von der Baustelle' },
+      { label: 'Referenzen', to: '/referenzen', hint: 'Presseberichte aus der Praxis' },
     ],
   },
   {

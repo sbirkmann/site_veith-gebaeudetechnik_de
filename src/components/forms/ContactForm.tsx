@@ -165,7 +165,7 @@ export function ContactForm() {
         <button className="btn btn--primary btn--lg" type="submit">
           <span className="btn__label">Anfrage senden</span>
           <svg className="btn__arrow" viewBox="0 0 20 12" aria-hidden="true" focusable="false">
-            <path d="M0 6h17.5M12.5 1l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.6" />
+            <path d="M0 6h17.5M12.5 1l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.15" vectorEffect="nonScalingStroke" />
           </svg>
         </button>
       </div>

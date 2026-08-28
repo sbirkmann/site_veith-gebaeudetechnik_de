@@ -4,6 +4,9 @@ import { company } from '../data/company'
 import { contactGroups, telHref } from '../data/team'
 import { ContactForm } from '../components/forms/ContactForm'
 import { Reveal } from '../components/ui/Reveal'
+import { PageHero } from '../components/ui/PageHero'
+import { iconStroke } from '../components/ui/lineIcons'
+import { webPageJsonLd } from '../seo/schema'
 import './Kontakt.scss'
 
 export default function Kontakt() {
@@ -12,6 +15,19 @@ export default function Kontakt() {
     description:
       'VEITH Gebäudetechnik in Bühl/Baden: Telefon 07223 80 100 10, Bußmatten 15. Öffnungszeiten und alle Ansprechpartner für Energie, Heizung, Klima, Sanitär und Elektro.',
     path: '/kontakt',
+    image: 'beratung-showroom',
+    jsonLd: webPageJsonLd({
+      path: '/kontakt',
+      name: 'Kontakt und Ansprechpartner',
+      description:
+        'VEITH Gebäudetechnik in Bühl/Baden: Telefon 07223 80 100 10, Bußmatten 15. Öffnungszeiten und alle Ansprechpartner für Energie, Heizung, Klima, Sanitär und Elektro.',
+      image: 'beratung-showroom',
+      type: 'ContactPage',
+      crumbs: [
+        { name: 'Startseite', path: '/' },
+        { name: 'Kontakt', path: '/kontakt' },
+      ],
+    }),
   })
 
   const [group, setGroup] = useState(contactGroups[0].id)
@@ -21,84 +37,95 @@ export default function Kontakt() {
   return (
     <>
       {/* ------------------------------------------------------------ intro */}
-      <header className="kon__hero">
+      <PageHero
+        eyebrow="Kontakt"
+        title="Anrufen oder schreiben"
+        lead="Frage, Termin oder Vorhaben: rufen Sie an — oder schreiben Sie uns, wenn Ihnen das lieber ist."
+        image={{
+          src: 'beratung-showroom',
+          alt: 'Beratung im Showroom: Vorführung der Gebäudesteuerung am Smartphone',
+        }}
+      />
+
+      <section className="kon__facts-band" aria-label="Adresse und Erreichbarkeit">
+        <div className="kon__phone-strip">
+          <div className="container-wide">
+            <p className="kon__phone-label">Zentrale</p>
+            <a className="kon__call" href={`tel:${company.phone.href}`}>
+              {company.phone.display}
+            </a>
+          </div>
+        </div>
         <div className="container-wide">
-          <div className="kon__hero-grid">
-            <div>
-              <span className="kon__rule" aria-hidden="true" />
-              <p className="kon__eyebrow">Kontakt</p>
-              <h1 className="kon__title">Schnell und unkompliziert</h1>
-              <p className="kon__intro">
-                Sie haben eine Frage oder möchten VEITH näher kennenlernen? Rufen
-                Sie einfach an — oder schreiben Sie uns, wenn es Ihnen so lieber
-                ist.
-              </p>
-              <a className="kon__call" href={`tel:${company.phone.href}`}>
-                {company.phone.display}
+          <div className="kon__facts">
+            <div className="kon__fact">
+              <div className="kon__fact-head">
+                <KonIconPlan />
+                <h2>Adresse</h2>
+              </div>
+              <address>
+                {company.legalName}
+                <br />
+                {address.street}
+                <br />
+                {address.postalCode} {address.city}
+              </address>
+              <a
+                className="kon__route"
+                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+                  `${address.street}, ${address.postalCode} ${address.city}`,
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Zum Routenplaner
+                <span className="visually-hidden"> (öffnet in neuem Tab)</span>
               </a>
             </div>
 
-            <div className="kon__facts">
-              <div className="kon__fact">
-                <h2>Adresse</h2>
-                <address>
-                  {company.legalName}
-                  <br />
-                  {address.street}
-                  <br />
-                  {address.postalCode} {address.city}
-                </address>
-                <a
-                  className="kon__route"
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-                    `${address.street}, ${address.postalCode} ${address.city}`,
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Zum Routenplaner
-                  <span className="visually-hidden"> (öffnet in neuem Tab)</span>
-                </a>
-              </div>
-
-              <div className="kon__fact">
+            <div className="kon__fact">
+              <div className="kon__fact-head">
+                <KonIconPinout />
                 <h2>Erreichbarkeit</h2>
-                <dl>
-                  <div>
-                    <dt>Telefon</dt>
-                    <dd>
-                      <a href={`tel:${company.phone.href}`}>{company.phone.display}</a>
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>Telefax</dt>
-                    <dd>{company.fax.display}</dd>
-                  </div>
-                  <div>
-                    <dt>E-Mail</dt>
-                    <dd>
-                      <a href={`mailto:${company.email}`}>{company.email}</a>
-                    </dd>
-                  </div>
-                </dl>
               </div>
+              <dl>
+                <div>
+                  <dt>Telefon</dt>
+                  <dd>
+                    <a href={`tel:${company.phone.href}`}>{company.phone.display}</a>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Telefax</dt>
+                  <dd>{company.fax.display}</dd>
+                </div>
+                <div>
+                  <dt>E-Mail</dt>
+                  <dd>
+                    <a href={`mailto:${company.email}`}>{company.email}</a>
+                  </dd>
+                </div>
+              </dl>
+            </div>
 
-              <div className="kon__fact">
+            <div className="kon__fact">
+              <div className="kon__fact-head">
+                <KonIconHours />
                 <h2>Öffnungszeiten</h2>
-                <ul className="kon__hours">
-                  {company.openingHours.map((h) => (
-                    <li key={h.days}>
-                      <span>{h.days}</span>
-                      <span>{h.time}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="kon__note">{company.appointmentNote}</p>
               </div>
+              <ul className="kon__hours">
+                {company.openingHours.map((h) => (
+                  <li key={h.days}>
+                    <span>{h.days}</span>
+                    <span>{h.time}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="kon__note">{company.appointmentNote}</p>
             </div>
           </div>
         </div>
-      </header>
+      </section>
 
       {/* ------------------------------------------------------------- form */}
       <section className="kon__form-section section--tight">
@@ -195,5 +222,46 @@ export default function Kontakt() {
         </div>
       </section>
     </>
+  )
+}
+
+function KonIconPlan() {
+  return (
+    <svg className="kon__fact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <g {...iconStroke}>
+        <rect x="3.5" y="6" width="17" height="13" />
+        <path d="M3.5 13h17" />
+        <path d="M10 6v13" />
+        <path d="M10 13h5v4h-5z" />
+        <path d="M3.5 4h17" opacity="0.4" strokeWidth={0.8} />
+      </g>
+    </svg>
+  )
+}
+
+function KonIconPinout() {
+  return (
+    <svg className="kon__fact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <g {...iconStroke}>
+        <rect x="3.5" y="6" width="3" height="3" />
+        <rect x="3.5" y="10.5" width="3" height="3" />
+        <rect x="3.5" y="15" width="3" height="3" />
+        <path d="M6.5 7.5h14M6.5 12h14M6.5 16.5h10" />
+      </g>
+    </svg>
+  )
+}
+
+function KonIconHours() {
+  return (
+    <svg className="kon__fact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <g {...iconStroke}>
+        <path d="M4 6h16" />
+        <rect x="4" y="8.5" width="7" height="3" />
+        <rect x="13" y="8.5" width="7" height="3" />
+        <path d="M4 15h16" />
+        <rect x="4" y="17.5" width="7" height="3" />
+      </g>
+    </svg>
   )
 }

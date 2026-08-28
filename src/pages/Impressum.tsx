@@ -1,5 +1,6 @@
 import { useSeo } from '../hooks/useSeo'
 import { company, imageCredits } from '../data/company'
+import { webPageJsonLd } from '../seo/schema'
 import './Legal.scss'
 
 /** Top-level sections, in document order. Drives both the TOC and the anchors. */
@@ -15,6 +16,16 @@ export default function Impressum() {
     description:
       'Impressum der Veith Gebäudetechnik GmbH, Bußmatten 15, 77815 Bühl/Baden: Herausgeber, Geschäftsführer, Registereintrag, USt-IdNr. und Haftungsausschluss.',
     path: '/impressum',
+    jsonLd: webPageJsonLd({
+      path: '/impressum',
+      name: 'Impressum',
+      description:
+        'Impressum der Veith Gebäudetechnik GmbH, Bußmatten 15, 77815 Bühl/Baden: Herausgeber, Geschäftsführer, Registereintrag, USt-IdNr. und Haftungsausschluss.',
+      crumbs: [
+        { name: 'Startseite', path: '/' },
+        { name: 'Impressum', path: '/impressum' },
+      ],
+    }),
   })
 
   const { address, register } = company

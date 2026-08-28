@@ -1,16 +1,8 @@
 import { Link } from 'react-router-dom'
 import { Reveal } from '../ui/Reveal'
+import { Image } from '../ui/Image'
 import { SectionHeader } from '../ui/SectionHeader'
 import './Zielgruppen.scss'
-
-/**
- * Who VEITH plans for.
- *
- * Three audiences, three genuinely different asks — that is the reason this is
- * a set of three and not a decorative card row. Each entry names what that
- * reader wants, in their own terms, and links into the part of the site that
- * answers it. Content follows /leistungsbereiche/ on the existing site.
- */
 
 const groups = [
   {
@@ -20,6 +12,10 @@ const groups = [
     body: 'Sie wollen Komfort, Zuverlässigkeit und Zukunftssicherheit. Wir rechnen Ihnen vor, was eine Anlage einspart, welche Förderung greift und in welcher Reihenfolge die Schritte sinnvoll sind — für den Neubau ebenso wie für die Verbesserung an einem Haus, das steht.',
     to: '/leistungen/energie',
     linkLabel: 'Energie und Wärme fürs Eigenheim',
+    image: {
+      src: 'klima-wohnbereich',
+      alt: 'Klimatisierung im Wohnbereich',
+    },
   },
   {
     id: 'gewerbe',
@@ -28,6 +24,10 @@ const groups = [
     body: 'Höchste Funktionalität zeichnet ein gutes Gebäude aus. Wir planen die Technik, die den effizienten Betrieb Ihrer Gebäude und Einrichtungen sichert — von der Industrie-Elektrik über Klimatechnik für Produktion und Serverraum bis zum Energiemanagement.',
     to: '/leistungen/elektro',
     linkLabel: 'Elektro und Gebäudemanagement',
+    image: {
+      src: 'klima-aussenanlage',
+      alt: 'Klimatechnik an einem Gewerbegebäude',
+    },
   },
   {
     id: 'planer',
@@ -36,6 +36,10 @@ const groups = [
     body: 'Gebäudetechnik ist für uns ein organischer Bestandteil des Gebäudes. Wir haben langjährige Erfahrung in der Technikplanung für Objekte unterschiedlichster Formate und Funktionen und sind gern früh im Projekt Ansprechpartner.',
     to: '/kontakt',
     linkLabel: 'Ansprechpartner finden',
+    image: {
+      src: 'beratung-showroom',
+      alt: 'Beratung zu Gebäudetechnik im Showroom',
+    },
   },
 ]
 
@@ -45,27 +49,30 @@ export function Zielgruppen() {
       <div className="container-wide">
         <SectionHeader
           eyebrow="Für wen wir planen"
-          title="Drei Auftraggeber, drei sehr verschiedene Fragen"
-          lead="Ein Bauherr, ein Betriebsleiter und ein Architekt wollen dasselbe Gebäude — aber sie fragen nach völlig unterschiedlichen Dingen. Wir antworten jedem in seiner Sprache."
+          title="Drei Auftraggeber, drei verschiedene Fragen"
+          lead="Ein Bauherr, ein Betriebsleiter und ein Architekt wollen dasselbe Gebäude — aber sie fragen nach völlig unterschiedlichen Dingen."
         />
 
         <ul className="zg__list">
           {groups.map((g, i) => (
-            <Reveal as="li" className="zg__item" key={g.id} delay={i * 80}>
+            <Reveal as="li" className="zg__item" key={g.id} delay={i * 70}>
               <article id={g.id}>
+                <p className="zg__index" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </p>
+                <div className="zg__media">
+                  <Image
+                    src={g.image.src}
+                    alt={g.image.alt}
+                    fill
+                    sizes="(min-width: 62rem) 22rem, 100vw"
+                  />
+                </div>
                 <p className="zg__label">{g.label}</p>
-                <h3 className="zg__question">„{g.question}“</h3>
+                <h3 className="zg__question">{g.question}</h3>
                 <p className="zg__body">{g.body}</p>
                 <Link className="zg__link" to={g.to}>
                   {g.linkLabel}
-                  <svg viewBox="0 0 20 12" aria-hidden="true" focusable="false">
-                    <path
-                      d="M0 6h17.5M12.5 1l5 5-5 5"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                    />
-                  </svg>
                 </Link>
               </article>
             </Reveal>

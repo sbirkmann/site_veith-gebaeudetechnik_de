@@ -16,6 +16,7 @@ export default function NotFound() {
     description:
       'Diese Seite gibt es nicht (mehr). Hier finden Sie die Leistungsbereiche von VEITH Gebäudetechnik und den direkten Kontakt.',
     path: '/404',
+    robots: 'noindex, follow',
   })
 
   return (

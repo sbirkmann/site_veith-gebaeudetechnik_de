@@ -7,6 +7,11 @@ export default defineConfig({
   resolve: {
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
   },
+  server: {
+    watch: {
+      ignored: ['**/public/img/**', '**/_scrape/**', '**/.tmp-shots/**', '**/dist/**'],
+    },
+  },
   build: {
     target: 'es2020',
     cssCodeSplit: true,

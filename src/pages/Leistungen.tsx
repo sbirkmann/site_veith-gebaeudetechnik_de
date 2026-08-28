@@ -5,6 +5,8 @@ import { Image } from '../components/ui/Image'
 import { Reveal } from '../components/ui/Reveal'
 import { SectionHeader } from '../components/ui/SectionHeader'
 import { KontaktCta } from '../components/sections/KontaktCta'
+import { PageHero } from '../components/ui/PageHero'
+import { leistungenOverviewJsonLd } from '../seo/schema'
 import './Leistungen.scss'
 
 /**
@@ -30,7 +32,7 @@ const audiences = [
   {
     id: 'planer',
     label: 'Für Architekten und Planer',
-    body: 'Gebäudetechnik fassen wir als organischen Bestandteil eines Gebäudes auf. Wir denken umfassend und haben langjährige Erfahrung bei der Technikplanung für Gebäude unterschiedlichster Formate und Funktionen.',
+    body: 'Gebäudetechnik gehört von Anfang an ins Gebäudekonzept. Wir haben langjährige Erfahrung in der Technikplanung für Gebäude unterschiedlicher Größe und Nutzung.',
   },
 ]
 
@@ -40,24 +42,22 @@ export default function Leistungen() {
     description:
       'Alle Leistungen von VEITH Gebäudetechnik im Überblick: Photovoltaik und Speicher, Heizung, Klimatechnik, Sanitär und Elektro — für private und gewerbliche Kunden sowie Planer.',
     path: '/leistungen',
-    image: 'kompetenzzentrum-aussen',
+    image: 'photovoltaik-dach-team',
+    jsonLd: leistungenOverviewJsonLd(),
   })
 
   return (
     <>
-      <header className="lst__hero">
-        <div className="container-wide">
-          <span className="lst__rule" aria-hidden="true" />
-          <p className="lst__eyebrow">Leistungen</p>
-          <h1 className="lst__title">Alles, was Ihr Gebäude braucht</h1>
-          <p className="lst__intro">
-            In unserer Region ist VEITH die erste Adresse für umfassende und
-            übergreifende Leistungen rund ums Gebäude. Wir beraten, liefern und
-            installieren — und behalten dabei das Zusammenspiel aller Gewerke im
-            Blick.
-          </p>
-        </div>
-      </header>
+      <PageHero
+        eyebrow="Leistungen"
+        title="Energie, Heizung, Klima, Sanitär, Elektro"
+        lead="Wir beraten, liefern und installieren — und halten das Zusammenspiel der Gewerke im Blick."
+        image={{
+          src: 'photovoltaik-dach-team',
+          alt: 'Monteure von VEITH setzen Photovoltaikmodule auf einem Wohnhausdach in der Region Bühl',
+          position: '58% 40%',
+        }}
+      />
 
       {/* ----------------------------------------------------- the directory */}
       <section className="lst__trades">
@@ -98,7 +98,8 @@ export default function Leistungen() {
                       d="M0 6h17.5M12.5 1l5 5-5 5"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth="1.6"
+                      strokeWidth="1.15"
+                      vectorEffect="nonScalingStroke"
                     />
                   </svg>
                 </Link>

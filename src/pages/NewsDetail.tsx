@@ -5,6 +5,7 @@ import { useSeo } from '../hooks/useSeo'
 import { Image } from '../components/ui/Image'
 import { company } from '../data/company'
 import { KontaktCta } from '../components/sections/KontaktCta'
+import { newsDetailJsonLd } from '../seo/schema'
 import './NewsDetail.scss'
 
 export default function NewsDetail() {
@@ -118,6 +119,7 @@ function NewsSeo({ slug }: { slug: string }) {
     path: `/aktuelles/${item.slug}`,
     image: item.image?.src,
     type: 'article',
+    jsonLd: newsDetailJsonLd(item),
   })
   return null
 }

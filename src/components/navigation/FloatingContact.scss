@@ -1,0 +1,92 @@
+.flt {
+  position: fixed;
+  inset-block-end: max(var(--s-4), env(safe-area-inset-bottom, 0px));
+  inset-inline-end: max(var(--s-4), env(safe-area-inset-right, 0px));
+  z-index: var(--z-float);
+  display: flex;
+  flex-direction: row;
+  gap: var(--s-2);
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease), visibility var(--dur) var(--ease);
+}
+
+.flt.is-parked {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.flt__btn {
+  pointer-events: auto;
+  display: grid;
+  place-items: center;
+  width: 2.875rem;
+  height: 2.875rem;
+  flex: none;
+  border: var(--hair) solid var(--c-navy);
+  border-radius: 0;
+  background-color: var(--c-navy);
+  color: #fff;
+  text-decoration: none;
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+
+  svg {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    overflow: visible;
+  }
+
+  &:hover {
+    background-color: var(--c-orange);
+    border-color: var(--c-orange);
+    color: #fff;
+  }
+
+  &:active {
+    background-color: var(--c-orange-deep);
+    border-color: var(--c-orange-deep);
+  }
+}
+
+.flt__btn--call {
+  background-color: var(--c-orange);
+  border-color: var(--c-orange);
+
+  &:hover {
+    background-color: var(--c-orange-deep);
+    border-color: var(--c-orange-deep);
+  }
+
+  &:active {
+    background-color: var(--c-orange-deep);
+  }
+}
+
+@media (min-width: 40rem) {
+  .flt {
+    flex-direction: column;
+    inset-block-end: max(var(--s-6), env(safe-area-inset-bottom, 0px));
+    inset-inline-end: max(var(--gutter), env(safe-area-inset-right, 0px));
+  }
+
+  .flt__btn {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flt__btn {
+    transition: none;
+  }
+}
+
+@media print {
+  .flt {
+    display: none !important;
+  }
+}

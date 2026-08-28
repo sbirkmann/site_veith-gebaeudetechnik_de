@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './Button.scss'
 
 type Variant = 'primary' | 'secondary' | 'ghost'
-type Size = 'md' | 'lg'
+type Size = 'sm' | 'md' | 'lg'
 
 interface Common {
   variant?: Variant
@@ -52,7 +52,8 @@ export function Button({
             d="M0 6h17.5M12.5 1l5 5-5 5"
             fill="none"
             stroke="currentColor"
-            strokeWidth="1.6"
+            strokeWidth="1.15"
+            vectorEffect="nonScalingStroke"
           />
         </svg>
       )}

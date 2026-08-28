@@ -32,7 +32,7 @@
   gap: var(--s-3);
   margin-bottom: var(--s-4);
   font-family: var(--font-mono);
-  font-size: var(--t-3xs);
+  font-size: var(--t-2xs);
   letter-spacing: var(--tr-wide);
   text-transform: uppercase;
   color: var(--c-ink-3);
@@ -42,7 +42,8 @@
   padding: 2px var(--s-2);
   border: var(--hair) solid var(--c-blue-line);
   border-radius: var(--r-sm);
-  color: var(--c-ink-2);
+  color: var(--c-eyebrow);
+  font-weight: 600;
 }
 
 .nd__title {
@@ -103,7 +104,7 @@
 .nd__event-when {
   font-family: var(--font-display);
   font-size: var(--t-lg);
-  font-weight: 620;
+  font-weight: 600;
   color: var(--c-ink);
 }
 
@@ -176,7 +177,7 @@
 .nd__nav-title {
   color: var(--c-ink);
   font-size: var(--t-sm);
-  font-weight: 560;
+  font-weight: 500;
   text-wrap: pretty;
 }
 

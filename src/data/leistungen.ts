@@ -49,11 +49,11 @@ export const trades: Trade[] = [
     slug: 'energie',
     name: 'Energie',
     eyebrow: 'Erzeugen, speichern, selbst verbrauchen',
-    headline: 'Strom vom eigenen Dach — und ein Konzept, das ihn auch nutzt',
+    headline: 'Strom vom Dach, genutzt im Haus',
     summary:
       'Photovoltaik, Speicher, Ladeinfrastruktur und Energiemanagement als ein zusammenhängendes System.',
     intro:
-      'Eine Photovoltaikanlage ist schnell montiert. Der Nutzen entsteht erst dort, wo der erzeugte Strom auch im Haus bleibt: im Speicher, in der Wärmepumpe, im Warmwasser, im Auto vor der Tür. Wir planen deshalb nicht die Anlage, sondern den Weg des Stroms durch Ihr Gebäude — und rechnen vor, was am Ende von Ihrer Stromrechnung übrig bleibt.',
+      'Photovoltaik, Speicher, Wärmepumpe und Ladepunkt gehören zusammen. Wir planen den Weg des Stroms durch Ihr Gebäude.',
     scope: [
       'Photovoltaik',
       'Brennstoffzelle / Blockheizkraftwerk (erzeugen auch Wärme)',
@@ -102,6 +102,10 @@ export const trades: Trade[] = [
           'Nach dem Prinzip der Kraft-Wärme-Kopplung wird die eingesetzte Energie in weit größerem Umfang genutzt, weil die anfallende Wärme nicht verloren geht. Weil die Erzeugung im Gebäude stattfindet, sinken zugleich die Verluste durch den Transport.',
           'Beides wirkt sich positiv auf die CO₂-Bilanz wie auf den Wirkungsgrad aus. Hier fällt Wirtschaftlichkeit mit Umweltnutzen zusammen.',
         ],
+        image: {
+          src: 'energiezentrale-beratung',
+          alt: 'Beratung an der Energiezentrale im Heizungsraum',
+        },
       },
       {
         id: 'emobilitaet',
@@ -140,11 +144,11 @@ export const trades: Trade[] = [
     slug: 'heizung',
     name: 'Heizung',
     eyebrow: 'Wärme aus der Quelle Ihrer Wahl',
-    headline: 'Die Heizung ist eine Entscheidung für zwanzig Jahre',
+    headline: 'Heizung auslegen und einbauen',
     summary:
       'Wärmepumpe, Solarthermie, Pellets und Kraft-Wärme-Kopplung — ausgelegt auf Ihr Gebäude, nicht auf den Katalog.',
     intro:
-      'Wärme, Kühlung und frische Luft gehören technisch zusammen; getrennt geplant arbeiten sie gegeneinander. Wir schauen deshalb zuerst auf das Gebäude — Dämmstandard, Flächen, Verbrauch, vorhandene Technik — und erst dann auf das Gerät. Von der Auslegung über die Beantragung der Zuschüsse bis zur Inbetriebnahme bleibt der Vorgang in einer Hand.',
+      'Zuerst das Gebäude — Dämmung, Flächen, Bestand —, dann das Gerät. Auslegung, Zuschüsse und Inbetriebnahme bleiben in einer Hand.',
     scope: [
       'Wärmepumpe',
       'Solarthermie',
@@ -197,8 +201,8 @@ export const trades: Trade[] = [
           'Ob ein Neubau oder eine Umrüstung technisch möglich und wirtschaftlich sinnvoll ist, hängt von mehreren Faktoren ab — die staatliche Förderung ist dabei nicht zu vernachlässigen.',
         ],
         image: {
-          src: 'brennstoff-pellets',
-          alt: 'Holzpellets als Brennstoff im Detail',
+          src: 'pellets-lager',
+          alt: 'Pelletlager und Fördertechnik einer Biomasseheizung',
         },
       },
     ],
@@ -225,11 +229,11 @@ export const trades: Trade[] = [
     slug: 'klima',
     name: 'Klima',
     eyebrow: 'Temperatur, Luft, Feuchte',
-    headline: 'Gutes Raumklima merkt man nur, wenn es fehlt',
+    headline: 'Klima für Wohnen, Büro und Betrieb',
     summary:
       'Klimaanlagen, Kaltwassersysteme, Entfeuchtung und Wärmerückgewinnung für Wohnen, Büro, Werkstatt und Industrie.',
     intro:
-      'Eine Klimaanlage hält die Raumtemperatur auch in heißen Sommern im angenehmen Bereich. Moderne Anlagen tun mehr: Sie sorgen dafür, dass die Atemluft Ihrer Gesundheit und Ihrem Wohlbefinden entspricht. Sie können einzelne Räume klimatisieren oder ein ganzes Gebäude — und die Komponenten genau nach Bedarf in Ihr Hausenergiesystem integrieren.',
+      'Einzelne Räume oder das ganze Gebäude: Temperatur, Luft und Feuchte, eingebunden ins Hausenergiesystem.',
     scope: [
       'Klimaanlagen',
       'Kaltwassersysteme',
@@ -265,8 +269,8 @@ export const trades: Trade[] = [
           'Vermiedene Ausfälle und Fehlqualitäten sparen dauerhaft Geld — und schonen nicht zuletzt Ihre Nerven.',
         ],
         image: {
-          src: 'klima-serverraum',
-          alt: 'Klimatisierter Serverraum mit Racks',
+          src: 'klima-aussenanlage',
+          alt: 'Außeneinheiten einer Klimaanlage an einem technischen Gebäude',
         },
       },
       {
@@ -278,15 +282,15 @@ export const trades: Trade[] = [
           'Mit modernen Anlagen steuern Sie Temperatur, Luftfeuchtigkeit, Atemluft und Staubgehalt gezielt.',
         ],
         image: {
-          src: 'klima-buero',
-          alt: 'Klimatisierter Büroraum mit Arbeitsplätzen',
+          src: 'klima-laden',
+          alt: 'Klimatisierter Verkaufsraum',
         },
       },
     ],
     related: [
       {
         trade: 'heizung',
-        reason: 'Wärme und Kühlung sind bei uns ein Themenkreis und eine Anlage.',
+        reason: 'Heizen und Kühlen laufen oft über dieselbe Anlage.',
       },
       {
         trade: 'elektro',
@@ -306,11 +310,11 @@ export const trades: Trade[] = [
     slug: 'sanitaer',
     name: 'Sanitär',
     eyebrow: 'Wasser, Wärme, Werterhalt',
-    headline: 'Von der Leitung im Schacht soll man nie etwas merken',
+    headline: 'Sanitär, Bad und Nassbereich',
     summary:
       'Sanitärinstallation, Badausstattung und barrierefreie Nassbereiche — eingebunden in Energie- und Gebäudekonzept.',
     intro:
-      'Die Versorgung mit Wasser ist ein Grundbedürfnis mit hohem kulturellem Stellenwert. Wir installieren die Infrastruktur zur Ver- und Entsorgung mit großer Sorgfalt — und binden sie dort ein, wo sie hingehört: in Ihr Energiekonzept und in das Gebäudemanagement Ihres Bads oder Nassbereichs.',
+      'Ver- und Entsorgung, Bad und Nassbereich — eingebunden in Energiekonzept und Gebäudemanagement.',
     scope: [
       'Sanitärinstallation',
       'Badausstattung',
@@ -345,6 +349,10 @@ export const trades: Trade[] = [
           'Für uns geht es um die ganzheitliche Erfassung des Gebäudes und seiner technischen Struktur. Die Einbindung der sanitären Anlagen ist die logische Folge dieser Denkweise.',
           'Von Leitungen, Ventilen, Steuerung und Technik sollen Sie nichts bemerken, wenn Sie Ihr Bad genießen. Das Wissen um die Zuverlässigkeit und Dauerhaftigkeit Ihrer Investition darf den Genuss aber gern steigern.',
         ],
+        image: {
+          src: 'bad-detail',
+          alt: 'Sanitärausstattung im Detail',
+        },
       },
     ],
     related: [
@@ -370,11 +378,11 @@ export const trades: Trade[] = [
     slug: 'elektro',
     name: 'Elektro',
     eyebrow: 'Strom und Information',
-    headline: 'Das Nervensystem des Gebäudes',
+    headline: 'Strom, Licht und Gebäudemanagement',
     summary:
       'Elektroinstallation, Netzwerke, Sicherheitstechnik, Gebäudemanagement, Beleuchtung und Industrie-Elektronik.',
     intro:
-      'Ein kluges Gebäude nutzt den Strom effizient. Wir installieren Elektro-, Steuer- und Regeltechnik nach Ihren Anforderungen und beraten Sie auf Basis jahrzehntelanger Erfahrung, wie Ihr Bedarf dauerhaft kosteneffizient umzusetzen ist — vom Einfamilienhaus bis zum Gewerbebetrieb auf dem Weg zu Industrie 4.0.',
+      'Elektro-, Steuer- und Regeltechnik vom Einfamilienhaus bis zum Gewerbebetrieb — ausgelegt auf Ihren Bedarf.',
     scope: [
       'Elektroinstallation',
       'Netzwerke',
@@ -413,8 +421,8 @@ export const trades: Trade[] = [
           'Der Datenaustausch läuft über hochwertige Kabel oder Funk und bindet Internet, Telefonie und Alarmanlage ein. Gesteuert wird über fest installierte Einheiten im Raum, über den PC oder das Smartphone.',
         ],
         image: {
-          src: 'lebensraeume-detail',
-          alt: 'Bedienung der Gebäudesteuerung über ein Wandpanel im Showroom Lebensräume',
+          src: 'lebensraeume-komfort',
+          alt: 'Wohnbereich im Showroom Lebensräume mit smarter Gebäudetechnik',
         },
       },
       {
@@ -422,13 +430,13 @@ export const trades: Trade[] = [
         title: 'Gebäudemanagement',
         lead: 'Aus vernetzten Einzelteilen wird ein Gebäude, das seinen Betrieb selbst optimiert.',
         body: [
-          'Die Installation von Informations- und Energietechnik ist das Nervensystem eines Gebäudes. Von hier aus entsteht die Struktur vernetzter Elemente, die für Kommunikation, gutes Klima und Sicherheit sorgt.',
+          'Die Installation von Informations- und Energietechnik verbindet die Gewerke im Gebäude. Von hier aus entsteht die Struktur vernetzter Elemente, die für Kommunikation, gutes Klima und Sicherheit sorgt.',
           'Ein intelligentes Gebäudemanagement integriert alle lebenswichtigen Funktionen des baulichen Körpers und sorgt neben der Werterhaltung für einen kosten-, energie- und sicherheitsoptimierten Betrieb. Einbruch-, Brand-, Informations- und Reaktionstechnik lassen sich ebenso einsetzen wie umgebungsorientierte Lichtsteuerung, Zutrittskontrolle oder Energiemanagement.',
           'Gerade bei gewerblichen und öffentlichen Projekten sind technische Ausgestaltung und Zukunftsfähigkeit bedeutende Faktoren. Wir sind gern Ansprechpartner für Sie, Ihre Architekten und Planer.',
         ],
         image: {
           src: 'netzwerktechnik-gewerbe',
-          alt: 'Netzwerkverteiler in einem Gewerbeobjekt',
+          alt: 'Netzwerktechnik und Verkabelung in einem Technikraum',
         },
       },
       {
@@ -440,8 +448,8 @@ export const trades: Trade[] = [
           'Am Arbeitsplatz bringt Licht mehr als Helligkeit. Eine Raumbeleuchtung funktioniert hinsichtlich Streuung, Lichtstärke und Gleichmaß anders als eine Punktlichtquelle für präzises Arbeiten. Für Ihr Unternehmen zählen Sicherheit, Energieeffizienz und Produktivität — wir sorgen dafür, dass alles zur Geltung kommt.',
         ],
         image: {
-          src: 'licht-arbeitsplatz',
-          alt: 'Arbeitsplatzbeleuchtung in einem Innenraum',
+          src: 'beleuchtung-wohnraum',
+          alt: 'Wohnraumbeleuchtung mit abgestimmten Lichtstimmungen',
         },
       },
       {
@@ -452,12 +460,16 @@ export const trades: Trade[] = [
           'Elektromobilität ergibt vor allem dann Sinn, wenn die Fahrzeuge am Standort effizient geladen werden können, idealerweise mit selbst produziertem regenerativem Strom.',
           'Bei Neubauten sind die Auflagen für E-Mobilität zu berücksichtigen. Wir informieren Sie über den Stand der Technik und die Veränderungen der kommenden Jahre.',
         ],
+        image: {
+          src: 'ladepunkt-elektromobilitaet',
+          alt: 'Ladestecker wird an einem Elektrofahrzeug angeschlossen',
+        },
       },
     ],
     related: [
       {
         trade: 'energie',
-        reason: 'Erzeugung, Speicher und Ladeinfrastruktur hängen an derselben Verteilung.',
+        reason: 'Erzeugung, Speicher und Ladepunkte laufen über dieselbe Verteilung.',
       },
       {
         trade: 'klima',

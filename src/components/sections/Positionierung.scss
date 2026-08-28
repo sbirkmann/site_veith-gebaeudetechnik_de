@@ -2,128 +2,204 @@
   background-color: var(--c-white);
 }
 
-.pos__grid {
+.pos__band {
   display: grid;
-  gap: var(--s-9);
+  gap: var(--s-8);
+  padding-block: var(--s-9) var(--s-6);
+  align-items: start;
 }
 
-.pos__rule {
-  display: block;
-  width: 3.5rem;
-  height: 3px;
-  margin-bottom: var(--s-5);
-  background-color: var(--c-orange);
+.pos__copy {
+  max-width: 40rem;
 }
 
 .pos__eyebrow {
-  margin-bottom: var(--s-3);
-  color: var(--c-ink-3);
+  margin-bottom: var(--s-4);
+  color: var(--c-eyebrow);
   font-family: var(--font-mono);
-  font-size: var(--t-3xs);
+  font-size: var(--t-2xs);
+  font-weight: 600;
   letter-spacing: var(--tr-caps);
   text-transform: uppercase;
 }
 
 .pos__title {
-  max-width: 20ch;
+  max-width: 16ch;
   font-size: var(--t-2xl);
+  font-weight: 600;
+  letter-spacing: -0.032em;
 }
 
-.pos__copy {
+.pos__text {
   display: grid;
-  gap: var(--s-4);
-  max-width: 38rem;
+  gap: var(--s-5);
   margin-block: var(--s-6);
   color: var(--c-ink-2);
+  font-size: var(--t-md);
+  line-height: var(--lh-relaxed);
 }
 
-/* ---------------------------------------------------------------- evidence */
-.pos__figure {
+.pos__aside {
+  min-width: 0;
+  height: 100%;
+
+  .schnitt {
+    height: 100%;
+  }
+}
+
+.pos__features {
+  display: grid;
+  gap: 0;
   margin: 0;
+  padding-bottom: 0;
+  list-style: none;
 
-  .img {
-    border-radius: var(--r-md);
+  li {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: var(--s-5);
+    align-items: start;
+    padding-block: var(--s-5);
+    border-top: var(--hair) solid var(--c-blue-line);
+    color: var(--c-ink);
+    font-size: var(--t-md);
+    font-weight: 450;
+    letter-spacing: -0.012em;
+    line-height: 1.55;
   }
 
-  figcaption {
-    display: flex;
-    gap: var(--s-3);
-    margin-top: var(--s-4);
-    color: var(--c-ink-3);
-    font-family: var(--font-mono);
-    font-size: var(--t-3xs);
-    line-height: 1.5;
-
-    /* A short leader rule, so the caption reads as an annotation on the
-       drawing rather than as a stray line of text. */
-    &::before {
-      content: '';
-      flex: none;
-      width: 1.5rem;
-      height: 1px;
-      margin-top: 0.6em;
-      background-color: var(--c-orange);
-    }
+  p {
+    margin: 0;
+    max-width: 34ch;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.32em;
+    text-underline-position: from-font;
+    transition: text-decoration-color var(--dur-fast) var(--ease);
   }
 }
 
-/* The figures are set as a data table, not as feature cards — they are
-   measurements of one building, and they should read that way. */
+.pos__n {
+  border-radius: 50%;
+  color: var(--c-navy);
+  transition: border-color var(--dur-fast) var(--ease), transform 480ms var(--ease-out);
+}
+
+@media (hover: hover) {
+  .pos__features li:hover p {
+    text-decoration-color: rgb(14 35 64 / 0.28);
+  }
+
+  .pos__features li:hover .pos__n {
+    border-color: var(--c-navy);
+  }
+}
+
+.js-reveal .pos__features li .pos__n {
+  transform: scale(0.84);
+}
+
+.js-reveal .pos__features li.is-shown .pos__n {
+  transform: scale(1);
+}
+
 .pos__facts {
-  margin-top: var(--s-7);
+  display: grid;
+  gap: 0;
+  padding-block: var(--s-6) var(--s-8);
   border-top: var(--hair) solid var(--c-blue-line);
 }
 
+.pos__fact-icon {
+  display: block;
+  width: var(--icon-fact);
+  height: var(--icon-fact);
+  margin-bottom: var(--s-3);
+  color: var(--c-navy);
+  overflow: visible;
+}
+
 .pos__fact {
-  display: grid;
-  gap: var(--s-1) var(--s-6);
+  min-width: 0;
   padding-block: var(--s-5);
   border-bottom: var(--hair) solid var(--c-blue-line);
-  /* The row lights up on hover — the figures are the section's substance and
-     should feel examinable rather than decorative. */
-  transition: background-color var(--dur) var(--ease);
-
-  &:hover {
-    background-color: var(--c-blue-wash);
-  }
 
   dt {
     font-family: var(--font-display);
-    font-size: var(--t-xl);
-    font-weight: 660;
-    line-height: 1.05;
+    font-size: var(--t-lg);
+    font-weight: 700;
     letter-spacing: var(--tr-tight);
-    color: var(--c-ink);
     font-variant-numeric: tabular-nums;
   }
 
   dd {
-    margin: 0;
+    margin: var(--s-2) 0 0;
+    max-width: 28ch;
     color: var(--c-ink-2);
-    font-size: var(--t-sm);
+    font-size: var(--t-xs);
     line-height: 1.45;
   }
 }
 
-@media (min-width: 34rem) {
-  .pos__fact {
-    /* Value in a fixed column, label in the rest — a specification list. */
-    grid-template-columns: minmax(9rem, 12rem) 1fr;
-    align-items: baseline;
+@media (min-width: 40rem) {
+  .pos__facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--s-8);
   }
 }
 
-@media (min-width: 62rem) {
-  .pos__grid {
-    /* The text column is deliberately narrow so the photograph gets the room.
-       It sticks while the figures scroll past it. */
-    grid-template-columns: minmax(0, 23rem) minmax(0, 1fr);
-    gap: var(--s-11);
-    align-items: start;
+@media (min-width: 72rem) {
+  .pos__band {
+    grid-template-columns: minmax(18rem, 40rem) minmax(0, 1fr);
+    gap: var(--s-8);
+    padding-block: var(--s-9) var(--s-6);
+    align-items: stretch;
   }
 
-  .pos__intro {
-    position: sticky;
-    top: calc(var(--header-h) + var(--s-7));
+  .pos__aside {
+    align-self: stretch;
+  }
+
+  .pos__features {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: 0;
+    padding-bottom: 0;
+
+    li {
+      padding: var(--s-6) var(--s-6) var(--s-6) 0;
+      border-top: 0;
+      border-bottom: var(--hair) solid var(--c-blue-line);
+    }
+
+    li + li {
+      padding-inline-start: var(--s-6);
+      border-inline-start: var(--hair) solid var(--c-blue-line);
+    }
+  }
+
+  .pos__facts {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    column-gap: 0;
+  }
+
+  .pos__fact {
+    padding: var(--s-6) var(--s-5) var(--s-6) 0;
+    border-bottom: 0;
+  }
+
+  .pos__fact + .pos__fact {
+    padding-inline-start: var(--s-5);
+    border-inline-start: var(--hair) solid var(--c-blue-line);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .pos__features li .pos__n,
+  .js-reveal .pos__features li.is-shown .pos__n {
+    transform: none;
+    transition: border-color var(--dur-fast) var(--ease);
   }
 }

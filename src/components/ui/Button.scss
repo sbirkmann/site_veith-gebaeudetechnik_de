@@ -11,13 +11,13 @@
   min-height: 3rem;
   padding: 0.75rem 1.5rem;
   border: var(--hair) solid var(--btn-edge);
-  border-radius: var(--r-md);
+  border-radius: 0;
   background-color: var(--btn-bg);
   color: var(--btn-fg);
   font-family: var(--font-body);
   font-size: var(--t-sm);
-  font-weight: 560;
-  letter-spacing: 0.005em;
+  font-weight: 500;
+  letter-spacing: 0.01em;
   line-height: 1.2;
   text-align: center;
   cursor: pointer;
@@ -38,6 +38,16 @@
   }
 }
 
+.btn--sm {
+  min-height: 2.75rem;
+  padding: 0.5rem 1.15rem;
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .btn--lg {
   min-height: 3.5rem;
   padding: 1rem 2rem;
@@ -45,8 +55,8 @@
 }
 
 .btn__arrow {
-  width: 1.25rem;
-  height: 0.75rem;
+  width: var(--icon-ui);
+  height: calc(var(--icon-ui) * 0.6);
   flex: none;
   transition: transform var(--dur) var(--ease);
 }
@@ -62,18 +72,12 @@
   --btn-fg: #fff;
   --btn-edge: var(--c-orange);
 
-  box-shadow: 0 1px 2px rgb(120 60 0 / 0.18);
-
   &:hover {
     --btn-bg: var(--c-orange-deep);
     --btn-edge: var(--c-orange-deep);
-
-    box-shadow: 0 3px 12px rgb(120 60 0 / 0.24);
   }
 
-  /* Pressed state returns it flat to the surface. */
   &:active {
-    box-shadow: none;
     transform: translateY(1px);
   }
 }
@@ -91,16 +95,16 @@
 
 /* --- ghost: text with a rule that fills in on hover ------------------------ */
 .btn--ghost {
-  min-height: 2.5rem;
+  min-height: 2.75rem;
   padding: 0.5rem 0;
   border-radius: 0;
   --btn-fg: var(--fg);
-  border-bottom: 2px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--c-orange) 55%, transparent);
   border-inline: 0;
   border-top: 0;
 
   &:hover {
-    border-bottom-color: var(--accent);
-    --btn-fg: var(--accent);
+    border-bottom-color: var(--c-orange);
+    --btn-fg: var(--c-orange);
   }
 }

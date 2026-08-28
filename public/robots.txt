@@ -1,4 +1,19 @@
 User-agent: *
 Allow: /
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 Sitemap: https://www.veith-gebaeudetechnik.de/sitemap.xml
+
+# Site summary for AI crawlers (Google Search ignores llms.txt)
+# https://www.veith-gebaeudetechnik.de/llms.txt

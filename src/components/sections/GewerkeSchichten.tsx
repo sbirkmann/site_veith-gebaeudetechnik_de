@@ -85,25 +85,34 @@ export function GewerkeSchichten() {
             key={trade.hero.src}
             src={trade.hero.src}
             alt={trade.hero.alt}
-            ratio="5 / 4"
+            ratio="4 / 3"
             sizes="(min-width: 62rem) 42rem, 100vw"
           />
         </div>
 
         <div className="schichten__body">
+          <p className="schichten__meta">
+            <span>Schicht {String(active + 1).padStart(2, '0')}</span>
+            {trade.eyebrow}
+          </p>
           <h3 className="schichten__title">{trade.headline}</h3>
           <p className="schichten__lead">{trade.summary}</p>
 
-          <ul className="schichten__scope">
-            {trade.scope.map((s) => (
-              <li key={s}>{s}</li>
+          <ol className="schichten__scope">
+            {trade.scope.map((s, i) => (
+              <li key={s}>
+                <span className="schichten__scope-i" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="schichten__scope-name">{s}</span>
+              </li>
             ))}
-          </ul>
+          </ol>
 
           <Link className="schichten__link" to={`/leistungen/${trade.slug}`}>
             {trade.name} im Detail
             <svg viewBox="0 0 20 12" aria-hidden="true" focusable="false">
-              <path d="M0 6h17.5M12.5 1l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.6" />
+              <path d="M0 6h17.5M12.5 1l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.15" vectorEffect="nonScalingStroke" />
             </svg>
           </Link>
         </div>

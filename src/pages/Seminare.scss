@@ -1,16 +1,13 @@
 .sem__rule {
-  display: block;
-  width: 3.5rem;
-  height: 3px;
-  margin-bottom: var(--s-5);
-  background-color: var(--c-orange);
+  display: none;
 }
 
 .sem__eyebrow {
   margin-bottom: var(--s-3);
-  color: var(--fg-subtle);
+  color: var(--c-eyebrow);
   font-family: var(--font-mono);
-  font-size: var(--t-3xs);
+  font-size: var(--t-2xs);
+  font-weight: 600;
   letter-spacing: var(--tr-caps);
   text-transform: uppercase;
 }
@@ -18,7 +15,7 @@
 .sem__h2 {
   font-size: var(--t-lg);
   color: var(--fg);
-  font-weight: 560;
+  font-weight: 500;
 }
 
 /* ------------------------------------------------------------------- hero */
@@ -170,7 +167,7 @@
   display: block;
   font-family: var(--font-display);
   font-size: var(--t-lg);
-  font-weight: 620;
+  font-weight: 600;
   letter-spacing: var(--tr-snug);
   overflow-wrap: anywhere;
 }
@@ -209,18 +206,11 @@
 
 .sem__past-item {
   display: grid;
-  grid-template-columns: 2.5rem minmax(0, 1fr);
+  grid-template-columns: 2rem minmax(0, 1fr);
   gap: var(--s-4);
-  align-items: baseline;
+  align-items: start;
   padding-block: var(--s-4);
   border-bottom: var(--hair) solid var(--c-blue-line);
-}
-
-.sem__past-no {
-  color: var(--c-ink-3);
-  font-family: var(--font-mono);
-  font-size: var(--t-2xs);
-  font-variant-numeric: tabular-nums;
 }
 
 .sem__past-topic {

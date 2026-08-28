@@ -1,16 +1,25 @@
-.svc__panel {
-  display: grid;
-  overflow: hidden;
-  background-color: var(--c-ink);
+.svc {
+  --c-eyebrow: var(--c-orange);
+
+  position: relative;
+  isolation: isolate;
+  padding-block: var(--section-y);
+  scroll-margin-top: var(--header-h);
+  background-color: var(--c-navy);
   color: #fff;
-  border-radius: var(--r-lg);
+  overflow: hidden;
 }
 
 .svc__media {
-  /* Decorative here: the section is carried by the number, not the picture. */
-  display: none;
+  position: relative;
+  height: 14rem;
+  overflow: hidden;
+  opacity: 0.4;
 
   .img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
     height: 100%;
   }
 }
@@ -18,38 +27,39 @@
 .svc__body {
   display: grid;
   gap: var(--s-8);
-  padding: var(--s-7) var(--gutter) var(--s-8);
 }
 
 .svc__eyebrow {
   margin-bottom: var(--s-3);
-  color: var(--c-orange);
+  color: var(--c-eyebrow);
   font-family: var(--font-mono);
-  font-size: var(--t-3xs);
+  font-size: var(--t-2xs);
+  font-weight: 600;
   letter-spacing: var(--tr-caps);
   text-transform: uppercase;
 }
 
 .svc__title {
-  max-width: 20ch;
-  font-size: var(--t-xl);
+  max-width: 18ch;
+  font-size: var(--t-2xl);
   color: #fff;
 }
 
 .svc__lead {
   max-width: 44ch;
   margin-top: var(--s-4);
-  color: #a9b4c2;
+  color: #a8bcd4;
 }
 
-/* --------------------------------------------------------------- the number */
 .svc__call {
-  display: inline-block;
-  margin-top: var(--s-6);
-  padding: var(--s-5) var(--s-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-6);
   background-color: var(--c-orange);
-  border-radius: var(--r-md);
   color: #fff;
+  overflow: hidden;
   transition: background-color var(--dur) var(--ease);
 
   &:hover {
@@ -57,66 +67,88 @@
   }
 }
 
+.svc__call-text {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
 .svc__call-label {
   display: block;
-  font-size: var(--t-xs);
-  opacity: 0.92;
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+  opacity: 0.9;
 }
 
 .svc__call-num {
   display: block;
-  margin-top: var(--s-1);
+  margin-top: var(--s-2);
   font-family: var(--font-mono);
-  font-size: clamp(1.5rem, 1rem + 2.2vw, 2.25rem);
+  font-size: clamp(1.35rem, 0.9rem + 2.2vw, 2.5rem);
   font-weight: 500;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.svc__call-icon {
+  flex: 0 0 auto;
+  width: var(--icon-fact);
+  height: var(--icon-fact);
+  color: #fff;
+  pointer-events: none;
 }
 
 .svc__hours {
   display: grid;
   gap: var(--s-2);
   margin-top: var(--s-5);
-  max-width: 24rem;
+  max-width: 26rem;
   font-size: var(--t-sm);
-  color: #a9b4c2;
+  color: #a8bcd4;
 
   li {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: var(--s-3);
+    padding-block: var(--s-2);
+    border-bottom: var(--hair) dashed rgb(255 255 255 / 0.16);
   }
 
   li span:last-child {
     font-family: var(--font-mono);
-    color: #f2f4f7;
+    color: #f3f7fc;
     white-space: nowrap;
   }
 }
 
-/* --------------------------------------------------------------- the cases */
 .svc__cases ul {
   display: grid;
   gap: 0;
-  border-top: var(--hair) solid #1f2d47;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .svc__cases li {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  align-items: start;
+  gap: var(--s-4);
   padding-block: var(--s-5);
-  border-bottom: var(--hair) solid #1f2d47;
+  border-top: var(--hair) solid rgb(255 255 255 / 0.12);
 }
 
 .svc__cases h3 {
   font-size: var(--t-base);
   font-weight: 600;
-  color: #f2f4f7;
+  color: #f3f7fc;
 }
 
 .svc__cases p {
   margin-top: var(--s-2);
-  max-width: 48ch;
-  color: #a9b4c2;
+  color: #a8bcd4;
   font-size: var(--t-sm);
 }
 
@@ -125,16 +157,16 @@
   align-items: center;
   gap: var(--s-3);
   min-height: 2.75rem;
-  margin-top: var(--s-5);
+  margin-top: calc(var(--s-6) - var(--s-8));
   color: #fff;
   font-size: var(--t-sm);
-  font-weight: 560;
+  font-weight: 500;
   border-bottom: 2px solid var(--c-orange);
   padding-bottom: 2px;
 
   svg {
-    width: 1.25rem;
-    height: 0.75rem;
+    width: var(--icon-ui);
+    height: calc(var(--icon-ui) * 0.6);
     transition: transform var(--dur) var(--ease);
   }
 
@@ -143,25 +175,83 @@
   }
 }
 
-@media (min-width: 48rem) {
-  .svc__body {
-    padding-inline: var(--s-8);
-  }
-}
-
 @media (min-width: 62rem) {
-  .svc__panel {
-    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
-  }
-
   .svc__media {
-    display: block;
+    position: absolute;
+    inset-block: 0;
+    inset-inline-end: 0;
+    width: min(38vw, 28rem);
+    height: auto;
+    z-index: -1;
+    opacity: 0.28;
+    mask-image: linear-gradient(to left, #000 40%, transparent);
+
+    .img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .svc__body {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: start;
-    gap: var(--s-9);
-    padding: var(--s-9);
+    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.85fr);
+    grid-template-areas:
+      'intro dispatch'
+      'cases dispatch'
+      'more .';
+    gap: var(--s-9) var(--s-10);
+    align-items: stretch;
+  }
+
+  .svc__intro {
+    grid-area: intro;
+  }
+  .svc__dispatch {
+    grid-area: dispatch;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .svc__call {
+    flex: 1 1 auto;
+    align-self: stretch;
+  }
+
+  .svc__hours {
+    margin-top: auto;
+    padding-top: var(--s-5);
+    max-width: none;
+  }
+
+  .svc__dispatch:not(:has(.svc__hours)) .svc__call {
+    min-height: 100%;
+  }
+  .svc__cases {
+    grid-area: cases;
+  }
+
+  .svc__more {
+    grid-area: more;
+    /* Row gap is --s-9; keep the previous --s-6 space under the cases rule. */
+    margin-top: calc(var(--s-6) - var(--s-9));
+    justify-self: start;
+  }
+
+  .svc__cases ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .svc__cases li {
+    padding: var(--s-5) var(--s-5) var(--s-5) 0;
+    border-top: 0;
+    border-bottom: var(--hair) solid rgb(255 255 255 / 0.12);
+  }
+
+  .svc__cases li + li {
+    padding-inline-start: var(--s-5);
+    border-inline-start: var(--hair) solid rgb(255 255 255 / 0.12);
   }
 }

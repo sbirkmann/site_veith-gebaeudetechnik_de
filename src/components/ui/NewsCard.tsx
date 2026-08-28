@@ -26,18 +26,28 @@ export function formatDate(iso: string) {
 
 export function NewsCard({ item, variant = 'compact', headingLevel = 3 }: NewsCardProps) {
   const Heading = `h${headingLevel}` as const
+  const compact = variant === 'compact'
   return (
     <article className={`ncard ncard--${variant}`}>
-      {variant === 'feature' && item.image && (
-        <Link className="ncard__media" to={`/aktuelles/${item.slug}`} tabIndex={-1} aria-hidden="true">
+      <Link className="ncard__media" to={`/aktuelles/${item.slug}`} tabIndex={-1} aria-hidden="true">
+        {item.image ? (
           <Image
             src={item.image.src}
             alt=""
-            ratio="16 / 10"
-            sizes="(min-width: 62rem) 32rem, 100vw"
+            ratio={compact ? undefined : '16 / 10'}
+            fill={compact}
+            sizes={
+              compact
+                ? '5.5rem'
+                : '(min-width: 62rem) 32rem, 100vw'
+            }
           />
-        </Link>
-      )}
+        ) : (
+          <span className="ncard__ph">
+            <span className="ncard__ph-label">{newsKindLabel[item.kind]}</span>
+          </span>
+        )}
+      </Link>
 
       <div className="ncard__body">
         <p className="ncard__meta">

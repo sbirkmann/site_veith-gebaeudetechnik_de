@@ -1,11 +1,8 @@
 .schichten {
   display: grid;
-  gap: 0;
+  gap: var(--s-7);
 }
 
-/* --------------------------------------------------------------- the strata
-   Butted rows, hairline-separated: they read as layers of one section rather
-   than as five cards. */
 .schichten__stack {
   display: grid;
   gap: 0;
@@ -15,163 +12,121 @@
 .schichten__layer {
   --layer-accent: var(--c-orange);
 
-  position: relative;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-areas:
     'index name'
     'index note';
-  align-items: baseline;
-  gap: 0 var(--s-4);
+  align-items: start;
+  gap: 0 var(--s-5);
   width: 100%;
-  min-height: 4.5rem;
-  padding: var(--s-4) var(--s-4) var(--s-4) var(--s-5);
+  min-height: 4.75rem;
+  padding: var(--s-5) 0 var(--s-5) var(--s-4);
   text-align: start;
   border-bottom: var(--hair) solid var(--rule);
-  transition: background-color var(--dur) var(--ease);
+  border-inline-start: 2px solid transparent;
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
 
-  &:hover {
-    background-color: color-mix(in srgb, var(--layer-accent) 8%, transparent);
+  &:hover,
+  &.is-active {
+    color: var(--fg);
   }
 
   &.is-active {
-    background-color: color-mix(in srgb, var(--layer-accent) 12%, transparent);
+    border-inline-start-color: var(--layer-accent);
   }
 }
 
-/* The stratum's own colour, filling in from the top as it becomes active. */
 .schichten__bar {
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-  width: 3px;
-  background-color: var(--layer-accent);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform var(--dur) var(--ease);
-}
-
-.schichten__layer:hover .schichten__bar {
-  transform: scaleY(0.35);
-}
-
-.schichten__layer.is-active .schichten__bar {
-  transform: scaleY(1);
+  display: none;
 }
 
 .schichten__index {
   grid-area: index;
-  align-self: center;
-  font-family: var(--font-mono);
-  font-size: var(--t-2xs);
-  font-variant-numeric: tabular-nums;
-  color: var(--fg-subtle);
-  transition: color var(--dur) var(--ease);
-}
-
-.schichten__layer.is-active .schichten__index {
-  color: var(--layer-accent);
 }
 
 .schichten__name {
   grid-area: name;
-  display: flex;
-  align-items: baseline;
-  gap: var(--s-3);
   font-family: var(--font-display);
   font-size: var(--t-lg);
-  font-weight: 620;
+  font-weight: 600;
   letter-spacing: var(--tr-snug);
-  color: var(--fg);
-
-  /* A leader that runs out to the edge of the row, the way a legend line
-     connects a label to its layer. */
-  &::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background-color: var(--rule);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--dur) var(--ease), background-color var(--dur) var(--ease);
-  }
-}
-
-.schichten__layer:hover .schichten__name::after,
-.schichten__layer.is-active .schichten__name::after {
-  transform: scaleX(1);
-}
-
-.schichten__layer.is-active .schichten__name::after {
-  background-color: var(--layer-accent);
 }
 
 .schichten__note {
   grid-area: note;
   margin-top: 2px;
   font-size: var(--t-xs);
-  line-height: 1.4;
   color: var(--fg-subtle);
 }
 
-/* ---------------------------------------------------------------- the panel
-   No box, no border: the photograph itself is the panel, and the text sits
-   beside it. Large format, quiet framing. */
 .schichten__panel {
   --layer-accent: var(--c-orange);
 
   display: grid;
   gap: var(--s-6);
-  padding-top: var(--s-7);
-}
-
-.schichten__media .img {
-  border-radius: var(--r-sm);
 }
 
 .schichten__body > * + * {
   margin-top: var(--s-5);
 }
 
+.schichten__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-3) var(--s-4);
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+
+  span {
+    color: var(--layer-accent);
+  }
+}
+
 .schichten__title {
-  max-width: 20ch;
+  max-width: 18ch;
   font-size: var(--t-xl);
-  color: var(--fg);
-  text-wrap: balance;
+  font-weight: 600;
+  letter-spacing: -0.022em;
 }
 
 .schichten__lead {
-  max-width: 46ch;
+  max-width: 42ch;
   color: var(--fg-muted);
   font-size: var(--t-md);
+  line-height: var(--lh-relaxed);
 }
 
-/* The scope list is set in mono: it is a specification, and it should look
-   like one rather than like prose. */
 .schichten__scope {
   display: grid;
-  gap: var(--s-2);
+  gap: 0;
+  margin: 0;
   padding-top: var(--s-5);
   border-top: var(--hair) solid var(--rule);
+  list-style: none;
 
   li {
-    position: relative;
-    padding-inline-start: var(--s-5);
-    font-family: var(--font-mono);
-    font-size: var(--t-xs);
-    line-height: 1.5;
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: var(--s-3);
+    align-items: start;
+    padding-block: var(--s-3);
+    border-bottom: var(--hair) solid var(--rule);
     color: var(--fg-muted);
   }
+}
 
-  li::before {
-    content: '';
-    position: absolute;
-    inset-inline-start: 0;
-    top: 0.55em;
-    width: 6px;
-    height: 6px;
-    background-color: var(--layer-accent);
-  }
+.schichten__scope-name {
+  font-family: var(--font-body);
+  font-size: var(--t-sm);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: var(--lh-snug);
 }
 
 .schichten__link {
@@ -180,14 +135,13 @@
   gap: var(--s-3);
   min-height: 2.75rem;
   color: var(--fg);
-  font-weight: 560;
+  font-weight: 500;
   font-size: var(--t-sm);
-  border-bottom: 2px solid var(--layer-accent);
-  padding-bottom: 2px;
 
   svg {
-    width: 1.25rem;
-    height: 0.75rem;
+    width: var(--icon-ui);
+    height: calc(var(--icon-ui) * 0.6);
+    color: var(--layer-accent);
     transition: transform var(--dur) var(--ease);
   }
 
@@ -196,38 +150,16 @@
   }
 }
 
-/* --------------------------------------------------------------- wide view */
 @media (min-width: 62rem) {
   .schichten {
-    /* The index of strata stays narrow on the left; the panel takes the rest.
-       That asymmetry is the point — it reads as a section drawing with a
-       legend, not as a symmetrical two-column layout. */
-    grid-template-columns: minmax(15rem, 19rem) minmax(0, 1fr);
-    gap: var(--s-9);
+    grid-template-columns: minmax(16rem, 20rem) minmax(0, 1fr);
+    gap: var(--s-10);
     align-items: start;
   }
 
   .schichten__panel {
-    /* Image leads and takes the larger share: this section is carried by the
-       photograph, not by the copy beside it. */
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.9fr);
     align-items: center;
     gap: var(--s-8);
-    padding-top: 0;
-  }
-
-  .schichten__layer {
-    min-height: 5.5rem;
-    padding-inline: var(--s-5) var(--s-6);
-  }
-}
-
-@media (min-width: 82rem) {
-  .schichten {
-    gap: var(--s-10);
-  }
-
-  .schichten__panel {
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
   }
 }

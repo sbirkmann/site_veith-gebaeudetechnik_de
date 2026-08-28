@@ -65,6 +65,10 @@ export const news: NewsItem[] = [
       'Ein Notdienst steht Ihnen weiterhin zur Verfügung. Diesen erreichen Sie unter 07223 / 80 100 10. Am Ende der Bandansage können Sie den gewünschten Notdienst auswählen — Elektro oder Heizung / Sanitär.',
       'Vielen Dank für Ihr Verständnis. Ihr Team der Veith Gebäudetechnik GmbH.',
     ],
+    image: {
+      src: 'kompetenzzentrum-aussen',
+      alt: 'Das VEITH Kompetenzzentrum im Gewerbegebiet Bußmatten in Bühl',
+    },
   },
   {
     slug: 'einfuehrungstag-2025',
@@ -112,8 +116,8 @@ export const news: NewsItem[] = [
       'Ein großes Dankeschön an unser Klimatechnik-Team für das Engagement und die hervorragende Arbeit.',
     ],
     image: {
-      src: 'klima-serverraum',
-      alt: 'Klimatisierter Serverraum mit Rackreihen',
+      src: 'klima-aussenanlage',
+      alt: 'Außeneinheiten einer Klimaanlage',
     },
   },
   {
@@ -158,6 +162,10 @@ export const news: NewsItem[] = [
       'Unser Wärmepumpenexperte Mario Ulrich war als Akteur vor Ort. In der Expertenrunde wurde über die Planung der Wärmepumpen und rechtliche Rahmenbedingungen gesprochen. Rund 160 Teilnehmer konnten im Saal und online den Ausführungen folgen.',
     ],
     source: { label: 'Bundesverband Wärmepumpe' },
+    image: {
+      src: 'waermepumpe-aussengeraet',
+      alt: 'Außeneinheit einer Wärmepumpe',
+    },
   },
   {
     slug: 'innungspreise-gesellen',
@@ -187,6 +195,10 @@ export const news: NewsItem[] = [
       'Nach einem Beratungsgespräch mit Neukunden ging es zu vier Familien, deren Wärmepumpenanlage gerade im Bau war oder schon einige Zeit in Betrieb ist. So wurde sichtbar, welche Schritte von der Planung bis zur Inbetriebnahme notwendig sind, um ein gut funktionierendes System zu realisieren.',
     ],
     source: { label: 'Badische Neueste Nachrichten' },
+    image: {
+      src: 'energiezentrale-beratung',
+      alt: 'Beratung an der Energiezentrale',
+    },
   },
 ]
 

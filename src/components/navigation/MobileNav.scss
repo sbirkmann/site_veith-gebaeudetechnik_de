@@ -55,8 +55,8 @@
   text-align: start;
 
   svg {
-    width: 0.875rem;
-    height: 0.875rem;
+    width: var(--icon-ui);
+    height: var(--icon-ui);
     flex: none;
     color: var(--c-orange);
     transition: transform var(--dur) var(--ease);
@@ -113,7 +113,7 @@
   padding: var(--s-5);
   background-color: var(--c-orange);
   color: #fff;
-  border-radius: var(--r-md);
+  border-radius: 0;
 
   &:hover {
     background-color: var(--c-orange-deep);

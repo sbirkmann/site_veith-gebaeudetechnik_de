@@ -11,17 +11,14 @@ interface SectionHeaderProps {
   /** Heading level — pick by document outline, not by size. */
   as?: 'h1' | 'h2' | 'h3'
   align?: 'start' | 'center'
-  /** Colours the rule above the eyebrow, e.g. a trade accent. */
-  accent?: string
   id?: string
   className?: string
   children?: ReactNode
 }
 
 /**
- * The standard opening of a section: a short rule, an eyebrow, the heading and
- * an optional lead. The rule carries the section's accent — it is the main
- * device that tells one Leistungsbereich from another.
+ * Section opening: eyebrow, heading, optional lead. Colour lives in the
+ * eyebrow, not in a decorative bar.
  */
 export function SectionHeader({
   eyebrow,
@@ -29,7 +26,6 @@ export function SectionHeader({
   lead,
   as: Tag = 'h2',
   align = 'start',
-  accent,
   id,
   className,
   children,
@@ -38,11 +34,6 @@ export function SectionHeader({
     <Reveal
       className={['sechead', `sechead--${align}`, className].filter(Boolean).join(' ')}
     >
-      <span
-        className="sechead__rule"
-        style={accent ? { backgroundColor: accent } : undefined}
-        aria-hidden="true"
-      />
       {eyebrow && <p className="sechead__eyebrow">{eyebrow}</p>}
       <Tag className="sechead__title" id={id}>
         {title}

@@ -1,9 +1,10 @@
 import { useSeo } from '../hooks/useSeo'
 import { fundingTopics, fundingLinks } from '../data/service'
 import { company } from '../data/company'
-import { Image } from '../components/ui/Image'
 import { Reveal } from '../components/ui/Reveal'
 import { KontaktCta } from '../components/sections/KontaktCta'
+import { PageHero } from '../components/ui/PageHero'
+import { webPageJsonLd } from '../seo/schema'
 import './Foerderungen.scss'
 
 /**
@@ -20,50 +21,38 @@ export default function Foerderungen() {
     description:
       'Überblick über die Förderprogramme für Heizungstausch und Photovoltaik: welche Programme greifen, in welcher Reihenfolge beantragt wird und wer sie vergibt — BAFA, KfW und L-Bank.',
     path: '/service/foerderungen',
-    image: 'energiezentrale-beratung',
+    image: 'foerderung-uebersicht',
+    jsonLd: webPageJsonLd({
+      path: '/service/foerderungen',
+      name: 'Förderungen — Heizung, Photovoltaik, Beratung',
+      description:
+        'Überblick über die Förderprogramme für Heizungstausch und Photovoltaik: welche Programme greifen, in welcher Reihenfolge beantragt wird und wer sie vergibt — BAFA, KfW und L-Bank.',
+      image: 'foerderung-uebersicht',
+      crumbs: [
+        { name: 'Startseite', path: '/' },
+        { name: 'Service', path: '/service' },
+        { name: 'Förderungen', path: '/service/foerderungen' },
+      ],
+    }),
   })
 
   return (
     <>
-      <header className="fdr__hero">
-        <div className="container-wide">
-          <div className="fdr__hero-grid">
-            <div>
-              <span className="fdr__rule" aria-hidden="true" />
-              <p className="fdr__eyebrow">Förderungen</p>
-              <h1 className="fdr__title">
-                Auf diese Förderungen können Sie bauen
-              </h1>
-              <p className="fdr__intro">
-                Übersicht ist das Wesentliche, wenn es um die kluge Verwendung
-                von Fördermitteln geht. VEITH ist Ihre Adresse, wenn Sie sich
-                über die aktuellen Förderprogramme informieren möchten.
-                Kontaktieren Sie uns — wir nehmen uns gerne Zeit für Sie.
-              </p>
-              <p className="fdr__note">
-                Fördersätze und Bedingungen ändern sich laufend. Wir sagen Ihnen,
-                was zum Zeitpunkt Ihres Vorhabens tatsächlich gilt.
-              </p>
-            </div>
-
-            <figure className="fdr__hero-media">
-              <Image
-                src="energiezentrale-beratung"
-                alt="Beratungsgespräch vor der Energiezentrale im VEITH Kompetenzzentrum"
-                ratio="4 / 3"
-                sizes="(min-width: 62rem) 30rem, 100vw"
-                priority
-              />
-            </figure>
-          </div>
-        </div>
-      </header>
+      <PageHero
+        eyebrow="Förderungen"
+        title="Heizungstausch, Photovoltaik, Beratung"
+        lead="Sätze und Bedingungen ändern sich laufend. Wir sagen Ihnen, was zum Zeitpunkt Ihres Vorhabens gilt."
+        image={{
+          src: 'foerderung-uebersicht',
+          alt: 'Übersicht staatlicher Förderprogramme für Heizung und Photovoltaik',
+        }}
+      />
 
       {/* ---------------------------------------------- the two subject areas */}
       <section className="fdr__topics section" aria-labelledby="fdr-themen">
         <div className="container-wide">
           <h2 className="fdr__h2" id="fdr-themen">
-            Zwei Bereiche, in denen sich das Rechnen lohnt
+            Heizungstausch und Photovoltaik
           </h2>
 
           <ol className="fdr__topic-list">

@@ -1,76 +1,207 @@
 .kcta {
-  padding-block: var(--section-y);
+  padding-block: var(--s-4);
+  background-color: var(--c-mist);
+  color: var(--c-ink);
+
+  .container-wide {
+    width: 100%;
+    max-width: none;
+    padding-inline: 0;
+  }
 }
 
-.kcta__inner {
+.kcta__split {
   display: grid;
-  gap: var(--s-7);
+  width: 100%;
+  gap: 0;
 }
 
-.kcta__rule {
-  display: block;
-  width: 3.5rem;
-  height: 3px;
-  background-color: var(--c-orange);
+.kcta__media {
+  position: relative;
+  min-height: 10.5rem;
+  overflow: hidden;
+  background-color: var(--c-navy);
+
+  .img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.kcta__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--s-5) var(--gutter);
+}
+
+.kcta__eyebrow {
+  margin-bottom: var(--s-3);
+  color: var(--c-eyebrow);
+  font-family: var(--font-mono);
+  font-size: var(--t-2xs);
+  font-weight: 600;
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
 }
 
 .kcta__title {
   max-width: 18ch;
   font-size: var(--t-2xl);
-  color: var(--fg);
+  color: var(--c-ink);
+  overflow-wrap: normal;
+  text-wrap: balance;
+  hyphens: manual;
 }
 
 .kcta__lead {
-  max-width: 44ch;
+  max-width: 40ch;
   margin-top: var(--s-4);
-  color: var(--fg-muted);
+  color: var(--c-ink-2);
   font-size: var(--t-md);
 }
 
-.kcta__phone {
-  display: block;
+.kcta__place {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.55em;
+  margin-top: var(--s-5);
   font-family: var(--font-mono);
-  font-size: clamp(1.75rem, 1.1rem + 2.6vw, 2.75rem);
+  font-size: var(--t-sm);
+  line-height: 1.45;
+  color: var(--c-ink-2);
+}
+
+.kcta__pin {
+  flex-shrink: 0;
+  width: 1.375rem;
+  height: 1.375rem;
+  color: var(--c-navy);
+}
+
+.kcta__addr {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  min-width: 0;
+}
+
+.kcta__street,
+.kcta__locality {
+  display: block;
+}
+
+.kcta__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--s-4);
+  overflow: hidden;
+  border-radius: 0;
+  padding: var(--s-6);
+  padding-inline-end: calc(var(--s-6) + var(--icon-fact) + var(--s-3));
+  background-color: var(--c-orange);
+  color: #fff;
+}
+
+.kcta__icon {
+  position: absolute;
+  top: var(--s-5);
+  right: var(--s-5);
+  z-index: 0;
+  width: var(--icon-fact);
+  height: var(--icon-fact);
+  color: #fff;
+  pointer-events: none;
+}
+
+.kcta__phone,
+.kcta__mail,
+.kcta__actions {
+  position: relative;
+  z-index: 1;
+}
+
+.kcta__phone {
+  font-family: var(--font-mono);
+  font-size: clamp(1.2rem, 0.7rem + 1.6vw, 1.85rem);
   font-weight: 500;
   letter-spacing: -0.02em;
-  color: var(--fg);
-  /* The number must never wrap mid-way. */
+  color: #fff;
   white-space: nowrap;
 
   &:hover {
-    color: var(--c-orange);
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
   }
 }
 
 .kcta__mail {
-  display: inline-block;
-  margin-top: var(--s-3);
-  color: var(--fg-muted);
+  color: rgb(255 255 255 / 0.88);
   font-size: var(--t-sm);
-  /* Long addresses may break rather than overflow. */
   overflow-wrap: anywhere;
 
   &:hover {
-    color: var(--c-orange);
+    text-decoration: underline;
+    text-underline-offset: 0.14em;
   }
 }
 
 .kcta__actions {
-  margin-top: var(--s-6);
+  margin-top: 0;
+}
+
+.kcta__panel .btn--secondary {
+  --btn-edge: rgb(255 255 255 / 0.7);
+  --btn-fg: #fff;
+
+  &:hover {
+    --btn-edge: #fff;
+    --btn-bg: rgb(255 255 255 / 0.12);
+  }
 }
 
 @media (min-width: 56rem) {
-  .kcta__inner {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    align-items: start;
-    gap: var(--s-8);
+  .kcta__split {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.15fr) minmax(20rem, 26rem);
+    align-items: stretch;
+    min-height: 16.5rem;
   }
 
-  .kcta__rule {
-    margin-top: 0.7em;
+  .kcta__title {
+    max-width: 20ch;
   }
 
-  .kcta__contact {
-    text-align: end;
+  .kcta__media {
+    display: block;
+    min-height: 0;
+    height: auto;
+    align-self: stretch;
+  }
+
+  .kcta__text {
+    min-height: 0;
+    padding: var(--s-6) var(--s-8);
+  }
+
+  .kcta__panel {
+    min-height: 0;
+    padding: var(--s-6) var(--s-7);
+    padding-inline-end: calc(var(--s-7) + var(--icon-fact) + var(--s-4));
+  }
+
+  .kcta__icon {
+    top: var(--s-6);
+    right: var(--s-6);
   }
 }

@@ -1,0 +1,163 @@
+.pghero {
+  position: relative;
+  isolation: isolate;
+  padding-block: var(--s-8) var(--s-7);
+}
+
+.pghero--photo {
+  --c-eyebrow: var(--c-orange);
+
+  display: grid;
+  grid-template-rows: 1fr;
+  /* Fixed band: not tied to 100svh, so inner pages match at a given breakpoint. */
+  min-height: 20rem;
+  color: #fff;
+}
+
+.pghero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+
+  .img {
+    width: 100%;
+    height: 100%;
+    background-color: var(--c-navy);
+  }
+}
+
+.pghero__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      rgb(14 35 64 / 0.88) 0%,
+      rgb(14 35 64 / 0.62) 48%,
+      rgb(14 35 64 / 0.32) 100%
+    );
+}
+
+.pghero__inner {
+  align-self: end;
+  min-width: 0;
+}
+
+.pghero__eyebrow {
+  margin-bottom: var(--s-4);
+  color: var(--c-eyebrow);
+  font-family: var(--font-mono);
+  font-size: var(--t-2xs);
+  font-weight: 600;
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.pghero__title {
+  max-width: 20ch;
+  font-size: clamp(2.05rem, 1.35rem + 2.15vw, 3.15rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.032em;
+  color: var(--c-ink);
+  text-wrap: balance;
+}
+
+.pghero--photo .pghero__title {
+  color: #fff;
+}
+
+.pghero__lead {
+  max-width: 40ch;
+  margin-top: var(--s-4);
+  color: var(--c-ink-2);
+  font-size: var(--t-md);
+  line-height: var(--lh-relaxed);
+
+  p + p {
+    margin-top: var(--s-4);
+  }
+
+  a {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+}
+
+.pghero--photo .pghero__lead {
+  color: rgb(255 255 255 / 0.92);
+
+  a {
+    color: #fff;
+  }
+}
+
+.pghero__crumbs,
+.pghero__crumbs nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+  margin-bottom: var(--s-5);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-wide);
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+  }
+
+  a:hover {
+    color: var(--c-orange);
+  }
+}
+
+.pghero--photo .pghero__crumbs,
+.pghero--photo .pghero__crumbs nav {
+  color: rgb(255 255 255 / 0.72);
+
+  a:hover {
+    color: #fff;
+  }
+
+  [aria-current] {
+    color: #fff;
+  }
+}
+
+.pghero__extra {
+  margin-top: var(--s-7);
+}
+
+.pghero--photo .kd__phone {
+  color: #fff;
+}
+
+.pghero--photo .kd__phone-label {
+  color: rgb(255 255 255 / 0.7);
+}
+
+.pghero--photo .kd__phone-number {
+  color: #fff;
+  font-size: clamp(2rem, 1.2rem + 2.2vw, 3rem);
+}
+
+.pghero--photo .kon__call {
+  color: #fff;
+  border-bottom-color: var(--c-orange);
+}
+
+@media (min-width: 62rem) {
+  .pghero {
+    padding-block: var(--s-10) var(--s-9);
+  }
+
+  .pghero--photo {
+    min-height: 26rem;
+  }
+}

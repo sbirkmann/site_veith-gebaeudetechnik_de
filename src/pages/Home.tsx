@@ -11,48 +11,8 @@ import { SectionHeader } from '../components/ui/SectionHeader'
 import { NewsCard } from '../components/ui/NewsCard'
 import { Reveal } from '../components/ui/Reveal'
 import { news } from '../data/news'
-import { company } from '../data/company'
+import { homeJsonLd } from '../seo/schema'
 import './Home.scss'
-
-/**
- * Structured data for the business itself.
- *
- * Only facts that the site actually publishes: name, address, contact, opening
- * hours and founding year. No ratings, no review counts, no service catalogue
- * with invented prices.
- */
-const organisationLd = {
-  '@context': 'https://schema.org',
-  '@type': 'HVACBusiness',
-  name: company.legalName,
-  alternateName: 'VEITH Gebäudetechnik',
-  url: 'https://www.veith-gebaeudetechnik.de/',
-  telephone: `+49 ${company.phone.display.replace(/^0/, '').replace(/\s/g, ' ')}`,
-  faxNumber: company.fax.display,
-  email: company.email,
-  foundingDate: String(company.founded),
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: company.address.street,
-    postalCode: company.address.postalCode,
-    addressLocality: company.address.city,
-    addressCountry: company.address.country,
-  },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '08:00',
-      closes: '12:00',
-    },
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-      opens: '13:00',
-      closes: '17:00',
-    },
-  ],
-}
 
 export function Home() {
   useSeo({
@@ -62,10 +22,10 @@ export function Home() {
       'Gebäudetechnik aus einer Hand in Bühl/Baden: Photovoltaik und Speicher, Wärmepumpe, Klimatechnik, Sanitär und Elektro. Beratung, Installation und Kundendienst seit 1989.',
     path: '/',
     image: 'montage-photovoltaik-dach',
-    jsonLd: organisationLd,
+    jsonLd: homeJsonLd(),
   })
 
-  const latest = news.slice(0, 4)
+  const latest = news.slice(0, 5)
 
   return (
     <>
@@ -89,18 +49,18 @@ export function Home() {
               </p>
               <p>
                 Wählen Sie eine Schicht — Sie sehen, was auf dieser Ebene zu tun ist
-                und woran sie hängt.
+                und welche anderen Gewerke dazugehören.
               </p>
             </Reveal>
           </div>
-          <div className="home-gewerke__model">
+          <Reveal className="home-gewerke__model">
             <GewerkeSchichten />
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <Zielgruppen />
-      <ServiceBlock />
+      <ServiceBlock showHours />
 
       {/* --- current topics ---------------------------------------------- */}
       <section className="home-news section">

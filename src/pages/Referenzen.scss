@@ -1,16 +1,13 @@
 .ref__rule {
-  display: block;
-  width: 3.5rem;
-  height: 3px;
-  margin-bottom: var(--s-5);
-  background-color: var(--c-orange);
+  display: none;
 }
 
 .ref__eyebrow {
   margin-bottom: var(--s-3);
-  color: var(--fg-subtle);
+  color: var(--c-eyebrow);
   font-family: var(--font-mono);
-  font-size: var(--t-3xs);
+  font-size: var(--t-2xs);
+  font-weight: 600;
   letter-spacing: var(--tr-caps);
   text-transform: uppercase;
 }
@@ -89,7 +86,7 @@
 .ref__name {
   font-family: var(--font-display);
   font-size: var(--t-lg);
-  font-weight: 620;
+  font-weight: 600;
   color: var(--c-ink);
   text-wrap: pretty;
 }
@@ -154,8 +151,8 @@
   }
 
   svg {
-    width: 1.25rem;
-    height: 0.75rem;
+    width: var(--icon-ui);
+    height: calc(var(--icon-ui) * 0.6);
     flex: none;
     color: var(--accent);
   }

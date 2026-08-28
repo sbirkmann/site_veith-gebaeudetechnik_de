@@ -2,6 +2,8 @@ import { useSeo } from '../hooks/useSeo'
 import { brands } from '../data/service'
 import { Reveal } from '../components/ui/Reveal'
 import { KontaktCta } from '../components/sections/KontaktCta'
+import { PageHero } from '../components/ui/PageHero'
+import { webPageJsonLd } from '../seo/schema'
 import './Marken.scss'
 
 /**
@@ -20,6 +22,18 @@ export default function Marken() {
       'Die Hersteller, deren Komponenten VEITH Gebäudetechnik verbaut — von ABB und Gira über MENNEKES bis WAGO, alphabetisch mit Liefergebiet und Link zum Hersteller.',
     path: '/service/marken',
     image: 'elektroinstallation',
+    jsonLd: webPageJsonLd({
+      path: '/service/marken',
+      name: 'Unsere Marken — Hersteller, die wir verbauen',
+      description:
+        'Die Hersteller, deren Komponenten VEITH Gebäudetechnik verbaut — von ABB und Gira über MENNEKES bis WAGO, alphabetisch mit Liefergebiet und Link zum Hersteller.',
+      image: 'elektroinstallation',
+      crumbs: [
+        { name: 'Startseite', path: '/' },
+        { name: 'Service', path: '/service' },
+        { name: 'Unsere Marken', path: '/service/marken' },
+      ],
+    }),
   })
 
   const sorted = [...brands].sort((a, b) =>
@@ -35,25 +49,15 @@ export default function Marken() {
 
   return (
     <>
-      <header className="mrk__hero">
-        <div className="container-wide">
-          <span className="mrk__rule" aria-hidden="true" />
-          <p className="mrk__eyebrow">Unsere Marken</p>
-          <h1 className="mrk__title">Stärken, die sich ergänzen</h1>
-          <p className="mrk__intro">
-            Gutes Handwerk baut auf starke Marken. Wir stellen sicher, dass Sie
-            nur hochwertige und langlebige Komponenten für Ihr Gebäude erhalten.
-          </p>
-          <p className="mrk__sub">
-            Hier eine Übersicht mit der Möglichkeit, sich direkt auf den Seiten
-            der Hersteller über interessante Produkte zu informieren.
-          </p>
-          <p className="mrk__count">
-            <span className="mrk__count-no">{brands.length}</span>
-            <span className="mrk__count-label">Hersteller im Verzeichnis</span>
-          </p>
-        </div>
-      </header>
+      <PageHero
+        eyebrow="Unsere Marken"
+        title="Hersteller, die wir verbauen"
+        lead={`${brands.length} Marken im Verzeichnis — mit direktem Weg zu deren Produktinformationen.`}
+        image={{
+          src: 'elektroinstallation',
+          alt: 'Elektroinstallation in einem Verteilerschrank',
+        }}
+      />
 
       {/* -------------------------------------------------------- the index */}
       <section className="mrk__index section" aria-labelledby="mrk-verzeichnis">
@@ -124,7 +128,7 @@ export default function Marken() {
       </section>
 
       <KontaktCta
-        title="Welche Marke für Ihr Gebäude die richtige ist, hängt vom Gebäude ab."
+        title="Welche Marke wir verbauen, richtet sich nach dem Gebäude."
         lead="Sagen Sie uns, was eingebaut werden soll — wir sagen Ihnen, womit wir es lösen würden und warum."
       />
     </>

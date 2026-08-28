@@ -5,15 +5,6 @@ import { company } from '../../data/company'
 import { trades } from '../../data/leistungen'
 import './Hero.scss'
 
-/**
- * The homepage opening.
- *
- * A full-bleed working photograph carries the whole viewport; the type sits on
- * it, held legible by a scrim that darkens the lower half of the frame rather
- * than washing the whole image out. Below the fold edge, a single quiet row
- * names the five trades — so the first screen answers both "who is this" and
- * "what do they do" without a second section.
- */
 export function Hero() {
   return (
     <section className="hero">
@@ -24,7 +15,7 @@ export function Hero() {
           priority
           fill
           sizes="100vw"
-          position="72% 34%"
+          position="72% 38%"
         />
         <div className="hero__scrim" aria-hidden="true" />
       </div>
@@ -32,7 +23,7 @@ export function Hero() {
       <div className="hero__inner container-wide">
         <p className="hero__eyebrow">
           <span className="hero__since">Seit {company.founded}</span>
-          <span className="hero__place">Bühl / Baden</span>
+          <span className="hero__place">Gebäudetechnik · Bühl / Baden</span>
         </p>
 
         <h1 className="hero__title">
@@ -42,9 +33,9 @@ export function Hero() {
         </h1>
 
         <p className="hero__lead">
-          Energie, Heizung, Klima, Sanitär und Elektro kommen bei uns aus einem
-          Haus — geplant, geliefert und installiert von Leuten, die wissen, wie
-          die Gewerke ineinandergreifen.
+          Energie, Heizung, Klima, Sanitär und Elektro aus einem Haus — geplant
+          und installiert von Leuten, die wissen, wie die Gewerke ineinandergreifen.
+          Seit {company.founded} in Bühl.
         </p>
 
         <div className="hero__actions">
@@ -57,16 +48,17 @@ export function Hero() {
         </div>
       </div>
 
-      {/* The five, named once at the foot of the first screen. */}
       <nav className="hero__trades" aria-label="Leistungsbereiche">
         <ul className="container-wide">
-          {trades.map((t) => (
+          {trades.map((t, i) => (
             <li key={t.id}>
               <Link
                 to={`/leistungen/${t.slug}`}
                 style={{ '--accent': t.accent } as React.CSSProperties}
               >
-                <span className="hero__trade-bar" aria-hidden="true" />
+                <span className="hero__trade-i" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
                 {t.name}
               </Link>
             </li>

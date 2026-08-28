@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import manifest from '../../../public/img/manifest.json'
+import { useLayoutEffect, useRef, useState } from 'react'
+import manifest from '../../data/image-manifest.json'
 import './Image.scss'
 
 type Manifest = Record<
@@ -10,7 +10,7 @@ type Manifest = Record<
 const images = manifest as Manifest
 
 export interface ImageProps {
-  /** Slug from public/img/manifest.json. */
+  /** Slug from src/data/image-manifest.json. */
   src: string
   alt: string
   /** The `sizes` attribute — tell the browser how wide this will render. */
@@ -47,7 +47,15 @@ export function Image({
   position,
 }: ImageProps) {
   const [loaded, setLoaded] = useState(false)
+  const imgRef = useRef<HTMLImageElement>(null)
   const entry = images[src]
+
+  // Cached images can finish before React attaches onLoad — without this the
+  // 20px blur placeholder stays stretched over the slot forever.
+  useLayoutEffect(() => {
+    const el = imgRef.current
+    if (el?.complete && el.naturalWidth > 0) setLoaded(true)
+  }, [src])
 
   if (!entry) {
     // A missing slug is a build mistake, not something to paper over at runtime.
@@ -76,11 +84,13 @@ export function Image({
         // also impose an aspect ratio.
         aspectRatio: fill ? undefined : (ratio ?? `${entry.width} / ${entry.height}`),
         height: fill ? '100%' : undefined,
+        width: fill ? '100%' : undefined,
       }}
     >
       <source type="image/avif" srcSet={srcset('avif')} sizes={cappedSizes} />
       <source type="image/webp" srcSet={srcset('webp')} sizes={cappedSizes} />
       <img
+        ref={imgRef}
         src={`/img/${src}.jpg`}
         alt={alt}
         width={entry.width}

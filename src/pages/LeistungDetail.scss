@@ -5,18 +5,15 @@
 }
 
 .ld__rule {
-  display: block;
-  width: 3.5rem;
-  height: 3px;
-  margin-bottom: var(--s-5);
-  background-color: var(--accent);
+  display: none;
 }
 
 .ld__eyebrow {
   margin-bottom: var(--s-3);
-  color: var(--c-ink-3);
+  color: var(--c-eyebrow);
   font-family: var(--font-mono);
-  font-size: var(--t-3xs);
+  font-size: var(--t-2xs);
+  font-weight: 600;
   letter-spacing: var(--tr-caps);
   text-transform: uppercase;
 }
@@ -84,7 +81,6 @@
 
 /* ------------------------------------------------------------------- scope */
 .ld__scope {
-  padding-block: var(--section-y-tight);
   background-color: var(--c-mist);
 }
 
@@ -104,27 +100,29 @@
   text-transform: uppercase;
 }
 
-/* The scope is a specification, set in two columns where there is room. */
+/* Spec-sheet rows: hairline, circle index, name. Two columns where there is room. */
 .ld__scope-list {
   display: grid;
-  gap: var(--s-3);
+  gap: 0;
+  counter-reset: ld-scope;
+  border-top: var(--hair) solid var(--c-blue-line);
 
   li {
-    position: relative;
-    padding-inline-start: var(--s-5);
+    counter-increment: ld-scope;
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    column-gap: var(--s-3);
+    align-items: center;
+    min-height: 2.75rem;
+    padding-block: var(--s-3);
+    border-bottom: var(--hair) solid var(--c-blue-line);
     color: var(--c-ink);
     font-size: var(--t-sm);
     line-height: 1.45;
   }
 
   li::before {
-    content: '';
-    position: absolute;
-    inset-inline-start: 0;
-    top: 0.5em;
-    width: 7px;
-    height: 7px;
-    background-color: var(--accent);
+    content: counter(ld-scope, decimal-leading-zero);
   }
 }
 
@@ -140,31 +138,31 @@
 
 .ld__index a {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: var(--s-4);
   min-height: 2.75rem;
   padding-block: var(--s-3);
   color: var(--c-ink-2);
   font-size: var(--t-sm);
-  transition: color var(--dur-fast) var(--ease), padding-inline-start var(--dur) var(--ease);
+  transition: color var(--dur-fast) var(--ease), background-color var(--dur) var(--ease);
 
   &:hover {
     color: var(--c-ink);
-    padding-inline-start: var(--s-3);
+    background-color: var(--c-white);
   }
 }
 
-.ld__index-num {
-  font-family: var(--font-mono);
-  font-size: var(--t-3xs);
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-}
-
-/* ------------------------------------------------------------------ topics */
 .ld__topic {
-  padding-block: var(--section-y-tight);
+  padding-block: var(--s-8);
   scroll-margin-top: calc(var(--header-h) + var(--s-5));
+
+  &:first-child {
+    padding-top: var(--section-y-tight);
+  }
+
+  &:last-child {
+    padding-bottom: var(--section-y-tight);
+  }
 
   & + & {
     border-top: var(--hair) solid var(--c-blue-line);
@@ -182,21 +180,6 @@
 
 .ld__topic-num {
   margin-bottom: var(--s-4);
-  font-family: var(--font-mono);
-  font-size: var(--t-2xs);
-  letter-spacing: var(--tr-wide);
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-
-  &::after {
-    content: '';
-    display: inline-block;
-    width: 2rem;
-    height: 1px;
-    margin-inline-start: var(--s-3);
-    background-color: currentColor;
-    vertical-align: middle;
-  }
 }
 
 .ld__topic-title {
@@ -249,19 +232,18 @@
     background-color: #fff;
     border: var(--hair) solid var(--c-blue-line);
     border-inline-start: 3px solid var(--accent);
-    border-radius: var(--r-md);
-    transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+    border-radius: 0;
+    transition: border-color var(--dur) var(--ease);
 
     &:hover {
       border-color: var(--accent);
-      transform: translateY(-2px);
     }
   }
 
   svg {
     grid-area: arrow;
-    width: 1.25rem;
-    height: 0.75rem;
+    width: var(--icon-ui);
+    height: calc(var(--icon-ui) * 0.6);
     align-self: center;
     color: var(--accent);
   }
@@ -271,7 +253,7 @@
   grid-area: name;
   font-family: var(--font-display);
   font-size: var(--t-lg);
-  font-weight: 620;
+  font-weight: 600;
   color: var(--c-ink);
 }
 
@@ -332,7 +314,7 @@
 @media (min-width: 40rem) {
   .ld__scope-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--s-3) var(--s-6);
+    column-gap: var(--s-8);
   }
 
   .ld__related-list a {
