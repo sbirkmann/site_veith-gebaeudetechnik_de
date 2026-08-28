@@ -45,40 +45,40 @@ const groups = [
 
 export function Zielgruppen() {
   return (
-    <section className="zg section">
-      <div className="container-wide">
+    <section className="zg">
+      <div className="zg__intro container-wide">
         <SectionHeader
           eyebrow="Für wen wir planen"
           title="Drei Auftraggeber, drei verschiedene Fragen"
           lead="Ein Bauherr, ein Betriebsleiter und ein Architekt wollen dasselbe Gebäude — aber sie fragen nach völlig unterschiedlichen Dingen."
         />
+      </div>
 
-        <ul className="zg__list">
-          {groups.map((g, i) => (
-            <Reveal as="li" className="zg__item" key={g.id} delay={i * 70}>
-              <article id={g.id}>
+      <ul className="zg__list">
+        {groups.map((g, i) => (
+          <Reveal as="li" className="zg__item" key={g.id} delay={i * 70}>
+            <article id={g.id}>
+              <div className="zg__media">
+                <Image
+                  src={g.image.src}
+                  alt={g.image.alt}
+                  fill
+                  sizes="(min-width: 62rem) 34vw, 100vw"
+                />
                 <p className="zg__index" aria-hidden="true">
                   {String(i + 1).padStart(2, '0')}
                 </p>
-                <div className="zg__media">
-                  <Image
-                    src={g.image.src}
-                    alt={g.image.alt}
-                    fill
-                    sizes="(min-width: 62rem) 22rem, 100vw"
-                  />
-                </div>
-                <p className="zg__label">{g.label}</p>
-                <h3 className="zg__question">{g.question}</h3>
-                <p className="zg__body">{g.body}</p>
-                <Link className="zg__link" to={g.to}>
-                  {g.linkLabel}
-                </Link>
-              </article>
-            </Reveal>
-          ))}
-        </ul>
-      </div>
+              </div>
+              <p className="zg__label">{g.label}</p>
+              <h3 className="zg__question">{g.question}</h3>
+              <p className="zg__body">{g.body}</p>
+              <Link className="zg__link" to={g.to}>
+                {g.linkLabel}
+              </Link>
+            </article>
+          </Reveal>
+        ))}
+      </ul>
     </section>
   )
 }

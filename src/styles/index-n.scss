@@ -1,5 +1,17 @@
-/* Numbered markers as a 2rem plate. Square like the rest of the plant:
-   hairline, no fill, mono figure. Orange only on the service cases. */
+/* Numbered markers: filled 2rem circles. Light: mist-2 fill, navy figure.
+   On night invert. Orange is never the fill. */
+
+@keyframes index-n-in {
+  from {
+    opacity: 0;
+    transform: scale(0.78);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
 %index-n {
   display: grid;
@@ -10,10 +22,10 @@
   align-self: start;
   margin: 0;
   padding: 0;
-  border: var(--hair) solid var(--c-blue-line);
-  border-radius: 0;
-  background-color: transparent;
-  color: var(--c-ink-3);
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--c-mist-2);
+  color: var(--c-navy);
   font-family: var(--font-mono);
   font-size: var(--t-3xs);
   font-weight: 500;
@@ -23,6 +35,7 @@
 }
 
 .pos__n,
+.pos__features li > span,
 .zg__index,
 .schnitt__n,
 .schichten__index,
@@ -51,15 +64,61 @@
 .svc__case-n,
 .svc__no,
 .hero__trade-i {
-  background-color: transparent;
-  color: #a8bcd4;
-  border-color: rgb(255 255 255 / 0.22);
+  background-color: var(--c-navy-2);
+  color: #f3f7fc;
+  border: var(--hair) solid rgb(255 255 255 / 0.14);
 }
 
 .schichten__layer.is-active .schichten__index {
   color: var(--layer-accent);
 }
 
-.svc__case-n {
-  color: var(--c-orange);
+$index-n-in: index-n-in 420ms var(--ease-out) both;
+
+.js-reveal .pos__features .reveal.is-shown > span,
+.js-reveal .reveal.is-shown .zg__index,
+.js-reveal .reveal.is-shown .schnitt__n,
+.js-reveal .reveal.is-shown .schichten__index,
+.js-reveal .reveal.is-shown .svc__case-n,
+.js-reveal .reveal.is-shown .svc__no,
+.js-reveal .reveal.is-shown .lst__num,
+.js-reveal .reveal.is-shown .ld__index-num,
+.js-reveal .reveal.is-shown .ld__topic-num,
+.js-reveal .reveal.is-shown .fdr__topic-no,
+.js-reveal .reveal.is-shown .lbr__area-no,
+.js-reveal .reveal.is-shown .sem__past-no,
+.js-reveal .reveal.is-shown .kd__case-n,
+.js-reveal .home-news__list .reveal.is-shown::before {
+  animation: $index-n-in;
+}
+
+@for $i from 1 through 8 {
+  $delay: #{($i - 1) * 55}ms;
+
+  .js-reveal .pos__features .reveal.is-shown:nth-child(#{$i}) > span,
+  .js-reveal .zg__list .reveal.is-shown:nth-child(#{$i}) .zg__index,
+  .js-reveal .reveal.is-shown .schichten__layer:nth-child(#{$i}) .schichten__index,
+  .js-reveal .reveal.is-shown .svc__cases li:nth-child(#{$i}) .svc__case-n,
+  .js-reveal .home-news__list li:nth-child(#{$i}).reveal.is-shown::before,
+  .js-reveal .reveal.is-shown li:nth-child(#{$i}) .lst__num,
+  .js-reveal .reveal.is-shown li:nth-child(#{$i}) .ld__index-num,
+  .js-reveal .ld__scope-list li:nth-child(#{$i})::before,
+  .js-reveal .unt__features li:nth-child(#{$i})::before,
+  .js-reveal .reveal.is-shown li:nth-child(#{$i}) .fdr__topic-no,
+  .js-reveal .reveal.is-shown li:nth-child(#{$i}) .lbr__area-no,
+  .js-reveal .reveal.is-shown li:nth-child(#{$i}) .kd__case-n {
+    animation-delay: $delay;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .pos__features .reveal.is-shown > span,
+  .js-reveal .reveal.is-shown .zg__index,
+  .js-reveal .reveal.is-shown .schnitt__n,
+  .js-reveal .reveal.is-shown .schichten__index,
+  .js-reveal .reveal.is-shown .svc__case-n,
+  .js-reveal .reveal.is-shown .svc__no,
+  .js-reveal .home-news__list .reveal.is-shown::before {
+    animation: none;
+  }
 }

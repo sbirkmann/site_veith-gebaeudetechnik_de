@@ -34,61 +34,56 @@ export function Home() {
 
       {/* --- the signature: five trades as strata of one building --------- */}
       <section className="home-gewerke section on-night">
-        <div className="container-wide">
-          <div className="home-gewerke__head">
-            <SectionHeader
-              eyebrow="Leistungsbereiche"
-              title="Ein Gebäude hat Schichten. Wir bauen alle fünf."
-              lead="Energie auf dem Dach, Wärme und Luft im Technikraum, Wasser im Schacht, Strom und Information überall dazwischen."
-            />
-            <Reveal className="home-gewerke__note" delay={80}>
-              <p>
-                Der Vorteil liegt nicht darin, dass wir fünf Dinge können, sondern
-                darin, dass eine Stelle sie aufeinander abstimmt: Die Wärmepumpe weiß
-                vom Speicher, der Speicher vom Dach, die Lüftung von der Kühlung.
-              </p>
-              <p>
-                Wählen Sie eine Schicht — Sie sehen, was auf dieser Ebene zu tun ist
-                und welche anderen Gewerke dazugehören.
-              </p>
-            </Reveal>
-          </div>
-          <Reveal className="home-gewerke__model">
-            <GewerkeSchichten />
+        <div className="home-gewerke__intro container-wide">
+          <SectionHeader
+            eyebrow="Leistungsbereiche"
+            title="Ein Gebäude hat Schichten. Wir bauen alle fünf."
+            lead="Energie auf dem Dach, Wärme und Luft im Technikraum, Wasser im Schacht, Strom und Information überall dazwischen."
+          />
+          <Reveal className="home-gewerke__note" delay={80}>
+            <p>
+              Der Vorteil liegt nicht darin, dass wir fünf Dinge können, sondern
+              darin, dass eine Stelle sie aufeinander abstimmt: Die Wärmepumpe weiß
+              vom Speicher, der Speicher vom Dach, die Lüftung von der Kühlung.
+            </p>
+            <p>
+              Wählen Sie eine Schicht — Sie sehen, was auf dieser Ebene zu tun ist
+              und welche anderen Gewerke dazugehören.
+            </p>
           </Reveal>
         </div>
+        <Reveal className="home-gewerke__model container-wide">
+          <GewerkeSchichten />
+        </Reveal>
       </section>
 
       <Zielgruppen />
-      <ServiceBlock showHours />
+      <ServiceBlock />
 
       {/* --- current topics ---------------------------------------------- */}
-      <section className="home-news section">
-        <div className="container-wide">
-          <div className="home-news__head">
-            <SectionHeader
-              eyebrow="Aktuelles"
-              title="Was gerade ansteht"
-              lead="Vorträge im Kompetenzzentrum, Neues aus dem Betrieb und Themen, die unsere Kunden gerade beschäftigen."
-            />
-            <Link className="home-news__all" to="/aktuelles">
-              Alle Meldungen
-            </Link>
-          </div>
-
-          <div className="home-news__grid">
-            <Reveal className="home-news__lead-item">
-              <NewsCard item={latest[0]} variant="feature" />
-            </Reveal>
-            <ul className="home-news__list">
-              {latest.slice(1).map((item, i) => (
-                <Reveal as="li" key={item.slug} delay={i * 70}>
-                  <NewsCard item={item} />
-                </Reveal>
-              ))}
-            </ul>
-          </div>
+      <section className="home-news">
+        <div className="home-news__head container-wide">
+          <SectionHeader
+            eyebrow="Aktuelles"
+            title="Was gerade ansteht"
+            lead="Vorträge im Kompetenzzentrum, Neues aus dem Betrieb und Themen, die unsere Kunden gerade beschäftigen."
+          />
+          <Link className="home-news__all" to="/aktuelles">
+            Alle Meldungen
+          </Link>
         </div>
+
+        <Reveal className="home-news__lead-item">
+          <NewsCard item={latest[0]} variant="feature" />
+        </Reveal>
+
+        <ul className="home-news__list container-wide">
+          {latest.slice(1).map((item, i) => (
+            <Reveal as="li" key={item.slug} delay={i * 70}>
+              <NewsCard item={item} />
+            </Reveal>
+          ))}
+        </ul>
       </section>
 
       <KarriereTeaser />

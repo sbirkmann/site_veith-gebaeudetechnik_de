@@ -34,12 +34,11 @@ export function NewsCard({ item, variant = 'compact', headingLevel = 3 }: NewsCa
           <Image
             src={item.image.src}
             alt=""
-            ratio={compact ? undefined : '16 / 10'}
-            fill={compact}
+            fill
             sizes={
               compact
-                ? '5.5rem'
-                : '(min-width: 62rem) 32rem, 100vw'
+                ? '(min-width: 62rem) 8rem, 5.5rem'
+                : '100vw'
             }
           />
         ) : (

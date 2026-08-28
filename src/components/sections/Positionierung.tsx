@@ -51,7 +51,7 @@ export function Positionierung() {
         ))}
       </ol>
 
-      <dl className="pos__facts container-wide">
+      <dl className="pos__facts">
         {kompetenzzentrum.facts.map((f, i) => (
           <div className="pos__fact" key={f.value}>
             <FactIcon index={i} />

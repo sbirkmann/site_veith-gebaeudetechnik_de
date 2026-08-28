@@ -25,11 +25,11 @@ export function KontaktCta({
         <Reveal className="kcta__split">
           <div className="kcta__media" aria-hidden="true">
             <Image
-              src="kompetenzzentrum-aussen"
+              src="kompetenzzentrum-marke"
               alt=""
               fill
               sizes="(min-width: 56rem) 40vw, 100vw"
-              position="42% 70%"
+              position="10% 100%"
             />
           </div>
 

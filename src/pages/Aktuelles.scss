@@ -74,17 +74,10 @@
   display: grid;
   gap: 0;
   align-items: start;
-  max-width: 42rem;
   border-top: var(--hair) solid var(--c-blue-line);
 }
 
 .akt__list > li {
   padding-block: var(--s-4);
   border-bottom: var(--hair) solid var(--c-blue-line);
-}
-
-@media (min-width: 62rem) {
-  .akt__list {
-    max-width: 48rem;
-  }
 }

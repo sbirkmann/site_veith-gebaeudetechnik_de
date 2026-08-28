@@ -1,35 +1,11 @@
 .kar {
   background-color: var(--c-white);
   color: var(--c-ink);
+  padding-block: calc(var(--section-y) + var(--s-6)) var(--section-y);
 }
 
-.kar.section {
-  padding-block: var(--section-y);
-}
-
-.kar__grid {
-  display: grid;
-  gap: var(--s-7);
-  align-items: start;
-}
-
-.kar__media {
-  position: relative;
-  min-width: 0;
-  overflow: hidden;
-  aspect-ratio: 16 / 10;
-  max-height: 22rem;
-
-  .img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.kar__body {
-  min-width: 0;
+.kar__inner {
+  max-width: 40rem;
 }
 
 .kar__eyebrow {
@@ -57,20 +33,4 @@
 
 .kar__actions {
   margin-top: var(--s-7);
-}
-
-@media (min-width: 62rem) {
-  .kar__grid {
-    grid-template-columns: minmax(0, 24rem) minmax(0, 1fr);
-    gap: var(--s-10);
-    align-items: start;
-  }
-
-  .kar__media {
-    aspect-ratio: 4 / 5;
-    width: 100%;
-    max-width: 24rem;
-    height: auto;
-    max-height: 32rem;
-  }
 }

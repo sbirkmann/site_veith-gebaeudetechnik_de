@@ -29,7 +29,20 @@
 }
 
 .ncard--feature .ncard__media {
-  margin-bottom: var(--s-2);
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  margin-bottom: 0;
+
+  .img,
+  .ncard__ph {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+  }
 }
 
 .ncard__meta {

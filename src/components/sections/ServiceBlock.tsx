@@ -5,15 +5,9 @@ import { IconPhone } from '../ui/lineIcons'
 import { company } from '../../data/company'
 import './ServiceBlock.scss'
 
-interface ServiceBlockProps {
-  showHours?: boolean
-}
-
 /**
- * The Kundendienst as its own conversion moment.
- *
- * Someone whose heating has failed is not browsing — they need the number
- * and the opening hours immediately.
+ * Homepage Kundendienst band. Phone only — opening hours live on
+ * /kontakt and /service/kundendienst.
  */
 
 const cases = [
@@ -31,7 +25,7 @@ const cases = [
   },
 ]
 
-export function ServiceBlock({ showHours = false }: ServiceBlockProps) {
+export function ServiceBlock() {
   return (
     <section className="svc">
       <div className="svc__media" aria-hidden="true">
@@ -56,20 +50,6 @@ export function ServiceBlock({ showHours = false }: ServiceBlockProps) {
             </span>
             <IconPhone className="svc__call-icon" />
           </a>
-          {showHours && (
-            <ul className="svc__hours">
-              {company.openingHours.map((h) => (
-                <li key={h.days}>
-                  <span>{h.days}</span>
-                  <span>{h.time}</span>
-                </li>
-              ))}
-              <li>
-                <span>Außerhalb</span>
-                <span>{company.appointmentNote}</span>
-              </li>
-            </ul>
-          )}
         </Reveal>
 
         <Reveal className="svc__cases" delay={90}>

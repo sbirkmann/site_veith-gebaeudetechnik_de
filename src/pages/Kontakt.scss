@@ -354,11 +354,6 @@
 }
 
 @media (min-width: 62rem) {
-  .pghero--photo:has(+ .kon__facts-band) {
-    min-height: 24rem;
-    padding-block: var(--s-10) var(--s-8);
-  }
-
   .kon__phone-strip {
     padding-block: var(--s-6);
   }

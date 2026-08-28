@@ -99,52 +99,53 @@ export default function Unternehmen() {
             </Reveal>
           </div>
 
-          <Reveal className="unt__kz-facts" delay={80}>
-            <p className="unt__facts-title">Kennzahlen des Gebäudes</p>
-            <dl>
-              {kompetenzzentrum.facts.map((f, i) => (
-                <div className="unt__kz-fact" key={f.value}>
-                  <FactIcon index={i} />
-                  <dt>{f.value}</dt>
-                  <dd>{f.label}</dd>
-                </div>
-              ))}
-            </dl>
-          </Reveal>
         </div>
       </section>
 
-      {/* ------------------------------------------------------------ team */}
-      <section className="unt__team section on-night">
-        <div className="container-wide">
-          <div className="unt__team-grid">
-            <Reveal className="unt__team-media">
-              <Image
-                src="team-gruppenbild"
-                alt="Das Team von VEITH Gebäudetechnik vor dem Kompetenzzentrum in Bühl"
-                ratio="16 / 11"
-                sizes="(min-width: 62rem) 46rem, 100vw"
-              />
-            </Reveal>
-            <Reveal className="unt__team-text" delay={70}>
-              <h2 className="unt__h2">Die Leute, die das bauen</h2>
-              <p>
-                Gebäudetechnik ist Handwerk und Ingenieursarbeit zugleich. Bei uns
-                arbeiten Meisterinnen und Meister aus Elektro-, Kälte- und
-                SHK-Technik, Energieberater, Projektleiter und Auszubildende
-                zusammen an denselben Objekten — deshalb sprechen die Gewerke bei
-                uns tatsächlich miteinander.
-              </p>
-              <div className="unt__team-actions">
-                <Button to="/kontakt" variant="secondary" arrow>
-                  Ansprechpartner
-                </Button>
-                <Button to="/karriere" variant="ghost" arrow>
-                  Offene Stellen
-                </Button>
+      <Reveal className="unt__kz-facts" delay={80}>
+        <div className="unt__kz-facts-inner">
+          <p className="unt__facts-title">Kennzahlen des Gebäudes</p>
+          <dl>
+            {kompetenzzentrum.facts.map((f, i) => (
+              <div className="unt__kz-fact" key={f.value}>
+                <FactIcon index={i} />
+                <dt>{f.value}</dt>
+                <dd>{f.label}</dd>
               </div>
-            </Reveal>
-          </div>
+            ))}
+          </dl>
+        </div>
+      </Reveal>
+
+      {/* ------------------------------------------------------------ team */}
+      <section className="unt__team on-night">
+        <Reveal className="unt__team-media">
+          <Image
+            src="team-gruppenbild"
+            alt="Das Team von VEITH Gebäudetechnik vor dem Kompetenzzentrum in Bühl"
+            fill
+            sizes="100vw"
+          />
+        </Reveal>
+        <div className="unt__team-text container-wide">
+          <Reveal delay={70}>
+            <h2 className="unt__h2">Die Leute, die das bauen</h2>
+            <p>
+              Gebäudetechnik ist Handwerk und Ingenieursarbeit zugleich. Bei uns
+              arbeiten Meisterinnen und Meister aus Elektro-, Kälte- und
+              SHK-Technik, Energieberater, Projektleiter und Auszubildende
+              zusammen an denselben Objekten — deshalb sprechen die Gewerke bei
+              uns tatsächlich miteinander.
+            </p>
+            <div className="unt__team-actions">
+              <Button to="/kontakt" variant="secondary" arrow>
+                Ansprechpartner
+              </Button>
+              <Button to="/karriere" variant="ghost" arrow>
+                Offene Stellen
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </section>
 

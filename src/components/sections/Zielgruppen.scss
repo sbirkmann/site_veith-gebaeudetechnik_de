@@ -2,10 +2,13 @@
   background-color: var(--c-mist);
 }
 
+.zg__intro {
+  padding-block: var(--section-y) var(--s-8);
+}
+
 .zg__list {
   display: grid;
-  gap: var(--s-8);
-  margin-top: var(--s-6);
+  gap: 0;
 }
 
 .zg__item article {
@@ -13,7 +16,7 @@
   flex-direction: column;
   align-items: stretch;
   gap: var(--s-4);
-  max-width: 36rem;
+  padding-bottom: var(--s-8);
   scroll-margin-top: calc(var(--header-h) + var(--s-6));
 }
 
@@ -22,7 +25,8 @@
   width: 100%;
   margin: 0;
   overflow: hidden;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 16 / 10;
+  background-color: var(--c-navy);
 
   .img {
     position: absolute;
@@ -30,6 +34,27 @@
     width: 100%;
     height: 100%;
   }
+}
+
+.zg__index {
+  position: absolute;
+  top: var(--s-4);
+  left: var(--gutter);
+  z-index: 1;
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  letter-spacing: var(--tr-caps);
+  text-shadow: 0 1px 8px rgb(14 35 64 / 0.55);
+}
+
+.zg__label,
+.zg__question,
+.zg__body,
+.zg__link {
+  padding-inline: var(--gutter);
 }
 
 .zg__label {
@@ -75,9 +100,6 @@
 @media (min-width: 62rem) {
   .zg__list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: var(--s-8);
-    row-gap: var(--s-4);
-    align-items: stretch;
   }
 
   .zg__item {
@@ -91,23 +113,27 @@
     content: '';
     position: absolute;
     inset-block: 0;
-    inset-inline-start: calc(var(--s-8) / -2);
+    inset-inline-start: 0;
     border-inline-start: var(--hair) solid var(--c-blue-line);
     pointer-events: none;
+    z-index: 1;
   }
 
   .zg__item article {
     flex: 1 1 auto;
     min-height: 100%;
-    max-width: none;
-    padding-block-end: var(--s-4);
-  }
-
-  .zg__link {
-    margin-top: auto;
+    padding-bottom: var(--s-9);
   }
 
   .zg__media {
     aspect-ratio: 4 / 5;
+  }
+
+  .zg__index {
+    left: var(--s-5);
+  }
+
+  .zg__link {
+    margin-top: auto;
   }
 }

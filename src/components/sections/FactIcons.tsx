@@ -19,7 +19,7 @@ const stroke = {
 export function FactIconFloorplan() {
   return (
     <svg {...shared}>
-      <g {...stroke}>
+      <g {...stroke} transform="translate(24 24) scale(1.2) translate(-24 -24)">
         <rect x="6" y="14" width="36" height="24" />
         <path d="M18 14v24M30 14v24" />
         <path d="M14 38h2M26 38h2M36 38h2" />
@@ -33,7 +33,7 @@ export function FactIconFloorplan() {
 export function FactIconEnEV() {
   return (
     <svg {...shared}>
-      <g {...stroke}>
+      <g {...stroke} transform="translate(24 24) scale(1.2) translate(-24 -24)">
         <path d="M6 14h36" strokeDasharray="2.2 2" opacity="0.5" />
         <path d="M6 28h27" />
         <path d="M33 14v14" />
@@ -49,7 +49,7 @@ export function FactIconEnEV() {
 export function FactIconEnergy() {
   return (
     <svg {...shared}>
-      <g {...stroke}>
+      <g {...stroke} transform="translate(24 24) scale(1.2) translate(-24 -24)">
         <rect x="6" y="10" width="16" height="20" />
         <path d="M6 14h16" />
         <path d="M9 16h10M9 20h7M9 24h10" opacity="0.55" strokeWidth={0.85} />
@@ -67,7 +67,7 @@ export function FactIconEnergy() {
 export function FactIconPV() {
   return (
     <svg {...shared}>
-      <g {...stroke}>
+      <g {...stroke} transform="translate(24 24) scale(1.2) translate(-24 -24)">
         <path d="M8 26 24 8l16 18" />
         <path d="M12 22.5 24 11l12 11.5" />
         <path d="M16 18.5h16M20 14.2h8" opacity="0.7" strokeWidth={0.85} />
@@ -83,7 +83,7 @@ export function FactIconPV() {
 export function FactIconEnvelope() {
   return (
     <svg {...shared}>
-      <g {...stroke}>
+      <g {...stroke} transform="translate(24 24) scale(1.2) translate(-24 -24)">
         <path d="M14 8v32M34 8v32" />
         <path d="M18 8v32M30 8v32" />
         <path d="M18 10l12 12M18 18l12 12M18 26l12 12M18 34l8 8" opacity="0.4" strokeWidth={0.75} />
