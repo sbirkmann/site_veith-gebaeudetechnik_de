@@ -1,0 +1,332 @@
+.kon__rule {
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  margin-bottom: var(--s-5);
+  background-color: var(--c-orange);
+}
+
+.kon__eyebrow {
+  margin-bottom: var(--s-3);
+  color: var(--c-ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------- hero */
+.kon__hero {
+  padding-block: var(--s-8) var(--section-y-tight);
+}
+
+.kon__hero-grid {
+  display: grid;
+  gap: var(--s-8);
+}
+
+.kon__title {
+  font-size: var(--t-3xl);
+}
+
+.kon__intro {
+  max-width: 40ch;
+  margin-top: var(--s-5);
+  color: var(--c-ink-2);
+  font-size: var(--t-md);
+}
+
+.kon__call {
+  display: inline-block;
+  margin-top: var(--s-6);
+  font-family: var(--font-mono);
+  font-size: clamp(1.75rem, 1.1rem + 2.4vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--c-ink);
+  white-space: nowrap;
+  border-bottom: 3px solid var(--c-orange);
+  padding-bottom: 2px;
+
+  &:hover {
+    color: var(--c-orange);
+  }
+}
+
+/* ------------------------------------------------------------- fact panel */
+.kon__facts {
+  display: grid;
+  gap: var(--s-6);
+  padding: var(--s-6);
+  background-color: var(--c-mist);
+  border-radius: var(--r-lg);
+  align-content: start;
+}
+
+.kon__fact h2 {
+  margin-bottom: var(--s-3);
+  color: var(--c-ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  font-weight: 500;
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.kon__fact + .kon__fact {
+  padding-top: var(--s-6);
+  border-top: var(--hair) solid var(--c-blue-line);
+}
+
+.kon__fact address {
+  font-style: normal;
+  color: var(--c-ink);
+  line-height: var(--lh-normal);
+}
+
+.kon__route {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  margin-top: var(--s-2);
+  color: var(--c-ink);
+  font-size: var(--t-sm);
+  border-bottom: 2px solid var(--c-orange);
+
+  &:hover {
+    color: var(--c-orange);
+  }
+}
+
+.kon__fact dl {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.kon__fact dl div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+}
+
+.kon__fact dt {
+  min-width: 4.5rem;
+  color: var(--c-ink-3);
+  font-size: var(--t-xs);
+}
+
+.kon__fact dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  color: var(--c-ink);
+  overflow-wrap: anywhere;
+
+  /* These are the values a visitor taps, so they get a real hit area. */
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+  }
+
+  a:hover {
+    color: var(--c-orange);
+  }
+}
+
+.kon__hours {
+  display: grid;
+  gap: var(--s-2);
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--s-3);
+    font-size: var(--t-sm);
+    color: var(--c-ink-2);
+  }
+
+  li span:last-child {
+    font-family: var(--font-mono);
+    color: var(--c-ink);
+    white-space: nowrap;
+  }
+}
+
+.kon__note {
+  margin-top: var(--s-3);
+  color: var(--c-ink-3);
+  font-size: var(--t-xs);
+}
+
+/* ------------------------------------------------------------------- form */
+.kon__form-section {
+  padding-block: var(--section-y-tight);
+  background-color: var(--c-mist);
+}
+
+.kon__form-grid {
+  display: grid;
+  gap: var(--s-8);
+}
+
+.kon__h2 {
+  font-size: var(--t-xl);
+}
+
+.kon__form-intro p {
+  max-width: 42ch;
+  margin-top: var(--s-4);
+  color: var(--c-ink-2);
+}
+
+.kon__form-hint {
+  font-size: var(--t-sm);
+
+  a {
+    font-family: var(--font-mono);
+    color: var(--c-ink);
+    border-bottom: 2px solid var(--c-orange);
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--c-orange);
+    }
+  }
+}
+
+/* -------------------------------------------------------- Ansprechpartner */
+.kon__team-title {
+  font-size: var(--t-2xl);
+  color: var(--fg);
+}
+
+.kon__team-lead {
+  max-width: 44ch;
+  margin-top: var(--s-3);
+  color: var(--fg-muted);
+}
+
+.kon__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: var(--s-7);
+}
+
+.kon__tab {
+  min-height: 2.75rem;
+  padding: var(--s-2) var(--s-4);
+  border: var(--hair) solid var(--rule);
+  border-radius: var(--r-md);
+  color: var(--fg-muted);
+  font-size: var(--t-sm);
+  font-weight: 520;
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+
+  &:hover {
+    border-color: var(--fg-subtle);
+    color: var(--fg);
+  }
+
+  &.is-active {
+    background-color: var(--c-orange);
+    border-color: var(--c-orange);
+    color: #fff;
+  }
+}
+
+.kon__panel {
+  margin-top: var(--s-7);
+  padding-top: var(--s-6);
+  border-top: var(--hair) solid var(--rule);
+}
+
+.kon__panel-hint {
+  max-width: 52ch;
+  color: var(--fg-muted);
+  font-size: var(--t-sm);
+}
+
+.kon__panel-note {
+  margin-top: var(--s-2);
+  color: var(--fg-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+}
+
+.kon__people {
+  display: grid;
+  gap: var(--s-5);
+  margin-top: var(--s-7);
+}
+
+.kon__person {
+  display: grid;
+  gap: var(--s-1);
+  padding: var(--s-5);
+  background-color: var(--bg-raised);
+  border: var(--hair) solid var(--rule);
+  border-inline-start: 3px solid var(--c-orange);
+  border-radius: var(--r-md);
+}
+
+.kon__person-name {
+  font-family: var(--font-display);
+  font-size: var(--t-base);
+  font-weight: 620;
+  color: var(--fg);
+}
+
+.kon__person-qual {
+  color: var(--fg-subtle);
+  font-size: var(--t-xs);
+}
+
+.kon__person-role {
+  margin-top: var(--s-2);
+  color: var(--fg-muted);
+  font-size: var(--t-sm);
+  line-height: 1.45;
+}
+
+.kon__person-tel {
+  margin-top: var(--s-3);
+  justify-self: start;
+  min-height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  color: var(--fg);
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--c-orange);
+  }
+}
+
+/* ------------------------------------------------------------ breakpoints */
+@media (min-width: 44rem) {
+  .kon__people {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 62rem) {
+  .kon__hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+    gap: var(--s-9);
+  }
+
+  .kon__form-grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--s-9);
+    align-items: start;
+  }
+
+  .kon__people {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

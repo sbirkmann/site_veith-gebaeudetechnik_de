@@ -1,0 +1,185 @@
+.lst__hero {
+  padding-block: var(--s-8) var(--s-7);
+}
+
+.lst__rule {
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  margin-bottom: var(--s-5);
+  background-color: var(--c-orange);
+}
+
+.lst__eyebrow {
+  margin-bottom: var(--s-3);
+  color: var(--c-ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.lst__title {
+  max-width: 16ch;
+  font-size: var(--t-3xl);
+}
+
+.lst__intro {
+  max-width: 48ch;
+  margin-top: var(--s-5);
+  color: var(--c-ink-2);
+  font-size: var(--t-md);
+}
+
+/* ------------------------------------------------------------- the listing */
+.lst__trades {
+  padding-bottom: var(--section-y);
+}
+
+.lst__list {
+  border-top: var(--hair) solid var(--c-blue-line);
+}
+
+.lst__row {
+  border-bottom: var(--hair) solid var(--c-blue-line);
+}
+
+.lst__row a {
+  --accent: var(--c-orange);
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    'num  text arrow'
+    'media media media';
+  align-items: center;
+  gap: var(--s-4);
+  padding-block: var(--s-6);
+  transition: padding-inline var(--dur) var(--ease);
+
+  &:hover {
+    padding-inline: var(--s-4);
+  }
+}
+
+.lst__num {
+  grid-area: num;
+  align-self: start;
+  padding-top: 0.35em;
+  font-family: var(--font-mono);
+  font-size: var(--t-2xs);
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.lst__media {
+  grid-area: media;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--r-sm);
+
+  .img {
+    /* The whole row reacts, so the image gets only a slow scale. */
+    transition: transform var(--dur-slow) var(--ease);
+  }
+}
+
+.lst__row a:hover .lst__media .img {
+  transform: scale(1.03);
+}
+
+.lst__text {
+  grid-area: text;
+  display: grid;
+  gap: var(--s-2);
+  min-width: 0;
+}
+
+.lst__name {
+  font-family: var(--font-display);
+  font-size: var(--t-xl);
+  font-weight: 640;
+  letter-spacing: var(--tr-snug);
+  color: var(--c-ink);
+}
+
+.lst__summary {
+  max-width: 52ch;
+  color: var(--c-ink-2);
+  font-size: var(--t-sm);
+}
+
+.lst__scope {
+  max-width: 60ch;
+  color: var(--c-ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  line-height: 1.6;
+}
+
+.lst__arrow {
+  grid-area: arrow;
+  align-self: start;
+  margin-top: 0.5em;
+  width: 1.5rem;
+  height: 0.875rem;
+  flex: none;
+  color: var(--accent);
+  transition: transform var(--dur) var(--ease);
+}
+
+.lst__row a:hover .lst__arrow {
+  transform: translateX(4px);
+}
+
+/* -------------------------------------------------------------- audiences */
+.lst__aud-grid {
+  display: grid;
+  gap: var(--s-6);
+  margin-top: var(--s-8);
+}
+
+.lst__aud-item {
+  padding-top: var(--s-5);
+  border-top: 2px solid var(--c-orange);
+  scroll-margin-top: calc(var(--header-h) + var(--s-6));
+
+  h3 {
+    font-size: var(--t-lg);
+    color: var(--fg);
+  }
+
+  p {
+    margin-top: var(--s-3);
+    color: var(--fg-muted);
+    font-size: var(--t-sm);
+  }
+}
+
+/* ------------------------------------------------------------ breakpoints */
+@media (min-width: 46rem) {
+  .lst__row a {
+    grid-template-columns: auto 12rem 1fr auto;
+    grid-template-areas: 'num media text arrow';
+    gap: var(--s-6);
+    padding-block: var(--s-7);
+  }
+
+  .lst__num,
+  .lst__arrow {
+    align-self: center;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .lst__aud-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-7);
+  }
+}
+
+@media (min-width: 62rem) {
+  .lst__row a {
+    grid-template-columns: auto 16rem 1fr auto;
+  }
+}

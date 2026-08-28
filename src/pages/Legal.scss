@@ -1,0 +1,246 @@
+/* ==========================================================================
+   Legal pages — Impressum and Datenschutz
+   --------------------------------------------------------------------------
+   Two long text documents on the warm paper ground. No cards, no boxes: the
+   only ornament is the orange rule above the title and the hairlines that
+   separate the sections. Everything is set on the prose measure so the lines
+   stay readable however wide the window gets.
+   ========================================================================== */
+
+.legal {
+  padding-block: var(--s-8) var(--section-y);
+}
+
+.legal__rule {
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  margin-bottom: var(--s-5);
+  background-color: var(--c-orange);
+}
+
+.legal__eyebrow {
+  margin-bottom: var(--s-3);
+  color: var(--c-ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.legal__title {
+  font-size: var(--t-3xl);
+  max-width: 18ch;
+}
+
+.legal__lead {
+  max-width: var(--container-text);
+  margin-top: var(--s-5);
+  color: var(--c-ink-2);
+  font-size: var(--t-md);
+}
+
+/* ------------------------------------------------------------------ layout */
+.legal__grid {
+  margin-top: var(--s-9);
+  display: grid;
+  gap: var(--s-8);
+}
+
+/* ---------------------------------------------------------------------- toc
+   A plain list at the top on narrow screens; a sticky rail beside the text
+   from 62rem up. */
+.legal__toc {
+  padding-top: var(--s-5);
+  border-top: var(--hair) solid var(--rule);
+}
+
+.legal__toc-title {
+  margin-bottom: var(--s-3);
+  color: var(--c-ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  font-weight: 500;
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.legal__toc ol {
+  display: grid;
+  gap: var(--s-1);
+  counter-reset: legal-toc;
+}
+
+.legal__toc li {
+  list-style: none;
+}
+
+.legal__toc a {
+  display: block;
+  padding-block: var(--s-2);
+  color: var(--c-ink-2);
+  font-size: var(--t-sm);
+  line-height: var(--lh-normal);
+  border-inline-start: 2px solid transparent;
+  padding-inline-start: var(--s-3);
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+
+  &:hover {
+    color: var(--c-ink);
+    border-inline-start-color: var(--c-orange);
+  }
+}
+
+/* ------------------------------------------------------------------- prose */
+.legal__body {
+  max-width: var(--container-text);
+  /* Long URLs and mail addresses must never widen the page at 320px. */
+  overflow-wrap: anywhere;
+}
+
+.legal__section + .legal__section {
+  margin-top: var(--s-8);
+  padding-top: var(--s-8);
+  border-top: var(--hair) solid var(--rule);
+}
+
+.legal__body h2 {
+  font-size: var(--t-xl);
+  scroll-margin-top: calc(var(--header-h) + var(--s-6));
+}
+
+.legal__body h3 {
+  margin-top: var(--s-6);
+  font-size: var(--t-lg);
+  color: var(--c-ink);
+}
+
+.legal__body h2 + h3 {
+  margin-top: var(--s-5);
+}
+
+.legal__body p {
+  margin-top: var(--s-4);
+  color: var(--c-ink-2);
+  line-height: var(--lh-relaxed);
+}
+
+.legal__body h2 + p,
+.legal__body h3 + p {
+  margin-top: var(--s-4);
+}
+
+/* base.scss strips list markers site-wide; running legal prose needs them back. */
+.legal__body ul,
+.legal__body ol {
+  margin-top: var(--s-4);
+  padding-inline-start: var(--s-5);
+  color: var(--c-ink-2);
+}
+
+.legal__body ul {
+  list-style: disc;
+}
+
+.legal__body ol {
+  list-style: decimal;
+}
+
+.legal__body li {
+  list-style: inherit;
+  margin-top: var(--s-2);
+  padding-inline-start: var(--s-1);
+
+  &::marker {
+    color: var(--c-ink-3);
+  }
+}
+
+.legal__body a {
+  color: var(--c-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--c-orange);
+
+  &:hover {
+    color: var(--c-orange);
+  }
+}
+
+/* A block of plain facts — address, register entries. Not a card: just a
+   tighter rhythm and the mono face the rest of the site uses for data. */
+.legal__facts {
+  margin-top: var(--s-4);
+  font-style: normal;
+  color: var(--c-ink);
+  line-height: var(--lh-normal);
+}
+
+.legal__facts a {
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+}
+
+.legal__dl {
+  display: grid;
+  gap: var(--s-3);
+  margin-top: var(--s-5);
+}
+
+.legal__dl > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-4);
+}
+
+.legal__dl dt {
+  min-width: 12rem;
+  color: var(--c-ink-3);
+  font-size: var(--t-sm);
+}
+
+.legal__dl dd {
+  margin: 0;
+  color: var(--c-ink);
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  overflow-wrap: anywhere;
+}
+
+.legal__credits {
+  margin-top: var(--s-4);
+  color: var(--c-ink-2);
+
+  li {
+    list-style: none;
+    margin-top: var(--s-1);
+    font-size: var(--t-sm);
+  }
+}
+
+.legal__source {
+  margin-top: var(--s-8);
+  padding-top: var(--s-5);
+  border-top: var(--hair) solid var(--rule);
+  color: var(--c-ink-3);
+  font-size: var(--t-xs);
+}
+
+/* ------------------------------------------------------------ breakpoints */
+@media (min-width: 62rem) {
+  .legal__grid {
+    grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+    gap: var(--s-9);
+    align-items: start;
+  }
+
+  .legal__toc {
+    position: sticky;
+    top: calc(var(--header-h) + var(--s-6));
+    padding-top: 0;
+    border-top: 0;
+    max-height: calc(100vh - var(--header-h) - var(--s-9));
+    overflow-y: auto;
+  }
+}

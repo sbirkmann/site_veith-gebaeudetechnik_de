@@ -1,0 +1,199 @@
+.mrk__rule {
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  margin-bottom: var(--s-5);
+  background-color: var(--c-orange);
+}
+
+.mrk__eyebrow {
+  margin-bottom: var(--s-3);
+  color: var(--fg-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------- hero */
+.mrk__hero {
+  padding-block: var(--s-8) var(--section-y-tight);
+}
+
+.mrk__title {
+  max-width: 16ch;
+  font-size: var(--t-3xl);
+  text-wrap: balance;
+}
+
+.mrk__intro {
+  max-width: 50ch;
+  margin-top: var(--s-5);
+  color: var(--c-ink-2);
+  font-size: var(--t-md);
+}
+
+.mrk__sub {
+  max-width: 50ch;
+  margin-top: var(--s-4);
+  color: var(--c-ink-2);
+  font-size: var(--t-sm);
+}
+
+.mrk__count {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-4);
+  margin-top: var(--s-6);
+}
+
+.mrk__count-no {
+  font-family: var(--font-display);
+  font-size: var(--t-2xl);
+  font-weight: 700;
+  letter-spacing: var(--tr-tight);
+  color: var(--c-ink);
+  font-variant-numeric: tabular-nums;
+  border-bottom: 3px solid var(--c-orange);
+}
+
+.mrk__count-label {
+  color: var(--c-ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------ index */
+.mrk__index {
+  border-top: var(--hair) solid var(--c-blue-line);
+  background-color: var(--c-mist);
+}
+
+/* Column labels only appear once the table actually has columns. */
+.mrk__head {
+  display: none;
+}
+
+.mrk__group + .mrk__group {
+  margin-top: var(--s-6);
+}
+
+.mrk__letter {
+  padding-bottom: var(--s-2);
+  border-bottom: 2px solid var(--c-ink);
+  color: var(--c-ink);
+  font-family: var(--font-mono);
+  font-size: var(--t-2xs);
+  font-weight: 600;
+  letter-spacing: var(--tr-caps);
+}
+
+.mrk__row {
+  border-bottom: var(--hair) solid var(--c-blue-line);
+}
+
+.mrk__link {
+  display: grid;
+  gap: var(--s-1);
+  min-height: 3rem;
+  padding-block: var(--s-4);
+  color: var(--c-ink);
+  transition: color var(--dur) var(--ease);
+
+  &:hover .mrk__name {
+    color: var(--c-orange);
+  }
+
+  &:hover .mrk__icon {
+    transform: translate(0.15rem, -0.15rem);
+  }
+}
+
+.mrk__name {
+  font-family: var(--font-display);
+  font-size: var(--t-md);
+  font-weight: 620;
+  letter-spacing: var(--tr-snug);
+  overflow-wrap: break-word;
+  transition: color var(--dur) var(--ease);
+}
+
+.mrk__field {
+  color: var(--c-ink-2);
+  font-size: var(--t-sm);
+  overflow-wrap: break-word;
+}
+
+.mrk__host {
+  color: var(--c-ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-2xs);
+  overflow-wrap: anywhere;
+}
+
+.mrk__icon {
+  width: 0.875rem;
+  color: var(--c-ink-3);
+  justify-self: start;
+  transition: transform var(--dur) var(--ease);
+}
+
+.mrk__disclaimer {
+  max-width: 56ch;
+  margin-top: var(--s-7);
+  color: var(--c-ink-3);
+  font-size: var(--t-xs);
+}
+
+/* -------------------------------------------------------------------------
+   From 48rem the list becomes a real four-column table: name, supply area,
+   host, icon. Below that each entry stacks, which is what keeps long German
+   compounds like "Blitz- und Überspannungsschutz" from forcing a scrollbar.
+   ------------------------------------------------------------------------- */
+@media (min-width: 48rem) {
+  .mrk__head {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) minmax(0, 1fr) 1.25rem;
+    gap: var(--s-5);
+    padding-bottom: var(--s-3);
+    border-bottom: var(--hair) solid var(--c-blue-line);
+    color: var(--c-ink-3);
+    font-family: var(--font-mono);
+    font-size: var(--t-3xs);
+    letter-spacing: var(--tr-caps);
+    text-transform: uppercase;
+  }
+
+  .mrk__group + .mrk__group {
+    margin-top: var(--s-7);
+  }
+
+  .mrk__letter {
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: var(--s-2);
+    color: var(--c-orange);
+  }
+
+  .mrk__link {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) minmax(0, 1fr) 1.25rem;
+    gap: var(--s-5);
+    align-items: baseline;
+  }
+
+  .mrk__icon {
+    justify-self: end;
+  }
+}
+
+/* On very wide screens the table would stretch to 1440px and the eye would
+   lose the row. Cap the index instead of letting it run. */
+@media (min-width: 75rem) {
+  .mrk__head,
+  .mrk__groups,
+  .mrk__disclaimer {
+    max-width: 68rem;
+  }
+}

@@ -1,0 +1,106 @@
+.btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--fg);
+  --btn-edge: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-3);
+  /* 48px tall at md — comfortably above the 44px touch-target floor. */
+  min-height: 3rem;
+  padding: 0.75rem 1.5rem;
+  border: var(--hair) solid var(--btn-edge);
+  border-radius: var(--r-md);
+  background-color: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-body);
+  font-size: var(--t-sm);
+  font-weight: 560;
+  letter-spacing: 0.005em;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    transform var(--dur-fast) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition-property: background-color, border-color, color;
+  }
+  .btn:active {
+    transform: none;
+  }
+}
+
+.btn--lg {
+  min-height: 3.5rem;
+  padding: 1rem 2rem;
+  font-size: var(--t-base);
+}
+
+.btn__arrow {
+  width: 1.25rem;
+  height: 0.75rem;
+  flex: none;
+  transition: transform var(--dur) var(--ease);
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(3px);
+}
+
+/* --- primary: the orange is the site's only loud colour, so it marks the one
+   action that matters most in a given view. --------------------------------- */
+.btn--primary {
+  --btn-bg: var(--c-orange);
+  --btn-fg: #fff;
+  --btn-edge: var(--c-orange);
+
+  box-shadow: 0 1px 2px rgb(120 60 0 / 0.18);
+
+  &:hover {
+    --btn-bg: var(--c-orange-deep);
+    --btn-edge: var(--c-orange-deep);
+
+    box-shadow: 0 3px 12px rgb(120 60 0 / 0.24);
+  }
+
+  /* Pressed state returns it flat to the surface. */
+  &:active {
+    box-shadow: none;
+    transform: translateY(1px);
+  }
+}
+
+/* --- secondary: outlined, inherits the ground it sits on ------------------- */
+.btn--secondary {
+  --btn-edge: color-mix(in srgb, var(--fg) 26%, transparent);
+  --btn-fg: var(--fg);
+
+  &:hover {
+    --btn-edge: var(--fg);
+    --btn-bg: color-mix(in srgb, var(--fg) 6%, transparent);
+  }
+}
+
+/* --- ghost: text with a rule that fills in on hover ------------------------ */
+.btn--ghost {
+  min-height: 2.5rem;
+  padding: 0.5rem 0;
+  border-radius: 0;
+  --btn-fg: var(--fg);
+  border-bottom: 2px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-inline: 0;
+  border-top: 0;
+
+  &:hover {
+    border-bottom-color: var(--accent);
+    --btn-fg: var(--accent);
+  }
+}

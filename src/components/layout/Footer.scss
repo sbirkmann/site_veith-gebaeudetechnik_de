@@ -1,0 +1,171 @@
+.ftr {
+  padding-block: var(--s-10) var(--s-6);
+  /* The ring in the mark is the only colour down here. */
+  border-top: 3px solid var(--c-orange);
+}
+
+.ftr__top {
+  display: grid;
+  gap: var(--s-9);
+  padding-bottom: var(--s-9);
+}
+
+.ftr__brand > * + * {
+  margin-top: var(--s-6);
+}
+
+.ftr__address {
+  font-style: normal;
+  color: var(--fg-muted);
+  line-height: var(--lh-normal);
+}
+
+.ftr__legal-name {
+  display: block;
+  color: var(--fg);
+  font-weight: 560;
+}
+
+.ftr__contact {
+  display: grid;
+  gap: var(--s-3);
+
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2) var(--s-4);
+  }
+
+  dt {
+    min-width: 4.5rem;
+    color: var(--fg-subtle);
+    font-size: var(--t-xs);
+  }
+
+  dd {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--t-sm);
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+  }
+
+  a:hover {
+    color: var(--c-orange);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.ftr__hours-title,
+.ftr__col-title {
+  margin-bottom: var(--s-4);
+  color: var(--fg-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.ftr__hours ul {
+  display: grid;
+  gap: var(--s-2);
+  font-size: var(--t-sm);
+}
+
+.ftr__hours li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s-3);
+  max-width: 22rem;
+  color: var(--fg-muted);
+}
+
+.ftr__hours-time {
+  font-family: var(--font-mono);
+  color: var(--fg);
+  white-space: nowrap;
+}
+
+.ftr__hours-note {
+  margin-top: var(--s-3);
+  color: var(--fg-subtle);
+  font-size: var(--t-xs);
+}
+
+/* ------------------------------------------------------------------ sitemap */
+.ftr__nav {
+  display: grid;
+  gap: var(--s-7);
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+}
+
+.ftr__col ul {
+  display: grid;
+}
+
+.ftr__col a {
+  /* A comfortable row rather than a bare text line: these are the footer's
+     primary navigation on a phone. */
+  display: flex;
+  align-items: center;
+  min-height: 2.5rem;
+  color: var(--fg-muted);
+  font-size: var(--t-sm);
+
+  &:hover {
+    color: var(--c-orange);
+  }
+}
+
+/* ------------------------------------------------------------------- bottom */
+.ftr__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4) var(--s-6);
+  padding-top: var(--s-6);
+  border-top: var(--hair) solid var(--rule);
+  color: var(--fg-subtle);
+  font-size: var(--t-xs);
+}
+
+.ftr__copy {
+  margin-inline-end: auto;
+}
+
+.ftr__social,
+.ftr__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-5);
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+  }
+
+  a:hover {
+    color: var(--c-orange);
+  }
+}
+
+@media (min-width: 40rem) {
+  .ftr__contact div {
+    align-items: baseline;
+  }
+}
+
+@media (min-width: 60rem) {
+  .ftr__top {
+    /* Identity keeps a fixed measure; the sitemap takes the rest. */
+    grid-template-columns: minmax(18rem, 24rem) 1fr;
+    gap: var(--s-12);
+  }
+}

@@ -1,0 +1,178 @@
+@use 'sass:math';
+
+/* ==========================================================================
+   VEITH — Design Tokens
+   --------------------------------------------------------------------------
+   Blue leads, orange signals.
+
+   The blue is the VEITH blue from the mark (#2470C8), taken down to a deep
+   engineering navy for surfaces so it can carry large areas without shouting.
+   It is the colour of the trade: plan drawings, cold water, the utility. The
+   orange from the ring stays reserved for one job — the thing the reader is
+   meant to act on. Nothing decorative is ever orange.
+
+   Grounds are white and a cool blue-grey, not warm paper: this is a technical
+   business, and the page should read like clean drawing stock rather than
+   letterpress.
+   ========================================================================== */
+
+:root {
+  /* --- blue: the leading colour ------------------------------------------ */
+  --c-navy: #0e2340; // deepest ground: hero, inverted sections, footer
+  --c-navy-2: #143459; // raised surface on navy
+  --c-navy-3: #1e4574; // hairlines and borders on navy
+  --c-blue: #2470c8; // the VEITH blue itself — links, active states
+  --c-blue-deep: #1b579e; // hover / pressed
+  --c-blue-wash: #eef3f9; // tinted panels on light ground
+  --c-blue-line: #d3dfec; // hairlines on light ground
+
+  /* --- grounds ----------------------------------------------------------- */
+  --c-white: #ffffff;
+  --c-mist: #f4f7fa; // cool alternate ground
+  --c-mist-2: #e7edf4; // raised surface on mist
+
+  /* --- ink --------------------------------------------------------------- */
+  --c-ink: #0e2340; // primary text — the same navy, for one coherent hue
+  --c-ink-2: #46586e; // secondary text
+  --c-ink-3: #6c7f94; // tertiary, captions, mono labels
+
+  /* --- signal ------------------------------------------------------------
+     Orange marks actions and nothing else. Never a heading, never a border
+     for decoration, never a background for a whole section. */
+  --c-orange: #ef7c00;
+  --c-orange-deep: #cf6a00;
+  --c-orange-wash: #fdf1e3;
+
+  /* --- trade accents ------------------------------------------------------
+     Five hues that sit inside the blue family's temperature so no section
+     fights the brand. Used only as a thin rule, a number, an active marker. */
+  --c-energie: #e8a02b; // sun on a cool ground
+  --c-heizung: #c25a3f; // fired clay
+  --c-klima: #3d92aa; // cooled air
+  --c-sanitaer: #2470c8; // water — the brand blue itself
+  --c-elektro: #5b6bb5; // current
+
+  /* --- semantic ----------------------------------------------------------
+     Sections remap these rather than overriding every rule inside them. */
+  --bg: var(--c-white);
+  --bg-raised: var(--c-mist);
+  --fg: var(--c-ink);
+  --fg-muted: var(--c-ink-2);
+  --fg-subtle: var(--c-ink-3);
+  --rule: var(--c-blue-line);
+  --accent: var(--c-orange);
+  --link: var(--c-blue);
+  --focus: #1b6fd4;
+
+  /* --- type ---------------------------------------------------------------
+     Archivo for display: squarer and more engineered than a humanist sans.
+     Inter for running text. JetBrains Mono for anything that is a value,
+     a label or a reference — it marks data as data. */
+  --font-display: 'Archivo Variable', 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Inter Variable', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+
+  --t-3xs: 0.6875rem;
+  --t-2xs: 0.75rem;
+  --t-xs: 0.8125rem;
+  --t-sm: 0.9375rem;
+  --t-base: clamp(1rem, 0.97rem + 0.14vw, 1.0625rem);
+  --t-md: clamp(1.0625rem, 1rem + 0.28vw, 1.1875rem);
+  --t-lg: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
+  --t-xl: clamp(1.5rem, 1.3rem + 0.9vw, 2.125rem);
+  --t-2xl: clamp(1.875rem, 1.5rem + 1.6vw, 3rem);
+  --t-3xl: clamp(2.25rem, 1.6rem + 2.9vw, 4.25rem);
+  --t-4xl: clamp(2.625rem, 1.6rem + 4.4vw, 5.75rem);
+
+  --lh-tight: 1.04;
+  --lh-snug: 1.16;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.62;
+
+  --tr-tight: -0.022em;
+  --tr-snug: -0.014em;
+  --tr-normal: 0;
+  --tr-wide: 0.02em;
+  --tr-caps: 0.13em;
+
+  /* --- space ------------------------------------------------------------- */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 2.5rem;
+  --s-8: 3rem;
+  --s-9: 4rem;
+  --s-10: 5rem;
+  --s-11: 6rem;
+  --s-12: 8rem;
+
+  /* Generous vertical rhythm: the layout is calm and image-led, so sections
+     need room to breathe rather than to be packed. */
+  --section-y: clamp(4.5rem, 2.5rem + 7vw, 10rem);
+  --section-y-tight: clamp(3.25rem, 2rem + 4.6vw, 6rem);
+
+  /* --- layout ------------------------------------------------------------ */
+  --container: 78rem;
+  --container-wide: 92rem;
+  --container-text: 42rem;
+  --gutter: clamp(1.25rem, 0.85rem + 1.7vw, 3rem);
+
+  /* --- lines, radii, shadow ----------------------------------------------
+     Small radii only. Plant technology is built square. */
+  --r-sm: 2px;
+  --r-md: 4px;
+  --r-lg: 8px;
+  --hair: 1px;
+
+  --shadow-sm: 0 1px 2px rgb(14 35 64 / 0.06), 0 2px 8px rgb(14 35 64 / 0.05);
+  --shadow-md: 0 2px 4px rgb(14 35 64 / 0.06), 0 8px 24px rgb(14 35 64 / 0.09);
+  --shadow-lg: 0 4px 10px rgb(14 35 64 / 0.07), 0 24px 56px rgb(14 35 64 / 0.14);
+
+  /* --- motion ------------------------------------------------------------ */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur: 260ms;
+  --dur-slow: 520ms;
+
+  --header-h: 5rem;
+  --z-header: 100;
+  --z-nav: 200;
+  --z-overlay: 300;
+}
+
+/* The alternate ground: cool blue-grey rather than a second white. */
+.on-mist {
+  --bg: var(--c-mist);
+  --bg-raised: var(--c-white);
+  --rule: var(--c-blue-line);
+
+  background-color: var(--bg);
+}
+
+/* The deep ground. Used for whole sections, the footer, and any band that
+   should read as "plant room" rather than "page". */
+.on-night {
+  --bg: var(--c-navy);
+  --bg-raised: var(--c-navy-2);
+  --fg: #f3f7fc;
+  --fg-muted: #a8bcd4;
+  --fg-subtle: #7d93ae;
+  --rule: var(--c-navy-3);
+  --link: #7db4f0;
+  --focus: #8cc2ff;
+
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0.01ms;
+    --dur: 0.01ms;
+    --dur-slow: 0.01ms;
+  }
+}

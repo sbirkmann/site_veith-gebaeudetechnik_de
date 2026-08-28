@@ -1,0 +1,35 @@
+/* The hidden state is only applied once JS has marked the document as able to
+   run the observer. Without that class the content is simply visible — so a
+   failed or blocked script can never leave the page blank. */
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 620ms var(--ease-out),
+    transform 620ms var(--ease-out);
+}
+
+/* Anything still unrevealed once the page has finished loading is shown
+   regardless — covers print, find-in-page, and any element the observer
+   never got to. */
+@media print {
+  .js-reveal .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.js-reveal .reveal.is-shown {
+  opacity: 1;
+  transform: none;
+}
+
+/* No movement, no delay — the content is simply there. */
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    transition-delay: 0ms !important;
+  }
+}

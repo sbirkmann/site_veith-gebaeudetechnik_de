@@ -1,0 +1,93 @@
+.home-gewerke__model {
+  margin-top: var(--s-9);
+}
+
+/* ------------------------------------------------------------------- news */
+.home-news__head {
+  display: grid;
+  gap: var(--s-5);
+  align-items: end;
+}
+
+.home-news__all {
+  justify-self: start;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  color: var(--fg);
+  font-size: var(--t-sm);
+  font-weight: 560;
+  border-bottom: 2px solid var(--c-orange);
+  padding-bottom: 2px;
+
+  &:hover {
+    color: var(--c-orange);
+  }
+}
+
+.home-news__grid {
+  display: grid;
+  gap: var(--s-8);
+  margin-top: var(--s-8);
+}
+
+.home-news__list {
+  display: grid;
+  gap: 0;
+  border-top: var(--hair) solid var(--rule);
+
+  li {
+    padding-block: var(--s-5);
+    border-bottom: var(--hair) solid var(--rule);
+  }
+}
+
+@media (min-width: 46rem) {
+  .home-news__head {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+@media (min-width: 62rem) {
+  .home-news__grid {
+    /* The lead story gets the image and the width; the rest is a reading list.
+       Not three equal cards. */
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: var(--s-9);
+    align-items: start;
+  }
+
+  .home-news__list {
+    border-top: 0;
+
+    li:first-child {
+      padding-top: 0;
+    }
+  }
+}
+
+/* The section header shares its row with a short second column, so the wide
+   dark band is not half empty. */
+.home-gewerke__head {
+  display: grid;
+  gap: var(--s-6);
+}
+
+.home-gewerke__note {
+  display: grid;
+  gap: var(--s-4);
+  align-self: end;
+  max-width: 34rem;
+  color: var(--fg-muted);
+  font-size: var(--t-sm);
+  padding-inline-start: var(--s-5);
+  border-inline-start: 2px solid var(--c-orange);
+}
+
+@media (min-width: 62rem) {
+  .home-gewerke__head {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+    gap: var(--s-9);
+    align-items: end;
+  }
+}

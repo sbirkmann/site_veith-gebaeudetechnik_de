@@ -1,0 +1,274 @@
+.kd__rule {
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  margin-bottom: var(--s-5);
+  background-color: var(--c-orange);
+}
+
+.kd__eyebrow {
+  margin-bottom: var(--s-3);
+  color: var(--fg-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.kd__h2 {
+  max-width: 22ch;
+  font-size: var(--t-xl);
+  color: var(--fg);
+}
+
+/* --------------------------------------------------------------------- hero
+   The number is the page. Nothing above it, nothing beside it. */
+.kd__hero {
+  padding-block: var(--s-8) var(--section-y-tight);
+}
+
+.kd__h1 {
+  max-width: 20ch;
+  font-size: var(--t-xl);
+  color: var(--c-ink-2);
+  font-weight: 560;
+}
+
+.kd__phone {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: var(--s-6);
+  padding-block: var(--s-3);
+  color: var(--c-ink);
+
+  &:hover .kd__phone-number,
+  &:focus-visible .kd__phone-number {
+    color: var(--c-orange);
+  }
+}
+
+.kd__phone-label {
+  display: block;
+  margin-bottom: var(--s-2);
+  color: var(--c-ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.kd__phone-number {
+  display: block;
+  font-family: var(--font-display);
+  /* The one place on the site that uses the top of the scale. */
+  font-size: var(--t-4xl);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tr-tight);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+  transition: color var(--dur) var(--ease);
+}
+
+.kd__hours-line {
+  max-width: 42ch;
+  margin-top: var(--s-5);
+  color: var(--c-ink-2);
+  font-size: var(--t-md);
+}
+
+.kd__hours {
+  display: grid;
+  gap: var(--s-3);
+  max-width: 34rem;
+  margin-top: var(--s-6);
+  padding-top: var(--s-5);
+  border-top: var(--hair) solid var(--c-blue-line);
+
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2) var(--s-5);
+    justify-content: space-between;
+  }
+
+  dt {
+    color: var(--c-ink-2);
+    font-size: var(--t-sm);
+  }
+
+  dd {
+    margin: 0;
+    color: var(--c-ink);
+    font-family: var(--font-mono);
+    font-size: var(--t-sm);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.kd__mail-line {
+  max-width: 46ch;
+  margin-top: var(--s-5);
+  color: var(--c-ink-2);
+  font-size: var(--t-sm);
+
+  a {
+    color: var(--c-ink);
+    border-bottom: 2px solid var(--c-orange);
+    overflow-wrap: anywhere;
+
+    &:hover {
+      color: var(--c-orange);
+    }
+  }
+}
+
+/* -------------------------------------------------------------------- cases */
+.kd__case-list {
+  display: grid;
+  gap: 0;
+  margin-top: var(--s-6);
+  list-style: none;
+  border-top: var(--hair) solid var(--c-blue-line);
+}
+
+.kd__case {
+  padding-block: var(--s-6);
+  border-bottom: var(--hair) solid var(--c-blue-line);
+}
+
+.kd__case-label {
+  color: var(--c-orange);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.kd__case-title {
+  max-width: 28ch;
+  margin-top: var(--s-3);
+  font-size: var(--t-lg);
+  color: var(--c-ink);
+  overflow-wrap: break-word;
+}
+
+.kd__case-body {
+  max-width: 58ch;
+  margin-top: var(--s-3);
+  color: var(--c-ink-2);
+}
+
+.kd__cases-media {
+  margin-top: var(--s-8);
+
+  .img {
+    border-radius: var(--r-md);
+  }
+}
+
+/* ---------------------------------------------------------------- Notdienst */
+.kd__notdienst {
+  padding-block: var(--section-y-tight);
+}
+
+.kd__notdienst-grid {
+  display: grid;
+  gap: var(--s-7);
+  align-items: start;
+}
+
+.kd__notdienst-body {
+  max-width: 50ch;
+  margin-top: var(--s-4);
+  color: var(--fg-muted);
+}
+
+.kd__notdienst-side {
+  padding: var(--s-6);
+  background-color: var(--c-navy-2);
+  border-radius: var(--r-lg);
+}
+
+.kd__notdienst-sidelabel {
+  color: var(--fg-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.kd__departments {
+  margin-top: var(--s-4);
+
+  li {
+    padding-block: var(--s-3);
+    border-bottom: var(--hair) solid var(--c-navy-3);
+    color: var(--fg);
+    font-family: var(--font-display);
+    font-size: var(--t-md);
+    font-weight: 600;
+  }
+}
+
+.kd__notdienst-phone {
+  display: inline-block;
+  margin-top: var(--s-5);
+  padding-block: var(--s-2);
+  color: var(--fg);
+  font-family: var(--font-display);
+  font-size: var(--t-lg);
+  font-weight: 660;
+  font-variant-numeric: tabular-nums;
+  border-bottom: 3px solid var(--c-orange);
+  overflow-wrap: anywhere;
+
+  &:hover {
+    color: var(--c-orange);
+  }
+}
+
+.kd__notdienst-note {
+  margin-top: var(--s-5);
+  color: var(--fg-muted);
+  font-size: var(--t-xs);
+
+  a {
+    color: var(--fg);
+    border-bottom: var(--hair) solid currentColor;
+
+    &:hover {
+      color: var(--c-orange);
+    }
+  }
+}
+
+/* -------------------------------------------------------------- breakpoints */
+@media (min-width: 48rem) {
+  .kd__case {
+    display: grid;
+    grid-template-columns: 6rem minmax(0, 1fr);
+    gap: var(--s-5);
+  }
+
+  .kd__case-label {
+    padding-top: 0.35em;
+  }
+
+  .kd__case-title,
+  .kd__case-body {
+    grid-column: 2;
+  }
+
+  .kd__case-title {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 62rem) {
+  .kd__notdienst-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: var(--s-9);
+  }
+}

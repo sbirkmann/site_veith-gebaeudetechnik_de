@@ -1,0 +1,195 @@
+.cf {
+  display: grid;
+  gap: var(--s-5);
+}
+
+.cf__row {
+  display: grid;
+  gap: var(--s-5);
+}
+
+.cf__field {
+  display: grid;
+  gap: var(--s-2);
+  min-width: 0;
+}
+
+.cf__label {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  font-size: var(--t-xs);
+  font-weight: 560;
+  color: var(--c-ink);
+}
+
+.cf__hint {
+  color: var(--c-ink-3);
+  font-weight: 400;
+}
+
+.cf__req {
+  color: var(--c-orange);
+}
+
+.cf input,
+.cf textarea,
+.cf select {
+  width: 100%;
+  min-height: 3rem;
+  padding: var(--s-3) var(--s-4);
+  background-color: #fff;
+  border: var(--hair) solid var(--c-blue-line);
+  border-radius: var(--r-md);
+  color: var(--c-ink);
+  font-size: var(--t-sm);
+  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+
+  &::placeholder {
+    color: var(--c-ink-3);
+  }
+
+  &:hover {
+    border-color: var(--c-ink-3);
+  }
+
+  &:focus {
+    border-color: var(--c-orange);
+    /* The focus ring is drawn by :focus-visible; this is the field's own
+       emphasis, kept subtle so the two do not fight. */
+    box-shadow: 0 0 0 3px var(--c-orange-wash);
+    outline-offset: 1px;
+  }
+}
+
+.cf textarea {
+  min-height: 9rem;
+  resize: vertical;
+  line-height: var(--lh-normal);
+}
+
+/* Native select needs its own arrow once appearance is reset. */
+.cf__select {
+  position: relative;
+
+  select {
+    appearance: none;
+    padding-inline-end: var(--s-8);
+    cursor: pointer;
+  }
+
+  svg {
+    position: absolute;
+    inset-inline-end: var(--s-4);
+    top: 50%;
+    width: 0.625rem;
+    height: 0.375rem;
+    transform: translateY(-50%);
+    color: var(--c-ink-3);
+    pointer-events: none;
+  }
+}
+
+.cf__field.has-error input,
+.cf__field.has-error textarea {
+  border-color: #b4231b;
+}
+
+.cf__error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-2);
+  color: #b4231b;
+  font-size: var(--t-xs);
+
+  &::before {
+    content: '!';
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+    margin-top: 1px;
+    border-radius: 50%;
+    background-color: #b4231b;
+    color: #fff;
+    font-size: 0.6875rem;
+    font-weight: 700;
+  }
+}
+
+/* --------------------------------------------------------------- consent */
+.cf__consent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--s-2) var(--s-3);
+
+  input {
+    /* A checkbox must not stretch like the text inputs above, but it still
+       needs to be comfortably tappable. */
+    width: 1.5rem;
+    height: 1.5rem;
+    min-height: 0;
+    margin-top: 0.05em;
+    padding: 0;
+    accent-color: var(--c-orange);
+    cursor: pointer;
+  }
+
+  label {
+    font-size: var(--t-xs);
+    line-height: 1.5;
+    color: var(--c-ink-2);
+  }
+
+  a {
+    color: var(--c-ink);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: var(--c-orange);
+    }
+  }
+
+  .cf__error {
+    grid-column: 1 / -1;
+  }
+}
+
+/* The honeypot must be unreachable but not display:none, which some bots
+   detect and skip. */
+.cf__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.cf__actions {
+  margin-top: var(--s-1);
+}
+
+.cf__status {
+  font-size: var(--t-sm);
+  color: var(--c-ink-2);
+
+  &:empty {
+    display: none;
+  }
+
+  &.is-sent {
+    padding: var(--s-4) var(--s-5);
+    background-color: var(--c-orange-wash);
+    border-inline-start: 3px solid var(--c-orange);
+    border-radius: var(--r-sm);
+    color: var(--c-ink);
+  }
+}
+
+@media (min-width: 34rem) {
+  .cf__row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

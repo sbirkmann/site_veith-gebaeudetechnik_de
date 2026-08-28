@@ -1,0 +1,200 @@
+.lbr__rule {
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  margin-bottom: var(--s-5);
+  background-color: var(--c-orange);
+}
+
+.lbr__eyebrow {
+  margin-bottom: var(--s-3);
+  color: var(--fg-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.lbr__h2 {
+  max-width: 20ch;
+  font-size: var(--t-xl);
+  color: var(--fg);
+}
+
+/* --------------------------------------------------------------------- hero
+   The room comes first and the words after it — this is the one page where the
+   photograph carries the argument. */
+.lbr__hero {
+  padding-bottom: var(--section-y-tight);
+}
+
+.lbr__hero-media {
+  width: 100%;
+
+  .img {
+    width: 100%;
+  }
+}
+
+.lbr__hero-text {
+  margin-top: var(--s-7);
+  max-width: 62rem;
+}
+
+.lbr__title {
+  max-width: 20ch;
+  font-size: var(--t-3xl);
+  text-wrap: balance;
+}
+
+.lbr__lead {
+  max-width: 54ch;
+  margin-top: var(--s-5);
+  color: var(--c-ink-2);
+  font-size: var(--t-md);
+}
+
+/* -------------------------------------------------------------- the areas */
+.lbr__areas-grid {
+  display: grid;
+  gap: var(--s-8);
+  align-items: start;
+}
+
+.lbr__areas-lead {
+  max-width: 44ch;
+  margin-top: var(--s-4);
+  color: var(--fg-muted);
+}
+
+.lbr__areas-media {
+  margin: var(--s-7) 0 0;
+
+  .img {
+    border-radius: var(--r-md);
+  }
+}
+
+.lbr__area-list {
+  list-style: none;
+  border-top: var(--hair) solid var(--c-navy-3);
+}
+
+.lbr__area {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: var(--s-4);
+  padding-block: var(--s-5);
+  border-bottom: var(--hair) solid var(--c-navy-3);
+}
+
+.lbr__area-no {
+  padding-top: 0.4em;
+  color: var(--c-orange);
+  font-family: var(--font-mono);
+  font-size: var(--t-2xs);
+  font-variant-numeric: tabular-nums;
+}
+
+.lbr__area-body {
+  min-width: 0;
+}
+
+.lbr__area-title {
+  font-size: var(--t-lg);
+  color: var(--fg);
+  overflow-wrap: break-word;
+}
+
+.lbr__area-text {
+  max-width: 58ch;
+  margin-top: var(--s-3);
+  color: var(--fg-muted);
+  font-size: var(--t-sm);
+  line-height: var(--lh-relaxed);
+}
+
+/* ------------------------------------------------------------------ visit */
+.lbr__visit-grid {
+  display: grid;
+  gap: var(--s-7);
+  align-items: start;
+}
+
+.lbr__visit-text p {
+  max-width: 50ch;
+  margin-top: var(--s-4);
+  color: var(--c-ink-2);
+}
+
+.lbr__visit-hours {
+  font-size: var(--t-sm);
+}
+
+.lbr__visit-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4) var(--s-5);
+  margin-top: var(--s-7);
+}
+
+.lbr__visit-side {
+  padding: var(--s-6);
+  background-color: var(--c-mist);
+  border-radius: var(--r-lg);
+}
+
+.lbr__visit-sidelabel {
+  color: var(--c-ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.lbr__visit-address {
+  margin-top: var(--s-4);
+  color: var(--c-ink);
+  font-size: var(--t-base);
+  line-height: var(--lh-normal);
+}
+
+.lbr__visit-phone {
+  display: inline-block;
+  margin-top: var(--s-5);
+  padding-block: var(--s-2);
+  color: var(--c-ink);
+  font-family: var(--font-display);
+  font-size: var(--t-lg);
+  font-weight: 660;
+  font-variant-numeric: tabular-nums;
+  border-bottom: 3px solid var(--c-orange);
+  overflow-wrap: anywhere;
+
+  &:hover {
+    color: var(--c-orange);
+  }
+}
+
+/* ------------------------------------------------------------ breakpoints */
+@media (min-width: 62rem) {
+  .lbr__hero-text {
+    margin-top: var(--s-8);
+  }
+
+  .lbr__areas-grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--s-9);
+  }
+
+  .lbr__area {
+    grid-template-columns: 3rem minmax(0, 1fr);
+    padding-block: var(--s-6);
+  }
+
+  .lbr__visit-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: var(--s-9);
+  }
+}

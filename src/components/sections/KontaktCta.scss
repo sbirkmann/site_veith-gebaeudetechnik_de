@@ -1,0 +1,76 @@
+.kcta {
+  padding-block: var(--section-y);
+}
+
+.kcta__inner {
+  display: grid;
+  gap: var(--s-7);
+}
+
+.kcta__rule {
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  background-color: var(--c-orange);
+}
+
+.kcta__title {
+  max-width: 18ch;
+  font-size: var(--t-2xl);
+  color: var(--fg);
+}
+
+.kcta__lead {
+  max-width: 44ch;
+  margin-top: var(--s-4);
+  color: var(--fg-muted);
+  font-size: var(--t-md);
+}
+
+.kcta__phone {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: clamp(1.75rem, 1.1rem + 2.6vw, 2.75rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  /* The number must never wrap mid-way. */
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--c-orange);
+  }
+}
+
+.kcta__mail {
+  display: inline-block;
+  margin-top: var(--s-3);
+  color: var(--fg-muted);
+  font-size: var(--t-sm);
+  /* Long addresses may break rather than overflow. */
+  overflow-wrap: anywhere;
+
+  &:hover {
+    color: var(--c-orange);
+  }
+}
+
+.kcta__actions {
+  margin-top: var(--s-6);
+}
+
+@media (min-width: 56rem) {
+  .kcta__inner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: start;
+    gap: var(--s-8);
+  }
+
+  .kcta__rule {
+    margin-top: 0.7em;
+  }
+
+  .kcta__contact {
+    text-align: end;
+  }
+}

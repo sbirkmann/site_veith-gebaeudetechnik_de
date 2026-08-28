@@ -1,0 +1,28 @@
+.img {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--c-mist);
+  background-size: cover;
+  background-position: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity var(--dur-slow) var(--ease);
+  }
+
+  &.is-loaded img {
+    opacity: 1;
+  }
+}
+
+/* Nothing to fade to when motion is reduced — show the file as soon as it is
+   there rather than animating in. */
+@media (prefers-reduced-motion: reduce) {
+  .img img {
+    transition: none;
+  }
+}

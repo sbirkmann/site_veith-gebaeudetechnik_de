@@ -1,0 +1,193 @@
+.unt__rule {
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  margin-bottom: var(--s-5);
+  background-color: var(--c-orange);
+}
+
+.unt__eyebrow {
+  margin-bottom: var(--s-3);
+  color: var(--c-ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.unt__h2 {
+  max-width: 24ch;
+  font-size: var(--t-xl);
+  color: var(--fg);
+}
+
+/* ------------------------------------------------------------------- hero */
+.unt__hero {
+  padding-block: var(--s-8) var(--section-y-tight);
+}
+
+.unt__title {
+  max-width: 20ch;
+  font-size: var(--t-3xl);
+}
+
+.unt__intro {
+  display: grid;
+  gap: var(--s-4);
+  max-width: 52ch;
+  margin-top: var(--s-6);
+  color: var(--c-ink-2);
+  font-size: var(--t-md);
+}
+
+/* ------------------------------------------------------------------ credo
+   One sentence, set large. It is the company's own statement of intent, so it
+   gets a whole band and nothing else competes with it. */
+.unt__credo {
+  padding-block: var(--section-y-tight);
+  border-block: var(--hair) solid var(--c-blue-line);
+  background-color: var(--c-mist);
+}
+
+.unt__credo-text {
+  max-width: 24ch;
+  font-family: var(--font-display);
+  font-size: var(--t-2xl);
+  font-weight: 620;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tr-tight);
+  color: var(--c-ink);
+  text-wrap: balance;
+
+  /* An oversized quote mark, sitting in the margin rather than in the text. */
+  &::before {
+    content: '„';
+    display: block;
+    margin-bottom: -0.35em;
+    color: var(--c-orange);
+    font-size: 2.5em;
+    line-height: 1;
+  }
+}
+
+/* -------------------------------------------------- Kompetenzzentrum */
+.unt__kz-figure .img {
+  border-radius: var(--r-md);
+}
+
+.unt__kz-grid {
+  display: grid;
+  gap: var(--s-8);
+  margin-top: var(--s-8);
+}
+
+.unt__kz-text p {
+  max-width: 48ch;
+  margin-top: var(--s-5);
+  color: var(--c-ink-2);
+}
+
+.unt__features {
+  display: grid;
+  gap: var(--s-4);
+  margin-top: var(--s-6);
+
+  li {
+    position: relative;
+    max-width: 52ch;
+    padding-inline-start: var(--s-6);
+    color: var(--c-ink-2);
+    font-size: var(--t-sm);
+    line-height: 1.55;
+  }
+
+  li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.6em;
+    width: 1rem;
+    height: 1px;
+    background-color: var(--c-orange);
+  }
+}
+
+.unt__kz-actions {
+  margin-top: var(--s-7);
+}
+
+.unt__kz-facts {
+  padding: var(--s-6);
+  background-color: var(--c-mist);
+  border-radius: var(--r-lg);
+  align-self: start;
+}
+
+.unt__facts-title {
+  margin-bottom: var(--s-4);
+  color: var(--c-ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.unt__kz-facts dl div {
+  display: grid;
+  gap: var(--s-1);
+  padding-block: var(--s-4);
+  border-top: var(--hair) solid var(--c-blue-line);
+}
+
+.unt__kz-facts dt {
+  font-family: var(--font-display);
+  font-size: var(--t-lg);
+  font-weight: 640;
+  color: var(--c-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.unt__kz-facts dd {
+  margin: 0;
+  color: var(--c-ink-2);
+  font-size: var(--t-xs);
+  line-height: 1.45;
+}
+
+/* ------------------------------------------------------------------- team */
+.unt__team-grid {
+  display: grid;
+  gap: var(--s-8);
+}
+
+.unt__team-media .img {
+  border-radius: var(--r-md);
+}
+
+.unt__team-text p {
+  max-width: 48ch;
+  margin-top: var(--s-5);
+  color: var(--fg-muted);
+}
+
+.unt__team-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-5);
+  margin-top: var(--s-7);
+}
+
+/* ------------------------------------------------------------ breakpoints */
+@media (min-width: 62rem) {
+  .unt__kz-grid {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: var(--s-9);
+  }
+
+  .unt__team-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: var(--s-9);
+    align-items: center;
+  }
+}

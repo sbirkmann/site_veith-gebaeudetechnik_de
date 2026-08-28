@@ -1,0 +1,10 @@
+node_modules
+dist
+.DS_Store
+*.local
+*.log
+
+# Scraped source material from the existing site: reference only, and the
+# photography is the client's. Kept out of the repository.
+_scrape/
+cmp.html

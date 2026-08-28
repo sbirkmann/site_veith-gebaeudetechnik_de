@@ -1,0 +1,75 @@
+.ncard {
+  position: relative;
+  display: grid;
+  gap: var(--s-4);
+}
+
+.ncard__media .img {
+  border-radius: var(--r-md);
+}
+
+.ncard__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-wide);
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+
+.ncard__kind {
+  padding: 2px var(--s-2);
+  border: var(--hair) solid var(--rule);
+  border-radius: var(--r-sm);
+  color: var(--fg-muted);
+}
+
+.ncard__title {
+  margin-top: var(--s-3);
+  font-size: var(--t-lg);
+  font-weight: 620;
+  color: var(--fg);
+  text-wrap: pretty;
+
+  a {
+    display: inline-block;
+    /* The stretched ::after already makes the whole card tappable; this keeps
+       the link itself comfortable where a card sits in a dense list. */
+    min-height: 1.75rem;
+  }
+
+  a::after {
+    /* Makes the whole card a hit area without nesting interactive elements. */
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  a:hover {
+    color: var(--c-orange);
+  }
+}
+
+.ncard__excerpt {
+  margin-top: var(--s-3);
+  max-width: 52ch;
+  color: var(--fg-muted);
+  font-size: var(--t-sm);
+}
+
+.ncard__event {
+  margin-top: var(--s-3);
+  padding-inline-start: var(--s-4);
+  border-inline-start: 2px solid var(--c-orange);
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  color: var(--fg);
+}
+
+/* Compact rows sit in a divided list, so they carry no box of their own. */
+.ncard--compact .ncard__title {
+  font-size: var(--t-base);
+}

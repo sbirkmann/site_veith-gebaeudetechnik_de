@@ -1,0 +1,134 @@
+import { Link } from 'react-router-dom'
+import { trades } from '../data/leistungen'
+import { useSeo } from '../hooks/useSeo'
+import { Image } from '../components/ui/Image'
+import { Reveal } from '../components/ui/Reveal'
+import { SectionHeader } from '../components/ui/SectionHeader'
+import { KontaktCta } from '../components/sections/KontaktCta'
+import './Leistungen.scss'
+
+/**
+ * Overview of the five Leistungsbereiche and the three audiences.
+ *
+ * Deliberately not the same presentation as the homepage: there the five are a
+ * section model to explore, here they are a directory to scan and enter. Each
+ * trade gets a full row with its scope visible, so a visitor can find the term
+ * they came for without opening five pages.
+ */
+
+const audiences = [
+  {
+    id: 'privat',
+    label: 'Für private Kunden',
+    body: 'Sie wünschen Komfort, Zuverlässigkeit und Zukunftssicherheit? Bei VEITH finden Sie die Lösungen für Ihren Wohntraum ebenso wie findige Details für Probleme und Verbesserungen an Ihrem Haus.',
+  },
+  {
+    id: 'gewerbe',
+    label: 'Für gewerbliche Kunden',
+    body: 'Höchste Funktionalität zeichnet ein gutes Gebäude aus. Wir bieten die innovativen, klugen Lösungen, die den effizienten Betrieb Ihrer Gebäude und Einrichtungen garantieren.',
+  },
+  {
+    id: 'planer',
+    label: 'Für Architekten und Planer',
+    body: 'Gebäudetechnik fassen wir als organischen Bestandteil eines Gebäudes auf. Wir denken umfassend und haben langjährige Erfahrung bei der Technikplanung für Gebäude unterschiedlichster Formate und Funktionen.',
+  },
+]
+
+export default function Leistungen() {
+  useSeo({
+    title: 'Leistungen — Energie, Heizung, Klima, Sanitär und Elektro',
+    description:
+      'Alle Leistungen von VEITH Gebäudetechnik im Überblick: Photovoltaik und Speicher, Heizung, Klimatechnik, Sanitär und Elektro — für private und gewerbliche Kunden sowie Planer.',
+    path: '/leistungen',
+    image: 'kompetenzzentrum-aussen',
+  })
+
+  return (
+    <>
+      <header className="lst__hero">
+        <div className="container-wide">
+          <span className="lst__rule" aria-hidden="true" />
+          <p className="lst__eyebrow">Leistungen</p>
+          <h1 className="lst__title">Alles, was Ihr Gebäude braucht</h1>
+          <p className="lst__intro">
+            In unserer Region ist VEITH die erste Adresse für umfassende und
+            übergreifende Leistungen rund ums Gebäude. Wir beraten, liefern und
+            installieren — und behalten dabei das Zusammenspiel aller Gewerke im
+            Blick.
+          </p>
+        </div>
+      </header>
+
+      {/* ----------------------------------------------------- the directory */}
+      <section className="lst__trades">
+        <div className="container-wide">
+          <ol className="lst__list">
+            {trades.map((trade, i) => (
+              <Reveal
+                as="li"
+                key={trade.id}
+                className="lst__row"
+                delay={i * 60}
+              >
+                <Link
+                  to={`/leistungen/${trade.slug}`}
+                  style={{ '--accent': trade.accent } as React.CSSProperties}
+                >
+                  <span className="lst__num">{String(i + 1).padStart(2, '0')}</span>
+
+                  <span className="lst__media">
+                    <Image
+                      src={trade.hero.src}
+                      alt=""
+                      ratio="3 / 2"
+                      sizes="(min-width: 62rem) 16rem, 40vw"
+                    />
+                  </span>
+
+                  <span className="lst__text">
+                    <span className="lst__name">{trade.name}</span>
+                    <span className="lst__summary">{trade.summary}</span>
+                    <span className="lst__scope">
+                      {trade.scope.slice(0, 5).join(' · ')}
+                    </span>
+                  </span>
+
+                  <svg className="lst__arrow" viewBox="0 0 20 12" aria-hidden="true" focusable="false">
+                    <path
+                      d="M0 6h17.5M12.5 1l5 5-5 5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                    />
+                  </svg>
+                </Link>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------- audiences */}
+      <section className="lst__aud section on-night">
+        <div className="container-wide">
+          <SectionHeader
+            eyebrow="Wen wir beliefern"
+            title="Dasselbe Können, drei verschiedene Aufgaben"
+          />
+          <div className="lst__aud-grid">
+            {audiences.map((a, i) => (
+              <Reveal key={a.id} delay={i * 70}>
+                <article id={a.id} className="lst__aud-item">
+                  <h3>{a.label}</h3>
+                  <p>{a.body}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <KontaktCta />
+    </>
+  )
+}

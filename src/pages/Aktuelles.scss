@@ -1,0 +1,87 @@
+.akt__rule {
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  margin-bottom: var(--s-5);
+  background-color: var(--c-orange);
+}
+
+.akt__eyebrow {
+  margin-bottom: var(--s-3);
+  color: var(--c-ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.akt__hero {
+  padding-block: var(--s-8) var(--s-7);
+}
+
+.akt__title {
+  font-size: var(--t-3xl);
+}
+
+.akt__intro {
+  max-width: 44ch;
+  margin-top: var(--s-5);
+  color: var(--c-ink-2);
+  font-size: var(--t-md);
+}
+
+.akt__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: var(--s-7);
+}
+
+.akt__filter {
+  min-height: 2.75rem;
+  padding: var(--s-2) var(--s-4);
+  border: var(--hair) solid var(--c-blue-line);
+  border-radius: var(--r-md);
+  color: var(--c-ink-2);
+  font-size: var(--t-sm);
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+
+  &:hover {
+    border-color: var(--c-ink-3);
+    color: var(--c-ink);
+  }
+
+  &.is-active {
+    background-color: var(--c-ink);
+    border-color: var(--c-ink);
+    color: #fff;
+  }
+}
+
+.akt__list-section {
+  padding-bottom: var(--section-y);
+}
+
+.akt__list {
+  display: grid;
+  gap: 0;
+  border-top: var(--hair) solid var(--c-blue-line);
+}
+
+.akt__list > li {
+  padding-block: var(--s-6);
+  border-bottom: var(--hair) solid var(--c-blue-line);
+}
+
+@media (min-width: 52rem) {
+  .akt__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--s-8);
+  }
+}
+
+@media (min-width: 76rem) {
+  .akt__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

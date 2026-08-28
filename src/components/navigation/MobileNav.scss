@@ -1,0 +1,164 @@
+.mnav {
+  position: fixed;
+  inset: var(--header-h) 0 0;
+  /* Above every page section, including the hero's own stacking context. */
+  z-index: var(--z-nav);
+  background-color: var(--c-navy);
+  color: #f3f7fc;
+  /* Kept in the tree so the slide has something to animate, but pulled out of
+     reach until it is open. */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity var(--dur) var(--ease),
+    transform var(--dur) var(--ease),
+    visibility 0s linear var(--dur);
+
+  &.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s;
+  }
+}
+
+.mnav__panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* The whole panel scrolls when the list is longer than the screen. */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--s-5) var(--gutter) var(--s-8);
+}
+
+.mnav__item + .mnav__item {
+  border-top: var(--hair) solid var(--c-navy-3);
+}
+
+.mnav__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  width: 100%;
+  /* Generous rows: these are the primary touch targets on a phone. */
+  min-height: 3.5rem;
+  padding-block: var(--s-4);
+  color: #f3f7fc;
+  font-family: var(--font-display);
+  font-size: var(--t-lg);
+  font-weight: 600;
+  letter-spacing: var(--tr-snug);
+  text-align: start;
+
+  svg {
+    width: 0.875rem;
+    height: 0.875rem;
+    flex: none;
+    color: var(--c-orange);
+    transition: transform var(--dur) var(--ease);
+  }
+}
+
+.mnav__toggle.is-open svg {
+  transform: rotate(45deg);
+}
+
+.mnav__sub {
+  padding-bottom: var(--s-4);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.mnav__sub-all {
+  display: block;
+  padding-block: var(--s-2);
+  margin-bottom: var(--s-2);
+  color: var(--c-orange);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  letter-spacing: var(--tr-wide);
+  text-transform: uppercase;
+}
+
+.mnav__sub-link {
+  display: block;
+  min-height: 2.75rem;
+  padding-block: var(--s-3);
+  padding-inline-start: var(--s-4);
+  border-inline-start: 2px solid var(--c-navy-3);
+  color: #a8bcd4;
+  font-size: var(--t-base);
+
+  &:hover,
+  &:focus-visible {
+    border-inline-start-color: var(--c-orange);
+    color: #fff;
+  }
+}
+
+.mnav__foot {
+  margin-top: auto;
+  padding-top: var(--s-7);
+}
+
+/* The one action in the overlay: call. It gets the signal colour outright. */
+.mnav__call {
+  display: block;
+  padding: var(--s-5);
+  background-color: var(--c-orange);
+  color: #fff;
+  border-radius: var(--r-md);
+
+  &:hover {
+    background-color: var(--c-orange-deep);
+  }
+}
+
+.mnav__call-label {
+  display: block;
+  font-size: var(--t-xs);
+  opacity: 0.72;
+}
+
+.mnav__call-num {
+  display: block;
+  margin-top: var(--s-1);
+  font-family: var(--font-mono);
+  font-size: var(--t-lg);
+  font-weight: 500;
+}
+
+.mnav__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-5);
+  margin-top: var(--s-5);
+  font-size: var(--t-xs);
+  color: #7d93ae;
+
+  a:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* The overlay only exists below the desktop breakpoint. */
+@media (min-width: 68.75rem) {
+  .mnav {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mnav {
+    transition: opacity 0.01ms, visibility 0.01ms;
+    transform: none;
+  }
+}
