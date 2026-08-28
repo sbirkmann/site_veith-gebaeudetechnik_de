@@ -64,6 +64,7 @@ export default function Kundendienst() {
         image={{
           src: 'kundendienst',
           alt: 'Servicemonteur von VEITH mit Werkzeugkoffer im Einsatz beim Kunden',
+          position: '45% 30%',
         }}
       >
         <a className="kd__phone" href={`tel:${company.phone.href}`}>

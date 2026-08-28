@@ -8,46 +8,45 @@ import './Hero.scss'
 export function Hero() {
   return (
     <section className="hero">
-      <div className="hero__media">
-        <Image
-          src="montage-photovoltaik-dach"
-          alt="Zwei Monteure von VEITH montieren Photovoltaikmodule auf einem Ziegeldach"
-          priority
-          fill
-          sizes="100vw"
-          position="78% 32%"
-        />
-        <div className="hero__scrim" aria-hidden="true" />
-      </div>
+      <div className="hero__folio">
+        <div className="hero__copy">
+          <p className="hero__eyebrow">
+            <span className="hero__since">Seit {company.founded}</span>
+            <span className="hero__place">Bühl / Baden</span>
+          </p>
 
-      <div className="hero__inner container-wide">
-        <p className="hero__eyebrow">
-          <span className="hero__since">Seit {company.founded}</span>
-          <span className="hero__place">Gebäudetechnik · Bühl / Baden</span>
-        </p>
+          <h1 className="hero__title">Gebäudetechnik in Bühl</h1>
 
-        <h1 className="hero__title">
-          Gebäudetechnik in Bühl
-        </h1>
+          <p className="hero__lead">
+            Photovoltaik, Wärmepumpe, Klima, Sanitär und Elektro — geplant und
+            eingebaut von einem Fachbetrieb. Ein Haus, fünf Gewerke, eine
+            Abstimmung.
+          </p>
 
-        <p className="hero__lead">
-          Photovoltaik, Wärmepumpe, Klima, Sanitär und Elektro — geplant und
-          eingebaut von einem Fachbetrieb in Bühl/Baden. Ein Haus, fünf Gewerke,
-          eine Abstimmung.
-        </p>
+          <div className="hero__actions">
+            <Button to="/leistungen" size="lg" arrow>
+              Leistungen
+            </Button>
+            <Button
+              href={`tel:${company.phone.href}`}
+              variant="secondary"
+              size="lg"
+              className="hero__call"
+            >
+              {company.phone.display}
+            </Button>
+          </div>
+        </div>
 
-        <div className="hero__actions">
-          <Button to="/leistungen" size="lg" arrow>
-            Leistungen
-          </Button>
-          <Button
-            href={`tel:${company.phone.href}`}
-            variant="secondary"
-            size="lg"
-            className="hero__call"
-          >
-            {company.phone.display}
-          </Button>
+        <div className="hero__media">
+          <Image
+            src="montage-photovoltaik-dach"
+            alt="Zwei Monteure von VEITH montieren Photovoltaikmodule auf einem Ziegeldach"
+            priority
+            fill
+            sizes="(min-width: 62rem) 64vw, 100vw"
+            position="62% 28%"
+          />
         </div>
       </div>
 

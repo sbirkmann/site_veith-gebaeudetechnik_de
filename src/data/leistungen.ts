@@ -36,7 +36,18 @@ export interface Trade {
   topics: Topic[]
   /** Related trades, with the reason the link exists. */
   related: { trade: TradeId; reason: string }[]
-  hero: { src: string; alt: string }
+  /**
+   * How a job typically runs — only steps the existing copy already names
+   * (Beratung, Auslegung, Antrag, Inbetriebnahme). Not a invented workflow.
+   */
+  process: { title: string; steps: { title: string; body: string }[] }
+  /**
+   * Funding or legal note already stated on the old site or /service/foerderungen.
+   */
+  aside?: { title: string; body: string; to?: string; toLabel?: string }
+  /** Key into contactGroups in team.ts. */
+  contactGroupId: 'energie' | 'heizung-klima-sanitaer' | 'elektro'
+  hero: { src: string; alt: string; position?: string }
   /** CSS custom property carrying this trade's accent. */
   accent: string
   meta: { title: string; description: string }
@@ -64,6 +75,7 @@ export const trades: Trade[] = [
     hero: {
       src: 'montage-photovoltaik-dach',
       alt: 'Zwei Monteure von VEITH befestigen Photovoltaikmodule auf einem Ziegeldach',
+      position: '62% 28%',
     },
     accent: 'var(--c-energie)',
     topics: [
@@ -131,6 +143,30 @@ export const trades: Trade[] = [
         reason: 'Verteilung, Ladepunkte und Messtechnik entstehen im Elektro-Gewerk.',
       },
     ],
+    process: {
+      title: 'Von der Fläche zur Anlage',
+      steps: [
+        {
+          title: 'Fläche und Bedarf',
+          body: 'Nutzbare Fläche, Verschattung, Topografie, Nachbarbebauung und die Sonnenstunden der Rheinebene — danach dimensionieren wir.',
+        },
+        {
+          title: 'Erzeugung, Speicher, Steuerung',
+          body: 'Photovoltaik, Batteriespeicher und Energiemanagement als ein System. Überschüsse gehen in Warmwasser, Heizung oder das Fahrzeug.',
+        },
+        {
+          title: 'Förderung und Termin',
+          body: 'Photovoltaik wird staatlich gefördert; für Speicher gibt es ein Landesprogramm in Baden-Württemberg. Einschätzung der Fläche im unverbindlichen Termin.',
+        },
+      ],
+    },
+    aside: {
+      title: 'Förderung',
+      body: 'Photovoltaikanlagen werden nach wie vor staatlich gefördert. Für Batteriespeicher besteht ein Förderprogramm des Landes Baden-Württemberg. Sätze und Reihenfolge stehen auf der Förderseite.',
+      to: '/service/foerderungen',
+      toLabel: 'Förderungen',
+    },
+    contactGroupId: 'energie',
     meta: {
       title: 'Photovoltaik, Speicher & Energiemanagement in Bühl | VEITH',
       description:
@@ -161,6 +197,7 @@ export const trades: Trade[] = [
     hero: {
       src: 'energiezentrale-beratung',
       alt: 'Beratung an der Energiezentrale im Heizungsraum eines Wohnhauses',
+      position: '40% 50%',
     },
     accent: 'var(--c-heizung)',
     topics: [
@@ -205,6 +242,14 @@ export const trades: Trade[] = [
           alt: 'Pelletlager und Fördertechnik einer Biomasseheizung',
         },
       },
+      {
+        id: 'lueftung',
+        title: 'Lüftungsanlagen',
+        lead: 'Luftwechsel gehört zur Wärmeplanung — nicht als Nachtrag.',
+        body: [
+          'Lüftungsanlagen stehen im Leistungsumfang der Heizung. Auslegung hängt am Gebäude: Dämmung, Flächen, Bestand. Dieselben Leute, die Wärmepumpe und Pellets planen, nehmen die Lüftung mit.',
+        ],
+      },
     ],
     related: [
       {
@@ -216,6 +261,30 @@ export const trades: Trade[] = [
         reason: 'Heizen und Kühlen laufen bei modernen Geräten über dieselbe Anlage.',
       },
     ],
+    process: {
+      title: 'Zuerst das Gebäude, dann das Gerät',
+      steps: [
+        {
+          title: 'Bestand',
+          body: 'Dämmung, Flächen, vorhandene Verteilung. Ohne das sitzt die Pumpe falsch.',
+        },
+        {
+          title: 'Auslegung',
+          body: 'Wärmepumpe, Solarthermie oder Biomasse — je nachdem, was das Haus trägt. Aktuelle Wärmepumpen erreichen A+++, heizen und kühlen mit einem Gerät.',
+        },
+        {
+          title: 'Antrag und Inbetriebnahme',
+          body: 'Von der Planung über die Beantragung der BAFA-Zuschüsse bis zur Inbetriebnahme: ein Ansprechpartner.',
+        },
+      ],
+    },
+    aside: {
+      title: 'BAFA und Heizungstausch',
+      body: 'Der Einbau wird staatlich gefördert. Beim Austausch einer alten Heizung nennt die Förderseite bis zu 50 % Zuschuss — Sätze ändern sich, die Reihenfolge der Anträge entscheidet mit.',
+      to: '/service/foerderungen',
+      toLabel: 'Förderungen',
+    },
+    contactGroupId: 'heizung-klima-sanitaer',
     meta: {
       title: 'Wärmepumpe, Solarthermie & Pelletheizung in Bühl | VEITH',
       description:
@@ -244,6 +313,7 @@ export const trades: Trade[] = [
     hero: {
       src: 'klima-serverraum',
       alt: 'Klimatisierter Serverraum mit Rackreihen',
+      position: '50% 40%',
     },
     accent: 'var(--c-klima)',
     topics: [
@@ -286,6 +356,14 @@ export const trades: Trade[] = [
           alt: 'Klimatisierter Verkaufsraum',
         },
       },
+      {
+        id: 'wartung',
+        title: 'Service und Wartung',
+        lead: 'Temperatur und Feuchte bleiben nur im Soll, wenn die Anlage gehalten wird.',
+        body: [
+          'Service und Wartung gehören zum Leistungsumfang. Ausfälle an Servern und in der Produktion kosten Geld — die Klimatechnik hält Temperatur und Feuchte im Rahmen, den das Gebäude braucht.',
+        ],
+      },
     ],
     related: [
       {
@@ -297,6 +375,24 @@ export const trades: Trade[] = [
         reason: 'Regelung und Einbindung ins Gebäudemanagement kommen aus der Elektrotechnik.',
       },
     ],
+    process: {
+      title: 'Raum für Raum, oder das ganze Gebäude',
+      steps: [
+        {
+          title: 'Wohnen',
+          body: 'Aufenthalt, Arbeiten, Schlafen: unterschiedliche Klimabedarfe in einem Haus. Die Anlage gleicht Hitze, trockene Heizungsluft und feuchte Phasen aus.',
+        },
+        {
+          title: 'Technik',
+          body: 'EDV, Serverräume, empfindliche Produktion: Temperatur und Feuchte dauerhaft im Soll.',
+        },
+        {
+          title: 'Büro und Laden',
+          body: 'Temperatur, Luftfeuchtigkeit, Atemluft und Staubgehalt — für Leute, Geräte und Ware.',
+        },
+      ],
+    },
+    contactGroupId: 'heizung-klima-sanitaer',
     meta: {
       title: 'Klimatechnik für Wohnen, Büro und Industrie in Bühl | VEITH',
       description:
@@ -326,6 +422,7 @@ export const trades: Trade[] = [
     hero: {
       src: 'sanitaerinstallation',
       alt: 'Sanitärinstallation im Rohbau',
+      position: '50% 45%',
     },
     accent: 'var(--c-sanitaer)',
     topics: [
@@ -354,6 +451,22 @@ export const trades: Trade[] = [
           alt: 'Sanitärausstattung im Detail',
         },
       },
+      {
+        id: 'barrierefrei',
+        title: 'Barrierefreier Nassbereich',
+        lead: 'Bewegungsflächen und Bedienung, die später noch funktionieren.',
+        body: [
+          'Barrierefreie Nassbereiche gehören zum Leistungsumfang. Armaturen und Installation sitzen so, dass der Raum länger nutzbar bleibt. Steuerung und Sensorik kommen aus dem Elektrogewerk, wenn das Bad ans Gebäudemanagement angebunden wird.',
+        ],
+      },
+      {
+        id: 'gewerbe',
+        title: 'Industrie und Gewerbe',
+        lead: 'Ver- und Entsorgung, die zum Betrieb passt — nicht zum Katalogbad.',
+        body: [
+          'Lösungen für Industrie und Gewerbe stehen im Leistungsumfang. Leitungen, Ventile und die Anbindung an Wärme und Elektro hängen am Objekt.',
+        ],
+      },
     ],
     related: [
       {
@@ -365,6 +478,24 @@ export const trades: Trade[] = [
         reason: 'Barrierefreie Bäder und Gebäudemanagement brauchen Steuerung und Sensorik.',
       },
     ],
+    process: {
+      title: 'Planung, Leitung, Anbindung',
+      steps: [
+        {
+          title: 'Planung',
+          body: 'Armaturen, Becken, Wannen, Brauch- und Abwasser — und die Planung, die das zusammenhält.',
+        },
+        {
+          title: 'Installation',
+          body: 'Leitungen und Technik sollen unsichtbar bleiben. Die Ausführung entscheidet, wie lange die Anlage hält.',
+        },
+        {
+          title: 'Wärme und Steuerung',
+          body: 'Warmwasser hängt an der Heizung. Einbindung ins Energiekonzept und ins Gebäudemanagement, wenn das Objekt das verlangt.',
+        },
+      ],
+    },
+    contactGroupId: 'heizung-klima-sanitaer',
     meta: {
       title: 'Sanitärinstallation, Bad & barrierefreie Nassbereiche | VEITH Bühl',
       description:
@@ -395,6 +526,7 @@ export const trades: Trade[] = [
     hero: {
       src: 'knx-installation-decke',
       alt: 'KNX-Installation an einer Rohbaudecke',
+      position: '50% 35%',
     },
     accent: 'var(--c-elektro)',
     topics: [
@@ -476,6 +608,24 @@ export const trades: Trade[] = [
         reason: 'Regelung und Sensorik der Klimatechnik laufen über die Gebäudeleittechnik.',
       },
     ],
+    process: {
+      title: 'Von der Verteilung zur Bedienung',
+      steps: [
+        {
+          title: 'Planung',
+          body: 'Qualifizierte Planung zahlt sich aus: Funk für Information, große Querschnitte für Produktionsanlagen. Ansprechpartner für Bauherren, Architekten und Planer.',
+        },
+        {
+          title: 'Installation und Netz',
+          body: 'Elektroinstallation, Netzwerke, Antennen, Sicherheitstechnik, Industrie-Elektrik. Datenaustausch über Kabel oder Funk — Internet, Telefonie, Alarmanlage.',
+        },
+        {
+          title: 'Gebäudemanagement',
+          body: 'Einbruch, Brand, Licht, Zutritt, Energiemanagement. Bedienung im Raum, am PC oder Smartphone. Bei Gewerbe zählt, was später nachgerüstet werden muss.',
+        },
+      ],
+    },
+    contactGroupId: 'elektro',
     meta: {
       title: 'Elektroinstallation, KNX & Gebäudemanagement in Bühl | VEITH',
       description:

@@ -45,6 +45,7 @@ export default function Foerderungen() {
         image={{
           src: 'foerderung-uebersicht',
           alt: 'Übersicht staatlicher Förderprogramme für Heizung und Photovoltaik',
+          position: '50% 40%',
         }}
       />
 

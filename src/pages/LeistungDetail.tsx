@@ -1,5 +1,7 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { tradeBySlug, tradeById, trades } from '../data/leistungen'
+import { contactGroups, telHref } from '../data/team'
+import { brands } from '../data/service'
 import { useSeo } from '../hooks/useSeo'
 import { Image } from '../components/ui/Image'
 import { Reveal } from '../components/ui/Reveal'
@@ -10,31 +12,51 @@ import { PageHero } from '../components/ui/PageHero'
 import { leistungJsonLd } from '../seo/schema'
 import './LeistungDetail.scss'
 
-/**
- * One Leistungsbereich.
- *
- * The page is built from the trade's own data: an opening that states what the
- * reader gets, the scope exactly as VEITH publishes it, the topics as
- * alternating full-width blocks, and the links to the trades this one depends
- * on. The accent colour threads through the rules, the topic numbers and the
- * closing CTA, so each of the five pages feels distinct inside one system.
- */
+const elektroBrandFields = new Set([
+  'Elektro',
+  'Gebäudetechnik',
+  'Energieverteilung',
+  'Schalter und KNX',
+  'Elektroinstallation',
+  'Verbindtechnik',
+  'Verbindungstechnik',
+  'Ladetechnik',
+  'Schalterprogramme',
+  'Türkommunikation',
+  'Zeit- und Lichtsteuerung',
+  'Blitz- und Überspannungsschutz',
+  'Verteilerschränke',
+])
+
 export default function LeistungDetail() {
   const { slug } = useParams()
   const trade = slug ? tradeBySlug[slug] : undefined
 
-  // Unknown slug: send the reader to the overview rather than a dead end.
   if (!trade) return <Navigate to="/leistungen" replace />
 
+  const group = contactGroups.find((g) => g.id === trade.contactGroupId)
+  const people = group?.people ?? []
+  const showBrands = trade.id === 'elektro'
+  const brandList = showBrands
+    ? brands.filter((b) => elektroBrandFields.has(b.field))
+    : []
+
   return (
-    <article className="ld" style={{ '--accent': trade.accent } as React.CSSProperties}>
+    <article
+      className={`ld ld--${trade.id}`}
+      style={{ '--accent': trade.accent } as React.CSSProperties}
+    >
       <Seo trade={trade} />
 
       <PageHero
         eyebrow={trade.eyebrow}
         title={trade.headline}
         lead={trade.intro}
-        image={{ src: trade.hero.src, alt: trade.hero.alt }}
+        image={{
+          src: trade.hero.src,
+          alt: trade.hero.alt,
+          position: trade.hero.position,
+        }}
         crumbs={
           <nav aria-label="Brotkrumen">
             <Link to="/leistungen">Leistungen</Link>
@@ -48,14 +70,11 @@ export default function LeistungDetail() {
         </Button>
       </PageHero>
 
-      {/* --------------------------------------------------- scope + index */}
       <section className="ld__scope section--tight">
         <div className="container-wide">
           <div className="ld__scope-grid">
             <div>
-              <h2 className="ld__scope-title">
-                VEITH ist Ihr Ansprechpartner für
-              </h2>
+              <h2 className="ld__scope-title">VEITH ist Ihr Ansprechpartner für</h2>
               <ul className="ld__scope-list">
                 {trade.scope.map((s) => (
                   <li key={s}>{s}</li>
@@ -84,7 +103,37 @@ export default function LeistungDetail() {
         </div>
       </section>
 
-      {/* ---------------------------------------------------------- topics */}
+      <section className="ld__process" aria-labelledby="ld-ablauf">
+        <div className="container-wide">
+          <h2 className="ld__process-title" id="ld-ablauf">
+            {trade.process.title}
+          </h2>
+          <ol className="ld__steps">
+            {trade.process.steps.map((step, i) => (
+              <Reveal as="li" key={step.title} delay={i * 70}>
+                <span className="ld__step-n">{String(i + 1).padStart(2, '0')}</span>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {trade.aside && (
+        <section className="ld__aside on-night">
+          <div className="container-wide">
+            <p className="ld__aside-kicker">{trade.aside.title}</p>
+            <p className="ld__aside-body">{trade.aside.body}</p>
+            {trade.aside.to && (
+              <Link className="ld__aside-link" to={trade.aside.to}>
+                {trade.aside.toLabel ?? 'Weiterlesen'}
+              </Link>
+            )}
+          </div>
+        </section>
+      )}
+
       <div className="ld__topics">
         {trade.topics.map((topic, i) => (
           <section
@@ -123,10 +172,60 @@ export default function LeistungDetail() {
         ))}
       </div>
 
-      {/* --------------------------------------------------------- related */}
+      {people.length > 0 && (
+        <section className="ld__people section--tight" aria-labelledby="ld-kontakt">
+          <div className="container-wide">
+            <h2 className="ld__people-title" id="ld-kontakt">
+              Ansprechpartner {trade.name}
+            </h2>
+            {group?.hint && <p className="ld__people-hint">{group.hint}</p>}
+            {group?.note && <p className="ld__people-note">{group.note}</p>}
+            <ul className="ld__people-list">
+              {people.map((p) => (
+                <li key={p.name + p.phone}>
+                  <p className="ld__people-name">{p.name}</p>
+                  {p.qualification && (
+                    <p className="ld__people-qual">{p.qualification}</p>
+                  )}
+                  <p className="ld__people-role">{p.role}</p>
+                  <a className="ld__people-tel" href={`tel:${telHref(p.phone)}`}>
+                    {p.phone}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {brandList.length > 0 && (
+        <section className="ld__brands" aria-labelledby="ld-marken">
+          <div className="container-wide">
+            <h2 className="ld__brands-title" id="ld-marken">
+              Hersteller, deren Komponenten wir verbauen
+            </h2>
+            <p className="ld__brands-lead">
+              Die Liste stammt von der Markenseite. Keine Aussage zu Partnerstatus.
+            </p>
+            <ul className="ld__brands-list">
+              {brandList.map((b) => (
+                <li key={b.name}>
+                  <a href={b.href} rel="noopener noreferrer" target="_blank">
+                    {b.name}
+                    <span>{b.field}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <Link className="ld__brands-all" to="/service/marken">
+              Alle Marken
+            </Link>
+          </div>
+        </section>
+      )}
+
       <section className="ld__related section--tight">
         <div className="container-wide">
-          <span className="ld__rule" aria-hidden="true" />
           <h2 className="ld__related-title">Dazu gehören auch</h2>
           <p className="ld__related-lead">
             Zu {trade.name} gehören in der Praxis auch diese Leistungen.
@@ -158,7 +257,6 @@ export default function LeistungDetail() {
             })}
           </ul>
 
-          {/* All five stay one click away from every trade page. */}
           <nav className="ld__all" aria-label="Alle Leistungsbereiche">
             <p className="ld__all-title">Alle Leistungsbereiche</p>
             <ul>
@@ -187,7 +285,6 @@ export default function LeistungDetail() {
   )
 }
 
-/** Split out so the hook sees a stable object identity per trade. */
 function Seo({ trade }: { trade: (typeof trades)[number] }) {
   useSeo({
     title: trade.meta.title,

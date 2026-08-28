@@ -368,3 +368,277 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* ---------------------------------------------------------------- process */
+.ld__process {
+  padding-block: var(--section-y-tight);
+  background-color: var(--c-white);
+  border-top: var(--hair) solid var(--c-blue-line);
+}
+
+.ld__process-title {
+  max-width: 22ch;
+  margin-bottom: var(--s-7);
+  font-size: var(--t-xl);
+}
+
+.ld__steps {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+  border-top: var(--hair) solid var(--c-blue-line);
+}
+
+.ld__steps li {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  column-gap: var(--s-4);
+  padding-block: var(--s-6);
+  border-bottom: var(--hair) solid var(--c-blue-line);
+}
+
+.ld__steps h3 {
+  grid-column: 2;
+  font-size: var(--t-md);
+  font-weight: 600;
+}
+
+.ld__steps p {
+  grid-column: 2;
+  margin-top: var(--s-3);
+  max-width: 46ch;
+  color: var(--c-ink-2);
+  font-size: var(--t-sm);
+}
+
+.ld__step-n {
+  grid-row: 1 / span 2;
+}
+
+/* ---------------------------------------------------------------- aside */
+.ld__aside {
+  padding-block: var(--s-8);
+}
+
+.ld__aside-kicker {
+  margin-bottom: var(--s-3);
+  color: var(--c-eyebrow);
+  font-family: var(--font-mono);
+  font-size: var(--t-2xs);
+  font-weight: 600;
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+}
+
+.ld__aside-body {
+  max-width: 52ch;
+  font-size: var(--t-md);
+  color: var(--fg-muted);
+}
+
+.ld__aside-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-top: var(--s-5);
+  color: #fff;
+  font-size: var(--t-sm);
+  font-weight: 500;
+  border-bottom: 2px solid var(--c-orange);
+}
+
+/* ---------------------------------------------------------------- people */
+.ld__people {
+  background-color: var(--c-mist);
+}
+
+.ld__people-title {
+  font-size: var(--t-xl);
+}
+
+.ld__people-hint,
+.ld__people-note {
+  max-width: 52ch;
+  margin-top: var(--s-3);
+  color: var(--c-ink-2);
+  font-size: var(--t-sm);
+}
+
+.ld__people-note {
+  font-family: var(--font-mono);
+  font-size: var(--t-2xs);
+}
+
+.ld__people-list {
+  display: grid;
+  gap: 0;
+  margin-top: var(--s-7);
+  padding: 0;
+  list-style: none;
+  border-top: var(--hair) solid var(--c-blue-line);
+}
+
+.ld__people-list li {
+  display: grid;
+  gap: var(--s-1);
+  padding-block: var(--s-5);
+  border-bottom: var(--hair) solid var(--c-blue-line);
+}
+
+.ld__people-name {
+  font-weight: 600;
+  color: var(--c-navy);
+}
+
+.ld__people-qual {
+  font-family: var(--font-mono);
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-wide);
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+}
+
+.ld__people-role {
+  color: var(--c-ink-2);
+  font-size: var(--t-sm);
+}
+
+.ld__people-tel {
+  margin-top: var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  color: var(--c-navy);
+  overflow-wrap: anywhere;
+
+  &:hover {
+    color: var(--c-orange);
+  }
+}
+
+/* ---------------------------------------------------------------- brands */
+.ld__brands {
+  padding-block: var(--section-y-tight);
+  border-top: var(--hair) solid var(--c-blue-line);
+}
+
+.ld__brands-title {
+  font-size: var(--t-lg);
+}
+
+.ld__brands-lead {
+  max-width: 48ch;
+  margin-top: var(--s-3);
+  color: var(--c-ink-2);
+  font-size: var(--t-sm);
+}
+
+.ld__brands-list {
+  display: grid;
+  gap: 0;
+  margin-top: var(--s-6);
+  padding: 0;
+  list-style: none;
+  border-top: var(--hair) solid var(--c-blue-line);
+}
+
+.ld__brands-list a {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-4);
+  min-height: 2.75rem;
+  padding-block: var(--s-3);
+  border-bottom: var(--hair) solid var(--c-blue-line);
+  color: var(--c-ink);
+  font-size: var(--t-sm);
+
+  span {
+    color: var(--c-ink-3);
+    font-family: var(--font-mono);
+    font-size: var(--t-3xs);
+    letter-spacing: var(--tr-wide);
+    text-transform: uppercase;
+  }
+
+  &:hover {
+    color: var(--c-orange);
+  }
+}
+
+.ld__brands-all {
+  display: inline-flex;
+  margin-top: var(--s-5);
+  min-height: 2.75rem;
+  align-items: center;
+  font-size: var(--t-sm);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
+  text-decoration-color: var(--c-orange);
+}
+
+/* Per-trade rhythm: same system, different density. */
+.ld--klima .ld__steps {
+  /* Three rooms as equal columns on wide screens. */
+}
+
+.ld--sanitaer .ld__topic-media .img {
+  /* Spatial: taller crop on bathroom photos. */
+  aspect-ratio: 3 / 4;
+}
+
+.ld--elektro .ld__index ul {
+  /* Spec index: denser because five topics. */
+}
+
+@media (min-width: 40rem) {
+  .ld__steps {
+    grid-template-columns: 1fr;
+  }
+
+  .ld--klima .ld__steps,
+  .ld--energie .ld__steps,
+  .ld--heizung .ld__steps,
+  .ld--sanitaer .ld__steps,
+  .ld--elektro .ld__steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--s-6);
+    border-top: 0;
+  }
+
+  .ld--klima .ld__steps li,
+  .ld--energie .ld__steps li,
+  .ld--heizung .ld__steps li,
+  .ld--sanitaer .ld__steps li,
+  .ld--elektro .ld__steps li {
+    padding-inline-end: var(--s-4);
+    border-bottom: 0;
+    border-top: var(--hair) solid var(--c-blue-line);
+  }
+
+  .ld__people-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--s-8);
+  }
+
+  .ld__brands-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--s-8);
+  }
+}
+
+@media (min-width: 62rem) {
+  .ld__people-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ld--klima .ld__topics {
+    /* Three use-cases stay photo+text; wartung is text-only. */
+  }
+
+  .ld--sanitaer .ld__topic-grid {
+    align-items: start;
+  }
+}

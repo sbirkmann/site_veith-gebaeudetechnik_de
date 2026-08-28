@@ -86,6 +86,13 @@
   line-height: 1.6;
 }
 
+.lst__process {
+  margin-top: var(--s-2);
+  color: var(--c-ink-3);
+  font-size: var(--t-xs);
+  font-weight: 500;
+}
+
 .lst__arrow {
   grid-area: arrow;
   align-self: start;

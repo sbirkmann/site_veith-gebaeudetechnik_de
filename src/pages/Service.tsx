@@ -80,6 +80,7 @@ export default function Service() {
         image={{
           src: 'beratung-showroom',
           alt: 'Beratung im VEITH Kompetenzzentrum',
+          position: '42% 40%',
         }}
       />
 

@@ -38,6 +38,7 @@ export default function Aktuelles() {
         image={{
           src: 'seminar-vortrag',
           alt: 'Vortrag im VEITH Kompetenzzentrum',
+          position: '55% 40%',
         }}
       >
         <div className="akt__filters" role="group" aria-label="Nach Art filtern">

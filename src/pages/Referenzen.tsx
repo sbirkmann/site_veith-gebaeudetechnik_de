@@ -51,6 +51,7 @@ export default function Referenzen() {
         image={{
           src: 'photovoltaik-dach-team',
           alt: 'VEITH-Monteure bei der Photovoltaikmontage auf einem Wohnhausdach',
+          position: '58% 36%',
         }}
       />
 

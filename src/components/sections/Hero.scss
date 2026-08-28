@@ -2,43 +2,39 @@
   position: relative;
   display: grid;
   grid-template-rows: 1fr auto;
-  grid-template-columns: minmax(0, 1fr);
-  min-height: calc(100svh - var(--header-h));
   isolation: isolate;
   z-index: 0;
   color: #fff;
+  background-color: var(--c-navy);
+}
+
+.hero__folio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .hero__media {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
+  position: relative;
+  min-height: 16rem;
   overflow: hidden;
+  background-color: var(--c-navy);
 
   .img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
+    min-height: 0;
     background-color: var(--c-navy);
   }
 }
 
-.hero__scrim {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      to right,
-      rgb(14 35 64 / 0.9) 0%,
-      rgb(14 35 64 / 0.62) 36%,
-      rgb(14 35 64 / 0.18) 72%
-    ),
-    linear-gradient(to top, rgb(14 35 64 / 0.88) 0%, rgb(14 35 64 / 0) 42%);
-}
-
-.hero__inner {
-  align-self: end;
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
   min-width: 0;
-  padding-block: var(--s-11) var(--s-9);
+  padding: var(--s-8) var(--gutter) var(--s-8);
 }
 
 .hero__eyebrow {
@@ -66,17 +62,12 @@
 }
 
 .hero__title {
-  max-width: 14ch;
+  max-width: 12ch;
   font-size: var(--t-4xl);
   font-weight: 700;
   line-height: 0.94;
   letter-spacing: -0.042em;
   color: #fff;
-}
-
-.hero__title-accent {
-  font-weight: 400;
-  color: rgb(255 255 255 / 0.72);
 }
 
 .hero__lead {
@@ -107,6 +98,7 @@
 .hero__trades {
   position: relative;
   border-top: var(--hair) solid rgb(255 255 255 / 0.16);
+  background-color: var(--c-navy);
 
   .container-wide {
     padding-inline-end: calc(var(--gutter) + 3.75rem);
@@ -156,10 +148,6 @@
 }
 
 @media (max-width: 47.99rem) {
-  .hero {
-    min-height: min(44rem, calc(100svh - var(--header-h)));
-  }
-
   .hero__place {
     padding-inline-start: 0;
     border: 0;
@@ -183,5 +171,28 @@
 @media (min-width: 48rem) {
   .hero__call {
     display: none;
+  }
+}
+
+@media (min-width: 62rem) {
+  .hero__folio {
+    grid-template-columns: minmax(22rem, 38%) minmax(0, 1fr);
+    min-height: calc(100svh - var(--header-h) - 3.75rem);
+  }
+
+  .hero__media {
+    min-height: 0;
+    height: 100%;
+
+    .img {
+      position: absolute;
+      inset: 0;
+      min-height: 0;
+      height: 100%;
+    }
+  }
+
+  .hero__copy {
+    padding: var(--s-11) var(--s-8) var(--s-9) var(--gutter);
   }
 }

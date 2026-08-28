@@ -52,6 +52,7 @@ export default function Seminare() {
         image={{
           src: 'seminar-vortrag',
           alt: 'Fachvortrag vor Gästen im VEITH Kompetenzzentrum in Bühl',
+          position: '55% 38%',
         }}
       />
 

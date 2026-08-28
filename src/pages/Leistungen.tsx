@@ -51,7 +51,7 @@ export default function Leistungen() {
       <PageHero
         eyebrow="Leistungen"
         title="Energie, Heizung, Klima, Sanitär, Elektro"
-        lead="Wir beraten, liefern und installieren — und halten das Zusammenspiel der Gewerke im Blick."
+        lead="Photovoltaik und Speicher, Wärmepumpe, Klimatechnik, Sanitär und Elektro — in Bühl, aus einer Hand. Wählen Sie das Gewerk, das bei Ihnen ansteht."
         image={{
           src: 'photovoltaik-dach-team',
           alt: 'Monteure von VEITH setzen Photovoltaikmodule auf einem Wohnhausdach in der Region Bühl',
@@ -89,8 +89,9 @@ export default function Leistungen() {
                     <span className="lst__name">{trade.name}</span>
                     <span className="lst__summary">{trade.summary}</span>
                     <span className="lst__scope">
-                      {trade.scope.slice(0, 5).join(' · ')}
+                      {trade.scope.join(' · ')}
                     </span>
+                    <span className="lst__process">{trade.process.title}</span>
                   </span>
 
                   <svg className="lst__arrow" viewBox="0 0 20 12" aria-hidden="true" focusable="false">

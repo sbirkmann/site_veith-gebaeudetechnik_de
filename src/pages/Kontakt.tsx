@@ -44,6 +44,7 @@ export default function Kontakt() {
         image={{
           src: 'beratung-showroom',
           alt: 'Beratung im Showroom: Vorführung der Gebäudesteuerung am Smartphone',
+          position: '38% 35%',
         }}
       />
 

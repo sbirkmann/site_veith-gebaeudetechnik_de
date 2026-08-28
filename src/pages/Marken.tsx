@@ -56,6 +56,7 @@ export default function Marken() {
         image={{
           src: 'elektroinstallation',
           alt: 'Elektroinstallation in einem Verteilerschrank',
+          position: '50% 40%',
         }}
       />
 

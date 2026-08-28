@@ -43,6 +43,7 @@ export default function Karriere() {
         image={{
           src: 'team-montage',
           alt: 'Drei Monteure von VEITH vor dem Kompetenzzentrum',
+          position: '50% 30%',
         }}
       />
 
