@@ -1,0 +1,6 @@
+# pnpm 10 reads build-script approvals from here, not from package.json.
+# sharp compiles a native binary and must be allowed to run its install script.
+onlyBuiltDependencies:
+  - sharp
+  - '@parcel/watcher'
+  - esbuild
